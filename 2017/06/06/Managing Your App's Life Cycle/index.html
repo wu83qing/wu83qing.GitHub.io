@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="UIKit," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="官方文档链接 OverviewUIKit应用程序总是处于五种状态之一.如图1所示.  应用程序开始不运行(not runing).  当用户显式启动应用程序时,应用程序在进入活动状态(Active)之前会短暂地移至非活动状态(inActive).(一个活跃的应用程序出现在屏幕上,被称为前台应用程序.) 退出一个活动的应用程序会将其移出屏幕,并进入后台状态(Background),直到系统暂时停止(">
+<meta name="keywords" content="UIKit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Managing Your App&#39;s Life Cycle">
+<meta property="og:url" content="http://wu83qing.com/2017/06/06/Managing Your App's Life Cycle/index.html">
+<meta property="og:site_name" content="wu83qing的技术博客">
+<meta property="og:description" content="官方文档链接 OverviewUIKit应用程序总是处于五种状态之一.如图1所示.  应用程序开始不运行(not runing).  当用户显式启动应用程序时,应用程序在进入活动状态(Active)之前会短暂地移至非活动状态(inActive).(一个活跃的应用程序出现在屏幕上,被称为前台应用程序.) 退出一个活动的应用程序会将其移出屏幕,并进入后台状态(Background),直到系统暂时停止(">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p1ll0zcz7.bkt.clouddn.com/284200b0-5797-4f5f-9353-da25dd873fed.png">
+<meta property="og:updated_time" content="2018-01-31T02:26:16.836Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Managing Your App&#39;s Life Cycle">
+<meta name="twitter:description" content="官方文档链接 OverviewUIKit应用程序总是处于五种状态之一.如图1所示.  应用程序开始不运行(not runing).  当用户显式启动应用程序时,应用程序在进入活动状态(Active)之前会短暂地移至非活动状态(inActive).(一个活跃的应用程序出现在屏幕上,被称为前台应用程序.) 退出一个活动的应用程序会将其移出屏幕,并进入后台状态(Background),直到系统暂时停止(">
+<meta name="twitter:image" content="http://p1ll0zcz7.bkt.clouddn.com/284200b0-5797-4f5f-9353-da25dd873fed.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wu83qing.com/2017/06/06/Managing Your App's Life Cycle/"/>
+
+
+
+
+
+  <title>Managing Your App's Life Cycle | wu83qing的技术博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">wu83qing的技术博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">编程 技术 生活 人生</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wu83qing.com/2017/06/06/Managing Your App's Life Cycle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wu83qing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wu83qing的技术博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Managing Your App's Life Cycle</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-06T22:00:00+08:00">
+                2017-06-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/06/Managing Your App's Life Cycle/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/06/06/Managing Your App's Life Cycle/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://developer.apple.com/documentation/uikit/core_app/managing_your_app_s_life_cycle?language=objc" target="_blank" rel="noopener">官方文档链接</a></p>
+<h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>UIKit应用程序总是处于五种状态之一.如图1所示.</p>
+<ul>
+<li>应用程序开始不运行(not runing). </li>
+<li>当用户显式启动应用程序时,应用程序在进入活动状态(Active)之前会短暂地移至非活动状态(inActive).(一个活跃的应用程序出现在屏幕上,被称为前台应用程序.)</li>
+<li>退出一个活动的应用程序会将其移出屏幕,并进入后台状态(Background),直到系统暂时停止(Suspend).</li>
+<li>系统可以自行决定终止一个被暂停的应用程序,并将其返回到非运行状态(not runing).</li>
+</ul>
+<p>Figure 1<br>The execution states of a UIKit app<br><img src="http://p1ll0zcz7.bkt.clouddn.com/284200b0-5797-4f5f-9353-da25dd873fed.png" alt=""></p>
+<p>您的应用程序的当前状态定义了可用的系统资源.由于活动应用程序在屏幕上可见并且必须响应用户交互,因此在使用系统资源时它们具有优先权. 后台应用程序在屏幕上不可见,因此对系统资源的访问更加有限,并且执行时间有限.</p>
+<h3 id="Manage-Life-Cycle-Events-管理生命周期事件"><a href="#Manage-Life-Cycle-Events-管理生命周期事件" class="headerlink" title="Manage Life Cycle Events 管理生命周期事件"></a>Manage Life Cycle Events 管理生命周期事件</h3><p>当您的应用程序从一种状态转换到另一种状态时,UIKit会通知您的应用程序委托对象-符合UIApplicationDelegate协议的对象.<br>使用您的应用程序委托来修改您的应用程序的行为以匹配其新的状态.例如,从非运行状态(not run)转移到非活动状态(inActive)时,处理准备运行应用程序所需的启动时任务.</p>
+<p>系统通知您的应用程序delegate有关以下转换：</p>
+<ul>
+<li><strong>Launch. </strong>您的应用程序从未运行状态转换为非活动状态或后台状态.使用此转换来准备您的应用程序运行;see <a href="https://developer.apple.com/documentation/uikit/core_app/managing_your_app_s_life_cycle/responding_to_the_launch_of_your_app?language=objc" target="_blank" rel="noopener">Responding to the Launch of Your App</a>.</li>
+<li><strong>Activation.</strong> 您的应用程序从非活动状态转换为活动状态.准备您的应用程序在前台运行,并在屏幕上可见; see <a href="https://developer.apple.com/documentation/uikit/core_app/managing_your_app_s_life_cycle/preparing_your_app_to_run_in_the_foreground?language=objc" target="_blank" rel="noopener">Preparing Your App to Run in the Foreground</a>.</li>
+<li><strong>Deactivation.</strong> 您的应用程序从活动状态转换到非活动状态.安静你的应用程序,也许只是暂时的;see <a href="https://developer.apple.com/documentation/uikit/core_app/managing_your_app_s_life_cycle/preparing_your_app_to_run_in_the_background?language=objc" target="_blank" rel="noopener">Preparing Your App to Run in the Background</a>.</li>
+<li><strong>Background execution.</strong> 您的应用程序将从非活动状态转换到后台状态. 准备在屏幕外运行时只处理必要的任务;see <a href="https://developer.apple.com/documentation/uikit/core_app/managing_your_app_s_life_cycle/preparing_your_app_to_run_in_the_background?language=objc" target="_blank" rel="noopener">Preparing Your App to Run in the Background</a>.</li>
+<li><strong>Termination.</strong> 您的应用从任何运行状态转换到未运行状态.(暂停的应用程序在终止时不会收到通知.)取消所有任务并准备退出; see <a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623111-applicationwillterminate?language=objc" target="_blank" rel="noopener"><code>applicationWillTerminate:</code></a>.</li>
+</ul>
+<h3 id="Manage-Behavioral-Events-管理行为事件"><a href="#Manage-Behavioral-Events-管理行为事件" class="headerlink" title="Manage Behavioral Events 管理行为事件"></a>Manage Behavioral Events 管理行为事件</h3><p>您的 app delegate 也会响应其他一些重要事件:</p>
+<ul>
+<li><strong>Memory warnings.</strong> 减少您的应用程序使用的内存量;see <a href="https://developer.apple.com/documentation/uikit/core_app/managing_your_app_s_life_cycle/responding_to_memory_warnings?language=objc" target="_blank" rel="noopener">Responding to Memory Warnings</a>.</li>
+<li><strong>Time changes.</strong> Update time-sensitive features of your app. </li>
+<li><strong>Protected data becomes available/unavailable.</strong> 在用户锁定或解锁设备时管理文件.</li>
+<li><strong>State restoration.</strong> 将应用的用户界面恢复到之前的状态,使您的应用永不停止运行;see <a href="https://developer.apple.com/documentation/uikit/view_controllers/preserving_your_app_s_ui_across_launches?language=objc" target="_blank" rel="noopener">Preserving Your App’s UI Across Launches</a>.</li>
+<li><strong>Handoff tasks.</strong> 继续在另一台设备上启动任务.</li>
+<li><strong>Open URLs.</strong> 接收并打开发送到您的应用的网址.</li>
+<li><strong>Inter-app communication.</strong> 从配对的watchOS应用程序接收数据.</li>
+<li><strong>File downloads.</strong> 接收使用您的应用下载的文件 <a href="https://developer.apple.com/documentation/foundation/nsurlsession?language=objc" target="_blank" rel="noopener"><code>NSURLSession</code></a> object.</li>
+</ul>
+<p>尽管应用程序委托是处理生命周期事件的主要场所,但并不是唯一的地方. 对于大多数事件,UIKit还会生成任何对象都可以观察的通知. 有关您可以观察的与应用程序相关的通知列表,see <a href="https://developer.apple.com/documentation/uikit/uiapplication?language=objc" target="_blank" rel="noopener"><code>UIApplication</code></a>.有关用于处理事件的方法的更多信息, see <a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate?language=objc" target="_blank" rel="noopener"><code>UIApplicationDelegate</code></a>.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/UIKit/" rel="tag"># UIKit</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/06/UIKit框架/" rel="next" title="UIKit框架">
+                <i class="fa fa-chevron-left"></i> UIKit框架
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/06/Core App/" rel="prev" title="Core App">
+                Core App <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">wu83qing</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Manage-Life-Cycle-Events-管理生命周期事件"><span class="nav-number">2.</span> <span class="nav-text">Manage Life Cycle Events 管理生命周期事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Manage-Behavioral-Events-管理行为事件"><span class="nav-number">3.</span> <span class="nav-text">Manage Behavioral Events 管理行为事件</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wu83qing</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'wu83qing',
+            repo: 'https://github.com/wu83qing/wu83qing.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '8d12e74845591e111ca9ba936e2e9c95f29a253a',
+            
+                client_id: '5bedacd406902c5e2550'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
