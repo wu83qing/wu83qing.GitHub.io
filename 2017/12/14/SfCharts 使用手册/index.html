@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="React Native,Chart," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="基本介绍 How Data数据源 Data Color Data Point Line Highlight Fill Value Formatter   Axis轴线 XAxis X轴 Position Label Line   YAxis Y轴 Max/Min Value Order Space Position Count Line   LimitLine 限制线   Legend图例 取得">
+<meta name="keywords" content="React Native,Chart">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SfCharts 使用手册">
+<meta property="og:url" content="http://www.wu83qing.com/2017/12/14/SfCharts 使用手册/index.html">
+<meta property="og:site_name" content="wu83qing的技术博客">
+<meta property="og:description" content="基本介绍 How Data数据源 Data Color Data Point Line Highlight Fill Value Formatter   Axis轴线 XAxis X轴 Position Label Line   YAxis Y轴 Max/Min Value Order Space Position Count Line   LimitLine 限制线   Legend图例 取得">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oys73x3yt.bkt.clouddn.com/1447038568088.png">
+<meta property="og:image" content="http://oys73x3yt.bkt.clouddn.com/chart-intro.png">
+<meta property="og:image" content="http://oys73x3yt.bkt.clouddn.com/mpandroid-dataset.PNG">
+<meta property="og:image" content="http://oys73x3yt.bkt.clouddn.com/1447388407599.png">
+<meta property="og:image" content="http://oys73x3yt.bkt.clouddn.com/1447390965758.png">
+<meta property="og:image" content="http://oys73x3yt.bkt.clouddn.com/1447403990447.png">
+<meta property="og:image" content="http://oys73x3yt.bkt.clouddn.com/1447643754807.png">
+<meta property="og:image" content="http://oys73x3yt.bkt.clouddn.com/1447411694105.png">
+<meta property="og:image" content="http://oys73x3yt.bkt.clouddn.com/1447406167644.png">
+<meta property="og:image" content="http://oys73x3yt.bkt.clouddn.com/1447412380204.png">
+<meta property="og:image" content="http://oys73x3yt.bkt.clouddn.com/1447905337638.png">
+<meta property="og:image" content="http://oys73x3yt.bkt.clouddn.com/1447905861620.png">
+<meta property="og:image" content="http://oys73x3yt.bkt.clouddn.com/1447906553412.png">
+<meta property="og:image" content="http://oys73x3yt.bkt.clouddn.com/1447904522594.png">
+<meta property="og:image" content="http://oys73x3yt.bkt.clouddn.com/1447907495206.png">
+<meta property="og:image" content="http://oys73x3yt.bkt.clouddn.com/1447907628076.png">
+<meta property="og:image" content="http://oys73x3yt.bkt.clouddn.com/1447908732149.png">
+<meta property="og:image" content="http://oys73x3yt.bkt.clouddn.com/1447661808116.png">
+<meta property="og:image" content="http://oys73x3yt.bkt.clouddn.com/1447911795374.png">
+<meta property="og:image" content="http://oys73x3yt.bkt.clouddn.com/1447917024871.png">
+<meta property="og:image" content="http://oys73x3yt.bkt.clouddn.com/1447917593570.png">
+<meta property="og:image" content="http://oys73x3yt.bkt.clouddn.com/1447917650698.png">
+<meta property="og:image" content="http://oys73x3yt.bkt.clouddn.com/1447917665616.png">
+<meta property="og:image" content="http://oys73x3yt.bkt.clouddn.com/1447996334832.png">
+<meta property="og:image" content="http://oys73x3yt.bkt.clouddn.com/1447921821625.png">
+<meta property="og:updated_time" content="2018-01-31T07:57:03.764Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SfCharts 使用手册">
+<meta name="twitter:description" content="基本介绍 How Data数据源 Data Color Data Point Line Highlight Fill Value Formatter   Axis轴线 XAxis X轴 Position Label Line   YAxis Y轴 Max/Min Value Order Space Position Count Line   LimitLine 限制线   Legend图例 取得">
+<meta name="twitter:image" content="http://oys73x3yt.bkt.clouddn.com/1447038568088.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.wu83qing.com/2017/12/14/SfCharts 使用手册/"/>
+
+
+
+
+
+  <title>SfCharts 使用手册 | wu83qing的技术博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">wu83qing的技术博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">编程 技术 生活 人生</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wu83qing.com/2017/12/14/SfCharts 使用手册/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wu83qing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wu83qing的技术博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SfCharts 使用手册</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-14T16:59:56+08:00">
+                2017-12-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/14/SfCharts 使用手册/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/12/14/SfCharts 使用手册/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li><a href="#基本介绍">基本介绍</a></li>
+<li><a href="#How">How</a><ul>
+<li><a href="#Data数据源">Data数据源</a><ul>
+<li><a href="#Data Color">Data Color</a></li>
+<li><a href="#Data Point">Data Point</a></li>
+<li><a href="#DataLine">Line</a></li>
+<li><a href="#DataHighlight">Highlight</a></li>
+<li><a href="#DataFill">Fill</a></li>
+<li><a href="#DataValueFormatter">Value Formatter</a></li>
+</ul>
+</li>
+<li><a href="#Axis轴线">Axis轴线</a><ul>
+<li><a href="#XAxis X轴">XAxis X轴</a><ul>
+<li><a href="#XAxisPosition">Position</a></li>
+<li><a href="#XAxisLabel">Label</a></li>
+<li><a href="#XAxisLine">Line</a></li>
+</ul>
+</li>
+<li><a href="#YAxis Y轴">YAxis Y轴</a><ul>
+<li><a href="#YAxisMaxMinValue">Max/Min Value</a></li>
+<li><a href="#YAxisOrder">Order</a></li>
+<li><a href="#YAxisSpace">Space</a></li>
+<li><a href="#YAxisPosition">Position</a></li>
+<li><a href="#YAxisCount">Count</a></li>
+<li><a href="#YAxisLine">Line</a></li>
+</ul>
+</li>
+<li><a href="#LimitLine">LimitLine 限制线</a></li>
+</ul>
+</li>
+<li><a href="#Legend图例">Legend图例</a><ul>
+<li><a href="#取得Legend图例区与设定位置">取得 Legend图例区与设定位置</a></li>
+<li><a href="#图例组属性设定">图例组属性设定</a></li>
+<li><a href="#图例边距">图例边距</a></li>
+<li><a href="#图例颜色组设置">图例颜色组设置</a></li>
+</ul>
+</li>
+<li><a href="#MakerView标注">MakerView标注</a><ul>
+<li><a href="#ZoomIn/Out">Zoom In/Out 放大/缩小</a></li>
+</ul>
+</li>
+<li><a href="#BasicStyle">Basic Style基本样式</a></li>
+<li><a href="#Animation">Animation 动画</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><span id="基本介绍"></span></p>
+<h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><p>SfChart基于MPAndroid,主要用于绘制各种图表,是先有了Android版本后才开发的iOS版本,两版本的API设计方式都是相同的,且以Android为准.因此SfCharts中组件代码架构可以根据MPAndroid架构来映射.主要分为LineData、Axis、MakerView、ViewPort.</p>
+<p> <img src="http://oys73x3yt.bkt.clouddn.com/1447038568088.png" alt="架构图"></p>
+<p> 先看一个基本图表所包含的元素.<br> <img src="http://oys73x3yt.bkt.clouddn.com/chart-intro.png" alt="一个chart基本构成"></p>
+<ul>
+<li>黄色区域:YAxis 负责Y轴的样式,如:刻度间距,显示刻度数量,背景横线,显示横向LimitLine</li>
+<li>绿色区域:XAxis 负责x轴的样式,如:刻度间距,显示刻度数量,背景横线,显示直向LimitLine</li>
+<li>紫色区域:Legend 负责图例的样式,如 图例形状 行距 间距 自定义颜色</li>
+<li>黑色箭头:LineData 图表数据与一些样式设定, 如 数据集合 线条样式 数据点样式</li>
+<li><p>橘色圆形:MakerView 点击数据点会弹出个Maker</p>
+<p>其中最重要的就是LineData,如果图表没有LineData数据,就只能单纯显示(No Chart data available)的文字,所以选择好图表类型并吧Chart放入Layout 第一步是将数据放入Chart中.</p>
+</li>
+</ul>
+<p><span id="How"></span></p>
+<h1 id="How"><a href="#How" class="headerlink" title="How"></a>How</h1><p>以折线图 LineChart 来做范例进行模型拆分.</p>
+<p><span id="Data数据源"></span></p>
+<h2 id="Data-数据源"><a href="#Data-数据源" class="headerlink" title="Data 数据源"></a>Data 数据源</h2><p>Chart用LineData座位封装所以数据的实体,并有DataSet Entry XVals等不同的元素,以下图LineChart来说明基本概念;<br>   <img src="http://oys73x3yt.bkt.clouddn.com/mpandroid-dataset.PNG" alt="Data设置与操作"></p>
+<p>LineData 中的 List<dataset> 有两个 DataSet,每个 DataSet 都是一个类别,并由 List<entry> 所组成,简单来看,数据的组成如下:</entry></dataset></p>
+<table>
+<thead>
+<tr>
+<th>DataSet/Entry</th>
+<th>Entry0</th>
+<th>Entry1</th>
+<th>Entry2</th>
+<th>Entry3</th>
+<th>Entry4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DataSetA</td>
+<td>0</td>
+<td>2</td>
+<td>4</td>
+<td>6</td>
+<td>8</td>
+</tr>
+<tr>
+<td>DataSetB</td>
+<td>0</td>
+<td>4</td>
+<td>8</td>
+<td>12</td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>图右则是实际代码使用的Method 代表设定数据时的结构 Entry是最小模型 负责记录数据列的值与顺序.</li>
+<li>图左下发绿色区域的XVals则表示X轴的坐标Label 是一个List</li>
+</ul>
+<p>有了基本概念,可以先构建一个LineData</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//使用LineChar组件</span><br><span class="line">&lt;LineChar data=&#123;this.state.data&#125;  xAxis=&#123;this.state.xAxis&#125; /&gt;</span><br><span class="line">//data</span><br><span class="line">this.state = &#123;</span><br><span class="line">  data:&#123;</span><br><span class="line">     dataSets:[&#123;</span><br><span class="line">            //Company A 折线 在Y轴上的3个数据点,marker可选</span><br><span class="line">            values:[&#123;y:100,marker:&apos;100marker&apos;&#125;,&#123;y:200,marker:&apos;200marker&apos;&#125;,&#123;y:300&#125;],</span><br><span class="line">            label: &apos;Company A&apos;,//折线名称</span><br><span class="line">            config: &#123;...&#125;//config中定义折线的相关样式</span><br><span class="line">          &#125;,&#123;</span><br><span class="line">            values:[&#123;y:0&#125;,&#123;y:90&#125;,&#123;y:240&#125;],//Company B 折线 在Y轴上的3个数据点</span><br><span class="line">            label: &apos;Company B&apos;,//折线名称</span><br><span class="line">            config: &#123;...&#125;//config中定义折线的相关样式</span><br><span class="line">          &#125;,&#123;</span><br><span class="line">            values: [5, 40, 77],//简写形式</span><br><span class="line">            label: &apos;Company C&apos;,//折线名称</span><br><span class="line">            config: &#123;...&#125;//config中定义折线的相关样式</span><br><span class="line">          &#125;]</span><br><span class="line">    &#125;,</span><br><span class="line">    xAxis:&#123;</span><br><span class="line">      valueFormatter: [&apos;2001&apos;, &apos;2002&apos;, &apos;2003&apos;, &apos;2004&apos;]//X轴 XVals Labels</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>LineData</code>的Base Class 是ChartData 用于封装所有Data与 Styling Data,而不同图表的类型,有不同的SubClass.比如柱状图是使用的 <code>BarData</code> 、<code>BarDataSet</code>、<code>BarEntry</code>等都是继承<code>ChartData</code>,虽不同组件,但实际上用法大同小异,可以在<code>ChartDataConfig.js</code>查看组件的结构.</p>
+<p><span id="Data Color"></span></p>
+<h3 id="Data-Color"><a href="#Data-Color" class="headerlink" title="Data Color"></a>Data Color</h3><p>设置此数据类型的基础颜色</p>
+<div align="left"><br><br><img src="http://oys73x3yt.bkt.clouddn.com/1447388407599.png" alt="1447388407599"><br></div>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chartDataSetConfig.common.colors</span><br></pre></td></tr></table></figure>
+<p><span id="Data Point"></span></p>
+<h3 id="Data-Point"><a href="#Data-Point" class="headerlink" title="Data Point"></a>Data Point</h3><p>设定每个 Entry 出现点的样式</p>
+<p><img src="http://oys73x3yt.bkt.clouddn.com/1447390965758.png" alt="Alt text"></p>
+<p><code>lineData.dataSets.config.drawCircles</code> 预设为 True,可以直接设定 Data Point 的样式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lineData.dataSets.config.common.valueTextSize<span class="comment">//value文字大小</span></span><br><span class="line">lineData.dataSets.config.common.valueTextColor<span class="comment">//value文字颜色</span></span><br></pre></td></tr></table></figure>
+<p><code>lineData.dataSets.config.drawCircleHole</code></p>
+<p>False = 实心的单一颜色</p>
+<p>True = 如范例图并可以设定 <code>CircleColorHole</code>的颜色</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lineData.dataSets.config.drawCircleHole = <span class="literal">false</span> ;</span><br><span class="line">lineData.dataSets.config.circleHoleColor = Color.WHITE ;</span><br></pre></td></tr></table></figure>
+<p><span id="DataLine"></span></p>
+<h3 id="Line"><a href="#Line" class="headerlink" title="Line"></a>Line</h3><p>设定画出线条的样式</p>
+<p><img src="http://oys73x3yt.bkt.clouddn.com/1447403990447.png" alt="Alt text"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lineData.dataSets.config.lineRadar.lineWidth <span class="comment">//设置线条宽度</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://oys73x3yt.bkt.clouddn.com/1447643754807.png" alt="Alt text"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lineData.dataSets.config.drawCubicIntensity = <span class="number">1</span><span class="comment">//设置曲线弯曲强度</span></span><br><span class="line">  <span class="comment">//Max = 1f = very cubic, Min = 0.05f = low cubic effect, Default: 0.2f</span></span><br><span class="line">lineData.dataSets.config.dashedLine: PropTypes.shape(&#123;</span><br><span class="line">        lineLength: <span class="number">10</span>,<span class="comment">//虚线长度 the length of the line pieces</span></span><br><span class="line">        spaceLength: <span class="number">10</span>,<span class="comment">//间隙长度 the length of space in between the pieces</span></span><br><span class="line">        phase: <span class="number">0</span>,<span class="comment">//角度 offset, in degrees (normally, use 0)</span></span><br><span class="line">      &#125;)</span><br></pre></td></tr></table></figure>
+<p><span id="DataHighlight"></span></p>
+<h3 id="Highlight"><a href="#Highlight" class="headerlink" title="Highlight"></a>Highlight</h3><p>Highlight 是当点下 DataPoint 的时候,会在背景 Grid 线上出现一条用来对齐数值的指引线,预设是水平跟垂直都会显示</p>
+<p><img src="http://oys73x3yt.bkt.clouddn.com/1447411694105.png" alt="Alt text"></p>
+<p>设定线条宽度与颜色</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lineData.dataSets.config.lineScatterCandleRadar.highlightLineWidth = <span class="number">3</span>;</span><br><span class="line">lineData.dataSets.config.barLineScatterCandleBubble.highlightColor =<span class="string">'RED'</span></span><br></pre></td></tr></table></figure>
+<p>如果要设置只有垂直或水平单一条 Highlight 的话,可以先<code>lineData.dataSets.config.common.highlightEnabled</code> 设为 False,再通过<code>drawVerticalHighlightIndicator</code> 或</p>
+<p> <code>drawHorizontalHighlightIndicator</code> 来打开垂直或者水平 Hightlight 线</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 关闭 highlight 线</span></span><br><span class="line">lineData.dataSets.config.common.highlightEnable=<span class="keyword">false</span> </span><br><span class="line"><span class="comment">// 设置垂直线</span></span><br><span class="line">lineData.dataSets.config.lineScatterCandleRadar.drawVerticalHighlightIndicator=<span class="keyword">true</span> </span><br><span class="line"><span class="comment">// 设置水平线</span></span><br><span class="line">lineData.dataSets.config.lineScatterCandleRadar.drawHorizontalHighlightIndicator=<span class="keyword">true</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><span id="DataFill"></span></p>
+<h3 id="Fill"><a href="#Fill" class="headerlink" title="Fill"></a>Fill</h3><p>在折线图的一个data类别中,把data线下的面积填满</p>
+<p><img src="http://oys73x3yt.bkt.clouddn.com/1447406167644.png" alt="Alt text"></p>
+<p><code>lineData.DataSets.config.lineRadar.drawFilled</code>   预设是 False,要打开才会有 Fill 作用,而最后加入的 <code>dataset</code> ,他的 z-index 为最大,会显示在最上层</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lineData.DataSets.config.lineRadar.drawFilled = <span class="literal">true</span></span><br><span class="line">lineData.DataSets.config.lineRadar.fillColor = <span class="string">'red'</span></span><br><span class="line"><span class="comment">//没设定的话,alpha 预设为85,范围是 0-255</span></span><br><span class="line">lineData.DataSets.config.lineRadar.fillAlpha = <span class="number">100</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><span id="DataValueFormatter"></span></p>
+<h3 id="ValueFormatter"><a href="#ValueFormatter" class="headerlink" title="ValueFormatter"></a>ValueFormatter</h3><p>重新格式化数值 Label 中的文字</p>
+<p><img src="http://oys73x3yt.bkt.clouddn.com/1447412380204.png" alt="Alt text"></p>
+<p>ValueFormat 可以设定给 <code>dataset</code>（单一data类别）或 <code>Linedata</code> （所有data）,除了自定义 ValueFormatter 外,作者也提供两个已定义好的 ValueFormatter,如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//超过1000会变1k</span></span><br><span class="line">lineData.DataSets.config.common.valueFormatter = <span class="string">'largeValue'</span> </span><br><span class="line"><span class="comment">//PercentFormatter：显示成百分比,常用于 PieChart（百分比的数字要自己算好）</span></span><br><span class="line">lineData.DataSets.config.common.valueFormatter = <span class="string">'percent'</span> </span><br><span class="line"><span class="comment">//自定义 formatter</span></span><br><span class="line">lineData.DataSets.config.common.valueFormatter = <span class="string">'##.000'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>Notes</strong></p>
+</blockquote>
+<p> XAxis 跟 YAxis 也可以设定 ValueFormatter,若要自定义 ValueFormatter 的话,需要构建 <code>YAxisValueFormatter</code> 或 <code>XAxisValueFormatter</code></p>
+<p><span id="Axis 轴线"></span></p>
+<p>##Axis 轴线</p>
+<p>Axis 分为 X 轴与 Y 轴的设定,取得 <code>Axis</code> 模型方法如下：</p>
+<ul>
+<li>取得 X 轴模型 <code>XAxis</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.xAxis</span><br></pre></td></tr></table></figure>
+<ul>
+<li>取得 Y 轴模型 <code>YAxis</code>,有分为左右两个：</li>
+</ul>
+<p>​     - Left 是影响由左至右的横线 ,左边的 Label</p>
+<p>​     - Right 是影响由右至左的横线,右边的 Label</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LineChart.BarLineChartBase.yAxis.left</span><br><span class="line">LineChart.BarLineChartBase.yAxis.right</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>Notes</strong></p>
+</blockquote>
+<p>如果不想要出现任何 X 或 Y 轴的东西,可以 <code>setEnabled(false)</code> 来关闭轴线</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.xAxis.enabled = <span class="literal">false</span></span><br><span class="line">LineChart.BarLineChartBase.yAxis.left.enabled = <span class="literal">false</span></span><br><span class="line">LineChart.BarLineChartBase.yAxis.right.enabled = <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><span id="Axis X轴"></span></p>
+<h3 id="XAxis-X轴"><a href="#XAxis-X轴" class="headerlink" title="XAxis X轴"></a>XAxis X轴</h3><p><span id="XAxisPosition"></span></p>
+<h4 id="Position"><a href="#Position" class="headerlink" title="Position"></a>Position</h4><p>设置 mXAxis 的位置,可以选择以下几个位置：</p>
+<ol>
+<li><code>TOP</code></li>
+<li><code>TOP_INSIDE</code></li>
+<li><code>BOTTOM</code>（预设）</li>
+<li><code>BOTTOM_INSIDE</code></li>
+<li><code>BOTH_SIDED</code></li>
+</ol>
+<p><img src="http://oys73x3yt.bkt.clouddn.com/1447905337638.png" alt="Alt text"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.xAxis.position = <span class="string">'top'</span></span><br></pre></td></tr></table></figure>
+<p><span id="XAxisLabel"></span></p>
+<h4 id="Label"><a href="#Label" class="headerlink" title="Label"></a>Label</h4><p>设定 Label 显示方式,以下介绍主要 Label 的设定：</p>
+<p><img src="http://oys73x3yt.bkt.clouddn.com/1447905861620.png" alt="Alt text"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.xAxis.drawLabels=<span class="keyword">false</span><span class="comment">// 显示 或 隐藏 label</span></span><br></pre></td></tr></table></figure>
+<p>文字的设定分为 Color、Size</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.xAxis.textColor = <span class="string">'red'</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.xAxis.textSize = <span class="number">12</span></span><br></pre></td></tr></table></figure>
+<p><span id="XAxisLine"></span></p>
+<h4 id="Line-1"><a href="#Line-1" class="headerlink" title="Line"></a>Line</h4><p>设定 mXAxis 的线条样式,有分两种：</p>
+<p><img src="http://oys73x3yt.bkt.clouddn.com/1447906553412.png" alt="Alt text"></p>
+<p><code>GridLine</code> 是负责画出背景格线中的所有垂直线,可以设定 Color、Width、DashedLine</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//背景线颜色</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.xAxis.gridColor = <span class="string">'red'</span></span><br><span class="line"><span class="comment">//背景线宽度</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.xAxis.gridColorLineWidth = <span class="number">3</span></span><br><span class="line"><span class="comment">//设定虚线（线条长度, 间隔空间, 角度</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.xAxis.gridDashedLine.PropTypes.shape(&#123;</span><br><span class="line">    lineLength:<span class="number">10</span>,<span class="comment">//线条长度</span></span><br><span class="line">    spaceLength:<span class="number">5</span>,<span class="comment">//间隔空间</span></span><br><span class="line">    phase:<span class="number">0</span><span class="comment">//角度</span></span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+<p><code>AxisLine</code> 设定 mXAxis 最靠近数值 Label 的水平线</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.xAxis.axisLineWidth = <span class="number">5</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.xAxis.axisLineColor = <span class="string">'red'</span></span><br></pre></td></tr></table></figure>
+<p>如果不想显示线条的话,也可以选择关闭</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//图表的背景线 GridLine</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.xAxis.drawGridLines = <span class="literal">false</span> </span><br><span class="line"><span class="comment">//最靠近 Label 的垂直线 AxisLine</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.xAxis.drawAxisLine = <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p><span id="YAxis Y轴"></span></p>
+<h3 id="YAxis-Y轴"><a href="#YAxis-Y轴" class="headerlink" title="YAxis Y轴"></a>YAxis Y轴</h3><p>YAxis 因为由 Right 跟 Left 两条线组成,所以会影响到 Y 轴 Label 数值的设定,大部分都需要两边同时设定,否则两边显示的数值会不一样,或是 Label 数值线没有对齐等状况</p>
+<p><span id="YAxisMaxMinValue"></span></p>
+<h4 id="Max-MinValue"><a href="#Max-MinValue" class="headerlink" title="Max/MinValue"></a>Max/MinValue</h4><p>设定 mYAxis 显示 Label 数值的最大值与最小值</p>
+<p><img src="http://oys73x3yt.bkt.clouddn.com/1447904522594.png" alt="Alt text"></p>
+<p>需要先把 <code>yAxis.left(right).zeroLine</code> 设为 False,才可以设定上下限</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.left.zeroLine = <span class="literal">false</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.right.zeroLine = <span class="literal">false</span></span><br><span class="line"><span class="comment">// 设定最大值</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.left.maxWidth = <span class="number">3</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.right.maxWidth = <span class="number">3</span></span><br><span class="line"><span class="comment">// 设定最小值 如果 data 没有到负数,就不会看到 min value 的效果</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.left.minWidth = <span class="number">-5</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.right.minWidth = <span class="number">-5</span></span><br></pre></td></tr></table></figure>
+<p><span id="YAxisOrder"></span></p>
+<h4 id="Order"><a href="#Order" class="headerlink" title="Order"></a>Order</h4><p>设定 Lebel 数值要 ASC 或 DESC 排序</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.left.inverted = <span class="literal">true</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.right.inverted = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p><span id="YAxisSpace"></span></p>
+<h4 id="Space"><a href="#Space" class="headerlink" title="Space"></a>Space</h4><p>Space 是设定data之最大值与最小值的向外增加空间</p>
+<p><img src="http://oys73x3yt.bkt.clouddn.com/1447907495206.png" alt="Alt text"></p>
+<p>Top 为正值所设定多出来的向上空间</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.left.spaceTop = <span class="number">100</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.right.spaceTop = <span class="number">100</span></span><br></pre></td></tr></table></figure>
+<p>Bottom 为负值所设定多出来的向下空间</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.left.spaceBottom = <span class="number">100</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.right.spaceBottom = <span class="number">100</span></span><br></pre></td></tr></table></figure>
+<p><span id="YAxisPosition"></span></p>
+<h4 id="Position-1"><a href="#Position-1" class="headerlink" title="Position"></a>Position</h4><p>决定 Label 要显示在 Chart 内还是外,有两种：</p>
+<ol>
+<li><code>OUTSIDE_CHART</code>（预设）</li>
+</ol>
+<ol>
+<li><code>INSIDE_CHART</code></li>
+</ol>
+<p><img src="http://oys73x3yt.bkt.clouddn.com/1447907628076.png" alt="Alt text"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.left.position = <span class="string">'INSIDE_CHART'</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.right.position = <span class="string">'INSIDE_CHART'</span></span><br></pre></td></tr></table></figure>
+<p><span id="YAxisCount"></span></p>
+<h4 id="Count"><a href="#Count" class="headerlink" title="Count"></a>Count</h4><p><code>yAxis.left(right).labelCount</code>：设置显示几个 Label 数,</p>
+<p><code>yAxis.left(right).labelCountForce</code> 第二个选项 Force,有一些差异：</p>
+<ol>
+<li>Ture ：代表会精确的平均数值,均匀分配 Label</li>
+</ol>
+<p><code>Interval = [(Max - Min) / (Count - 1)]</code></p>
+<ol>
+<li>False：以算出间距来慢慢加上数值,不一定均匀分配 Label</li>
+</ol>
+<p><code>Interval = 透过 [(Max - Min) / Count] 算出 Range 后,再经过 log 跟小数的处理后得出</code></p>
+<p>差异在于这个方法不一定会显示 chart 顶端的最大数值,没有设定的话,一般图表预设都是以这个方式显示</p>
+<p>一般没有设定的话,Label 数量 Default = 6,最大可以设定 25 个</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.left.labelCount = <span class="number">7</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.right.labelCount = <span class="number">7</span></span><br></pre></td></tr></table></figure>
+<p><span id="YAxisLine"></span></p>
+<h4 id="Line-2"><a href="#Line-2" class="headerlink" title="Line"></a>Line</h4><p>设定 mYAxis 的线条样式,有分两种：</p>
+<p><img src="http://oys73x3yt.bkt.clouddn.com/1447908732149.png" alt="Alt text"></p>
+<p><code>GridLine</code>负责画出图表背景格线的所有水平线</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//宽度</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.left.gridLineWidth = <span class="number">5</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.right.gridLineWidth = <span class="number">5</span></span><br><span class="line"><span class="comment">//颜色</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.left.gridColor = <span class="string">'red'</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.right.gridColor = <span class="string">'red'</span></span><br><span class="line"><span class="comment">//设定虚线（线条长度, 间隔空间, 角度）</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.</span><br><span class="line">left.gridDashedLine.PropTypes.shape(&#123;</span><br><span class="line">    lineLength:<span class="number">20</span>,<span class="comment">//线条长度</span></span><br><span class="line">    spaceLength:<span class="number">5</span>,<span class="comment">//间隔空间</span></span><br><span class="line">    phase:<span class="number">0</span><span class="comment">//角度</span></span><br><span class="line">  &#125;)</span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.</span><br><span class="line">  right.gridDashedLine.PropTypes.shape(&#123;</span><br><span class="line">    lineLength:<span class="number">20</span>,<span class="comment">//线条长度</span></span><br><span class="line">    spaceLength:<span class="number">5</span>,<span class="comment">//间隔空间</span></span><br><span class="line">    phase:<span class="number">0</span><span class="comment">//角度</span></span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+<p><code>AxisLine</code> 为最靠近数值 Label 的垂直线</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//宽度</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.left.axisLineWidth = <span class="number">5</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.right.axisLineWidth = <span class="number">5</span></span><br><span class="line"><span class="comment">//颜色</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.left.axisLineColor = <span class="string">'red'</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.right.axisLineColor = <span class="string">'red'</span></span><br></pre></td></tr></table></figure>
+<p>如果不想显示线条的话,也可以选择关闭</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//图表的背景水平线 GridLine</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.left.drawGridLines = <span class="literal">false</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.right.drawGridLines = <span class="literal">false</span></span><br><span class="line"><span class="comment">//最靠近 Label 的垂直线 AxisLine</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.left.drawAxisLine = <span class="literal">false</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartIface.yAxis.right.drawAxisLine = <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<hr>
+<p><span id="LimitLine"></span></p>
+<h3 id="LimitLine-限制线"><a href="#LimitLine-限制线" class="headerlink" title="LimitLine 限制线"></a>LimitLine 限制线</h3><p><img src="http://oys73x3yt.bkt.clouddn.com/1447661808116.png" alt="Alt text"></p>
+<p>可以在图表上加上额外的线,表示限制或上限等等,在一开始产生 <code>LimitLine</code> 时会带入 Value 与 String</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LineChart.BarLineChartBase.ChartBase.xAxis.limitLines<span class="comment">// X轴</span></span><br><span class="line">LineChart.BarLineChartBase.yAxis.left.limitLines <span class="comment">//left Y 轴</span></span><br><span class="line">LineChart.BarLineChartBase.yAxis.right.limitLines <span class="comment">//right Y 轴</span></span><br></pre></td></tr></table></figure>
+<p> 下一步再设定给 mXAxis 或 mYAxis,并设定样式</p>
+<p><strong><strong>（特别注意如果是放在 XAxis 的话,value 是指从左数过来第几个 Label）</strong></strong></p>
+<p>初始化与设定 Limit 外观</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">limitLines:[&#123;</span><br><span class="line"> limit: xxx,<span class="comment">//指定限制线在哪个axis上,必填;</span></span><br><span class="line"> label: <span class="string">'限制线'</span> ,<span class="comment">//限制线名字</span></span><br><span class="line"> lineColor: <span class="string">'red'</span>,<span class="comment">//限制线颜色</span></span><br><span class="line"> lineWidth: <span class="number">12</span><span class="comment">//限制线宽度</span></span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure>
+<p><span id="Legend图例"></span></p>
+<h2 id="Legend图例"><a href="#Legend图例" class="headerlink" title="Legend图例"></a>Legend图例</h2><p>透过 <code>chartBase.legend</code> 取得 <code>Legend</code> 物件,可以设定图例的大小、形状、尺寸外,也可以设定图例区的行距、间距等等</p>
+<p><img src="http://oys73x3yt.bkt.clouddn.com/1447911795374.png" alt="Alt text"></p>
+<p><span id="取得Legend图例区与设定位置"></span></p>
+<h4 id="取得-Legend图例区与设定位置"><a href="#取得-Legend图例区与设定位置" class="headerlink" title="取得 Legend图例区与设定位置"></a>取得 Legend图例区与设定位置</h4><p><img src="http://oys73x3yt.bkt.clouddn.com/1447917024871.png" alt="Alt text"></p>
+<ul>
+<li>图表上区域包含,<strong>ABOVE_CHART_LEFT</strong> 左上  <strong>ABOVE_CHART_CENTER</strong> 上中   <strong>ABOVE_CHART_RIGHT</strong> 上右 </li>
+<li>图表左边 <strong>LEFT_OF_CHART</strong>  图表左边 <strong>LEFT_OF_CHART</strong>   </li>
+<li>图表左边中 <strong>LEFT_OF_CHART_CENTER</strong> 图表右边中 <strong>RIGHT_OF_CHART_CENTER</strong>     </li>
+<li>图表下区域包含,<strong>BELOW_CHART_LEFT</strong> 左下  <strong>BELOW_CHART_CENTER</strong> 下中   <strong>BELOW_CHART_RIGHT</strong> 下右  </li>
+<li>图表内区域 <strong>RIGHT_OF_CHART_INSIDE</strong> <strong>LEFT_OF_CHART_INSIDE</strong></li>
+</ul>
+<p>在上图中有12个位置可以设定外,还有一个 PieChart 专用的 <code>PIECHART_CENTER</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chartBase.legend.position = <span class="string">'ABOVE_CHART_CENTER'</span><span class="comment">// 设定Legend 图例区位置</span></span><br></pre></td></tr></table></figure>
+<p><span id="图例组属性设定"></span></p>
+<h4 id="图例组属性设定"><a href="#图例组属性设定" class="headerlink" title="图例组属性设定"></a>图例组属性设定</h4><p>图例的外型有三种可以设定：</p>
+<p>CIRCLE 圆形形状</p>
+<p>SQUARE 正方形形状(default)</p>
+<p>LINE 线条形状</p>
+<ol>
+<li><strong><strong>CIRCLE</strong></strong> <img src="http://oys73x3yt.bkt.clouddn.com/1447917593570.png" alt="Alt text"></li>
+<li><strong><strong>SQUARE（预设）</strong></strong><img src="http://oys73x3yt.bkt.clouddn.com/1447917650698.png" alt="Alt text"></li>
+<li><strong><strong>LINE</strong></strong> <img src="http://oys73x3yt.bkt.clouddn.com/1447917665616.png" alt="Alt text"></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//图例尺寸</span></span><br><span class="line">chartBase.legend.formSize = <span class="number">10</span></span><br><span class="line"><span class="comment">//图例外型</span></span><br><span class="line">chartBase.legend.form = <span class="string">'CIRCLE'</span></span><br><span class="line"><span class="comment">//设定说明文字大小与颜色</span></span><br><span class="line">chartBase.legend.textSize = <span class="number">12</span></span><br><span class="line">chartBase.legend.textColor = <span class="string">'RED'</span></span><br></pre></td></tr></table></figure>
+<p><span id="图例边距"></span></p>
+<h4 id="图例边距"><a href="#图例边距" class="headerlink" title="图例边距"></a>图例边距</h4><p><img src="http://oys73x3yt.bkt.clouddn.com/1447996334832.png" alt="Alt text"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//各图例组的间距</span></span><br><span class="line">chartBase.legend.xEntrySpace = <span class="number">50</span></span><br><span class="line"><span class="comment">//各图例组的行距</span></span><br><span class="line">chartBase.legend.yEntrySpace = <span class="number">50</span></span><br><span class="line"><span class="comment">//图例与说明文字中间的距离</span></span><br><span class="line">chartBase.legend.formToTextSpace = <span class="number">50</span></span><br><span class="line"><span class="comment">//图例区超过图表的长宽时,True = 保留超过部分, False = 裁切超过的部分</span></span><br><span class="line">chartBase.legend.wordWrapEnabled = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p><span id="图例颜色组设置"></span></p>
+<h4 id="图例颜色组设置"><a href="#图例颜色组设置" class="headerlink" title="图例颜色组设置"></a>图例颜色组设置</h4><p>Replace：重新设定目前图例的颜色,但颜色数量要跟原本资料 <code>dataSet</code> 数量一样,否则会出错</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">chartBase.legend.custom: PropTypes.shape(&#123;</span><br><span class="line">    colors: PropTypes.arrayOf(PropTypes.number),</span><br><span class="line">    labels: PropTypes.arrayOf(PropTypes.string)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+<p><span id="MakerView设置"></span></p>
+<h2 id="MakerView-标注"><a href="#MakerView-标注" class="headerlink" title="MakerView 标注"></a>MakerView 标注</h2><p><img src="http://oys73x3yt.bkt.clouddn.com/1447921821625.png" alt="Alt text"></p>
+<p><code>MakerView</code> 是当点下 DataPoint 的时候,会跳出一个显示资料的 <code>View</code>,原本预设点下 DataPoint 只有显示 <code>Highlight</code> 而已,所以要先设计一个 <code>MakerView</code> 的 Layout,再撰写一个物件继承 <code>MakerView</code> 并覆写原有的设计</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">chartBase.chartIface.marker: PropTypes.shape(&#123;</span><br><span class="line">      enabled: PropTypes.bool,</span><br><span class="line">      markerColor: PropTypes.number,</span><br><span class="line">      textColor: PropTypes.number,</span><br><span class="line">      textSize: PropTypes.number,</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<p><span id="ZoomIn/Out"></span></p>
+<h4 id="Zoom-In-Out-放大-缩小"><a href="#Zoom-In-Out-放大-缩小" class="headerlink" title="Zoom In/Out 放大/缩小"></a>Zoom In/Out 放大/缩小</h4><p>虽然用放大/缩小的手势就可以 Zoom In/Out,但你也可以透过动态的方式来操作</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不断的放大或缩小的比例因子.x和y坐标缩放中心(以像素为单位);axisDependency指定左边还是右边Y轴;</span></span><br><span class="line">LineChart.BarLineChartBase.zoom: PropTypes.shape(&#123;</span><br><span class="line">      scaleX: PropTypes.number.isRequired,</span><br><span class="line">      scaleY: PropTypes.number.isRequired,</span><br><span class="line">      xValue: PropTypes.number.isRequired,</span><br><span class="line">      yValue: PropTypes.number.isRequired,</span><br><span class="line">      axisDependency: PropTypes.oneOf([<span class="string">'LEFT'</span>, <span class="string">'RIGHT'</span>])</span><br><span class="line">    &#125;)<span class="string">"</span></span><br></pre></td></tr></table></figure>
+<p><span id="BasicStyle"></span></p>
+<h2 id="Basic-Style-基本样式"><a href="#Basic-Style-基本样式" class="headerlink" title="Basic Style 基本样式"></a>Basic Style 基本样式</h2><p>关于 Chart 基本的设定</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Background Color</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartBackgroundColor = <span class="string">'red'</span></span><br><span class="line">LineChart.BarLineChartBase.drawGridBackground = <span class="keyword">true</span></span><br><span class="line">LineChart.BarLineChartBase.gridBackgroundColor = <span class="string">'red'</span></span><br><span class="line"><span class="comment">// Description 说明的样式</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartDescription = <span class="string">'desc'</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.textColor = <span class="string">'red'</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.positionX = <span class="number">1</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.positionY = <span class="number">1</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.chartDescription = <span class="string">'desc'</span></span><br><span class="line">LineChart.BarLineChartBase.ChartBase.textSize = <span class="number">1</span></span><br><span class="line"><span class="comment">// Border</span></span><br><span class="line">LineChart.BarLineChartBase.drawBorders = <span class="keyword">true</span></span><br><span class="line">LineChart.BarLineChartBase.borderColor = <span class="string">'red'</span></span><br><span class="line">LineChart.BarLineChartBase.borderWidth = <span class="number">12</span></span><br></pre></td></tr></table></figure>
+<p><span id="Animation"></span></p>
+<h2 id="Animation-动画"><a href="#Animation-动画" class="headerlink" title="Animation 动画"></a>Animation 动画</h2><p>在开始图表绘制的时候,会有动画产生,可以选择以下动画效果;</p>
+<ol>
+<li>X 轴（由左而右）<code>animateY( long millisecond , animationStyle )</code></li>
+<li>Y 轴（由下而上）<code>animateX( long millisecond , animationStyle )</code></li>
+<li>两轴一起出现</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">LineChart.BarLineChartBase.ChartBase.animation: PropTypes.shape(&#123;</span><br><span class="line">      durationX: PropTypes.number, <span class="comment">// Millis</span></span><br><span class="line">      durationY: PropTypes.number, <span class="comment">// Millis</span></span><br><span class="line">      easingX: PropTypes.string,</span><br><span class="line">      easingY: PropTypes.string</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React-Native/" rel="tag"># React Native</a>
+          
+            <a href="/tags/Chart/" rel="tag"># Chart</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/08/About App Development with UIKit/" rel="next" title="About App Development with UIKit">
+                <i class="fa fa-chevron-left"></i> About App Development with UIKit
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/29/Core NFC/" rel="prev" title="Core NFC">
+                Core NFC <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">wu83qing</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本介绍"><span class="nav-number">1.</span> <span class="nav-text">基本介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#How"><span class="nav-number">2.</span> <span class="nav-text">How</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-数据源"><span class="nav-number">2.1.</span> <span class="nav-text">Data 数据源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-Color"><span class="nav-number">2.1.1.</span> <span class="nav-text">Data Color</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-Point"><span class="nav-number">2.1.2.</span> <span class="nav-text">Data Point</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Line"><span class="nav-number">2.1.3.</span> <span class="nav-text">Line</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Highlight"><span class="nav-number">2.1.4.</span> <span class="nav-text">Highlight</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fill"><span class="nav-number">2.1.5.</span> <span class="nav-text">Fill</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ValueFormatter"><span class="nav-number">2.1.6.</span> <span class="nav-text">ValueFormatter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XAxis-X轴"><span class="nav-number">2.1.7.</span> <span class="nav-text">XAxis X轴</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Position"><span class="nav-number">2.1.7.1.</span> <span class="nav-text">Position</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Label"><span class="nav-number">2.1.7.2.</span> <span class="nav-text">Label</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Line-1"><span class="nav-number">2.1.7.3.</span> <span class="nav-text">Line</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#YAxis-Y轴"><span class="nav-number">2.1.8.</span> <span class="nav-text">YAxis Y轴</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Max-MinValue"><span class="nav-number">2.1.8.1.</span> <span class="nav-text">Max/MinValue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Order"><span class="nav-number">2.1.8.2.</span> <span class="nav-text">Order</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Space"><span class="nav-number">2.1.8.3.</span> <span class="nav-text">Space</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Position-1"><span class="nav-number">2.1.8.4.</span> <span class="nav-text">Position</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Count"><span class="nav-number">2.1.8.5.</span> <span class="nav-text">Count</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Line-2"><span class="nav-number">2.1.8.6.</span> <span class="nav-text">Line</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LimitLine-限制线"><span class="nav-number">2.1.9.</span> <span class="nav-text">LimitLine 限制线</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Legend图例"><span class="nav-number">2.2.</span> <span class="nav-text">Legend图例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#取得-Legend图例区与设定位置"><span class="nav-number">2.2.0.1.</span> <span class="nav-text">取得 Legend图例区与设定位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图例组属性设定"><span class="nav-number">2.2.0.2.</span> <span class="nav-text">图例组属性设定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图例边距"><span class="nav-number">2.2.0.3.</span> <span class="nav-text">图例边距</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图例颜色组设置"><span class="nav-number">2.2.0.4.</span> <span class="nav-text">图例颜色组设置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MakerView-标注"><span class="nav-number">2.3.</span> <span class="nav-text">MakerView 标注</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Zoom-In-Out-放大-缩小"><span class="nav-number">2.3.0.1.</span> <span class="nav-text">Zoom In/Out 放大/缩小</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Style-基本样式"><span class="nav-number">2.4.</span> <span class="nav-text">Basic Style 基本样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Animation-动画"><span class="nav-number">2.5.</span> <span class="nav-text">Animation 动画</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wu83qing</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'wu83qing',
+            repo: 'https://github.com/wu83qing/wu83qing.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '8d12e74845591e111ca9ba936e2e9c95f29a253a',
+            
+                client_id: '5bedacd406902c5e2550'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
