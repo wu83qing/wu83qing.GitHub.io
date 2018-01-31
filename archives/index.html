@@ -80,13 +80,13 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Categories">
-<meta property="og:url" content="http://www.wu83qing.com/categories/index.html">
+<meta property="og:title" content="Archives">
+<meta property="og:url" content="http://www.wu83qing.com/archives/index.html">
 <meta property="og:site_name" content="wu83qing的技术博客">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-31T07:09:56.484Z">
+<meta property="og:updated_time" content="2018-01-31T07:13:58.533Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Categories">
+<meta name="twitter:title" content="Archives">
 
 
 
@@ -116,13 +116,13 @@
 
 
 
-  <link rel="canonical" href="http://www.wu83qing.com/categories/"/>
+  <link rel="canonical" href="http://www.wu83qing.com/archives/"/>
 
 
 
 
 
-  <title>Categories | wu83qing的技术博客</title>
+  <title>Archives | wu83qing的技术博客</title>
   
 
 
@@ -242,7 +242,7 @@
     <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">Categories</h1>
+	<h1 class="post-title" itemprop="name headline">Archives</h1>
 
 
 
@@ -254,14 +254,7 @@
       <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                暂无分类
-            </div>
-            <div class="category-all">
-              
-            </div>
-          </div>
+          
         
       </div>
       
@@ -279,6 +272,17 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
 
         </div>
         
@@ -536,6 +540,30 @@
 
     
 
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'wu83qing',
+            repo: 'https://github.com/wu83qing/wu83qing.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '8d12e74845591e111ca9ba936e2e9c95f29a253a',
+            
+                client_id: '5bedacd406902c5e2550'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
     
 
 
