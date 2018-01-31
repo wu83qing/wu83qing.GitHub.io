@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="UIKit," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="官方文档链接 Overview 概述UIKit框架提供了为iOS和tvOS构建应用程序所需的核心对象. 您可以使用这些对象在屏幕上显示您的内容,与该内容进行交互,并管理与系统的交互. 应用程序依赖于UIKit的基本行为,UIKit提供了许多方法来定制该行为以满足您的特定需求. Xcode提供模板项目作为您创建的每个应用程序的起点. 例如,图1显示了使用Xcode中的单一视图应用程序模板创建的应用程">
+<meta name="keywords" content="UIKit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="About App Development with UIKit">
+<meta property="og:url" content="http://www.wu83qing.com/2017/06/08/About App Development with UIKit/index.html">
+<meta property="og:site_name" content="wu83qing的技术博客">
+<meta property="og:description" content="官方文档链接 Overview 概述UIKit框架提供了为iOS和tvOS构建应用程序所需的核心对象. 您可以使用这些对象在屏幕上显示您的内容,与该内容进行交互,并管理与系统的交互. 应用程序依赖于UIKit的基本行为,UIKit提供了许多方法来定制该行为以满足您的特定需求. Xcode提供模板项目作为您创建的每个应用程序的起点. 例如,图1显示了使用Xcode中的单一视图应用程序模板创建的应用程">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p1ll0zcz7.bkt.clouddn.com/8783d1ba-8cc8-4966-afa9-4780a24cc430.png">
+<meta property="og:image" content="http://p1ll0zcz7.bkt.clouddn.com/8ef27903-cf39-438f-aa65-e52cdaf88319.png">
+<meta property="og:image" content="http://p1ll0zcz7.bkt.clouddn.com/12c98a5a-f1b0-4ce3-bac7-ee4dbe94af54.png">
+<meta property="og:image" content="http://p1ll0zcz7.bkt.clouddn.com/de856a69-d510-42c4-8620-b612bc60a009.png">
+<meta property="og:updated_time" content="2018-01-31T07:56:41.787Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="About App Development with UIKit">
+<meta name="twitter:description" content="官方文档链接 Overview 概述UIKit框架提供了为iOS和tvOS构建应用程序所需的核心对象. 您可以使用这些对象在屏幕上显示您的内容,与该内容进行交互,并管理与系统的交互. 应用程序依赖于UIKit的基本行为,UIKit提供了许多方法来定制该行为以满足您的特定需求. Xcode提供模板项目作为您创建的每个应用程序的起点. 例如,图1显示了使用Xcode中的单一视图应用程序模板创建的应用程">
+<meta name="twitter:image" content="http://p1ll0zcz7.bkt.clouddn.com/8783d1ba-8cc8-4966-afa9-4780a24cc430.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.wu83qing.com/2017/06/08/About App Development with UIKit/"/>
+
+
+
+
+
+  <title>About App Development with UIKit | wu83qing的技术博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">wu83qing的技术博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">编程 技术 生活 人生</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wu83qing.com/2017/06/08/About App Development with UIKit/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wu83qing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wu83qing的技术博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">About App Development with UIKit</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-08T22:00:00+08:00">
+                2017-06-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/08/About App Development with UIKit/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/06/08/About App Development with UIKit/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://developer.apple.com/documentation/uikit/about_app_development_with_uikit?language=objc" target="_blank" rel="noopener">官方文档链接</a></p>
+<h3 id="Overview-概述"><a href="#Overview-概述" class="headerlink" title="Overview 概述"></a>Overview 概述</h3><p>UIKit框架提供了为iOS和tvOS构建应用程序所需的核心对象. 您可以使用这些对象在屏幕上显示您的内容,与该内容进行交互,并管理与系统的交互. 应用程序依赖于UIKit的基本行为,UIKit提供了许多方法来定制该行为以满足您的特定需求.</p>
+<p>Xcode提供模板项目作为您创建的每个应用程序的起点. 例如,图1显示了使用Xcode中的单一视图应用程序模板创建的应用程序的结构. 模板项目提供最小的用户界面,因此您可以立即构建和运行项目,并在设备或模拟器中查看结果.</p>
+<p>Figure 1<br>The structure of a single view iOS app</p>
+<p><img src="http://p1ll0zcz7.bkt.clouddn.com/8783d1ba-8cc8-4966-afa9-4780a24cc430.png" alt=""></p>
+<p>当您构建应用程序时,Xcode会编译您的源文件并为您的项目创建一个应用程序包. 应用程序包是一个结构化的目录,包含与应用程序关联的代码和资源. 资源包括支持代码的image assets,storyboard文件,strings文件和app metadata. 应用程序包的结构很重要,但Xcode知道您的资源需要去哪里,所以不要担心.</p>
+<h3 id="Required-Resources"><a href="#Required-Resources" class="headerlink" title="Required Resources"></a>Required Resources</h3><p>每个UIKit应用程序都需要具有以下资源:</p>
+<ul>
+<li><strong>App icons</strong>  </li>
+<li><strong>Launch screen storyboard</strong> 启动屏 storyboard</li>
+</ul>
+<p>系统会在主屏幕的“设置”中以及任何需要将应用程序与其他应用程序区分开来的位置显示您的应用程序图标. 由于它在多个地方以及多个设备上使用,因此您可以在Xcode项目的AppIcon图像资源中提供多个版本的应用程序图标,如图2所示.您的应用程序图标应该与众不同,以帮助用户快速识别您的应用程序 主屏幕. 但是,您可能会改变图标的细节以适应您必须提供的不同图像大小.</p>
+<p>Figure 2<br>Providing icons for an iOS app</p>
+<p><img src="http://p1ll0zcz7.bkt.clouddn.com/8ef27903-cf39-438f-aa65-e52cdaf88319.png" alt=""></p>
+<p>LaunchScreen.storyboard文件包含您的应用程序的初始用户界面,它可以是启动画面或实际界面的简化版本. 当用户点击你的应用程序的图标时,系统立即显示你的启动屏幕,让你的应用程序正在启动的用户. 启动屏幕还为自己初始化时的应用提供封面. 当您的应用程序准备就绪后,系统将隐藏启动屏幕并显示您的应用程序的实际界面.</p>
+<h3 id="Required-App-Metadata"><a href="#Required-App-Metadata" class="headerlink" title="Required App Metadata"></a>Required App Metadata</h3><p>系统从您的应用程序包中的信息属性列表（Info.plist）文件中导出关于您的应用程序的配置和功能的信息. Xcode为每个新的项目模板提供了这个文件的预配置版本,但是您可能需要在某个时候修改这个文件. 例如,如果您的应用程序依赖于特定的硬件或使用特定的系统框架,则可能需要将与这些功能相关的信息添加到此文件.</p>
+<p>您可以对Info.plist文件进行的一项常见修改是声明您的应用程序的硬件和软件要求. 这些要求是您如何向系统传达您的应用程序需要运行的方式. 例如,导航应用程序可能需要GPS硬件的存在才能提供转由转向的指示,如图3所示.App Store阻止将应用程序安装在不符合应用程序要求的设备上.<br>Figure 3<br>Declaring your app’s hardware and software requirements<br><img src="http://p1ll0zcz7.bkt.clouddn.com/12c98a5a-f1b0-4ce3-bac7-ee4dbe94af54.png" alt=""><br>有关可以包含在Info.plist文件中的密钥的信息,请参阅 <a href="https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Introduction/Introduction.html#//apple_ref/doc/uid/TP40009247" target="_blank" rel="noopener">Information Property List Key Reference</a> </p>
+<h3 id="Code-Structure-of-a-UIKit-App"><a href="#Code-Structure-of-a-UIKit-App" class="headerlink" title="Code Structure of a UIKit App"></a>Code Structure of a UIKit App</h3><p>UIKit提供了许多应用程序的核心对象,包括与系统交互的应用程序,运行应用程序的主事件循环,并在屏幕上显示您的内容. 您可以按原样使用大部分对象,也可以仅使用较小的修改. 知道要修改哪些对象以及何时修改它们对于实现您的应用程序至关重要.</p>
+<p>UIKit应用程序的结构基于模型 - 视图 - 控制器（MVC）设计模式,其中对象根据其目的进行划分. 模型对象管理应用程序的数据和业务逻辑. 查看对象提供了数据的可视化表示. 控制器对象充当模型和视图对象之间的桥梁,在适当的时候在它们之间移动数据.</p>
+<p>图4代表了UIKit应用程序的一个相当典型的结构. 您提供表示您的应用程序的数据结构的模型对象. UIKit提供了大部分视图对象,尽管您可以根据需要为数据定义自定义视图. 协调您的数据对象和UIKit视图之间的数据交换是您的视图控制器和应用程序委托对象.</p>
+<p>Figure 4<br>The core app objects<br><img src="http://p1ll0zcz7.bkt.clouddn.com/de856a69-d510-42c4-8620-b612bc60a009.png" alt=""></p>
+<p>UIKit和Foundation框架提供了许多用于定义应用模型对象的基本类型. UIKit提供了一个<a href="https://developer.apple.com/documentation/uikit/uidocument" target="_blank" rel="noopener">UIDocument</a>对象来组织属于基于磁盘文件的数据结构. Foundation框架定义了代表字符串,数字,数组和其他数据类型的基本对象. <a href="https://developer.apple.com/documentation/swift" target="_blank" rel="noopener">The Swift Standard Library</a>提供了许多基础框架中可用的相同类型.</p>
+<p>UIKit提供了应用程序的控制器和视图图层中的大部分对象. 具体来说,UIKit定义了<a href="https://developer.apple.com/documentation/uikit/uiview" target="_blank" rel="noopener">UIView</a>类,它通常负责在屏幕上显示你的内容. （您也可以使用Metal和其他系统框架直接在屏幕上显示内容.）<a href="https://developer.apple.com/documentation/uikit/uiapplication" target="_blank" rel="noopener">UIApplication</a>对象运行应用程序的主事件循环,并管理应用程序的整个生命周期.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/UIKit/" rel="tag"># UIKit</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/07/Foundation框架/" rel="next" title="Foundation框架">
+                <i class="fa fa-chevron-left"></i> Foundation框架
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/14/SfCharts 使用手册/" rel="prev" title="SfCharts 使用手册">
+                SfCharts 使用手册 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">wu83qing</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview-概述"><span class="nav-number">1.</span> <span class="nav-text">Overview 概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Required-Resources"><span class="nav-number">2.</span> <span class="nav-text">Required Resources</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Required-App-Metadata"><span class="nav-number">3.</span> <span class="nav-text">Required App Metadata</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-Structure-of-a-UIKit-App"><span class="nav-number">4.</span> <span class="nav-text">Code Structure of a UIKit App</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wu83qing</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'wu83qing',
+            repo: 'https://github.com/wu83qing/wu83qing.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '8d12e74845591e111ca9ba936e2e9c95f29a253a',
+            
+                client_id: '5bedacd406902c5e2550'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
