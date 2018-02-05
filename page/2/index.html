@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="UIKit," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -79,18 +79,13 @@
 
 
 
-<meta name="description" content="官方文档链接 管理您的应用的数据模型及其与系统的交互.  Application 应用 Managing Your App’s Life Cycle  了解应用程序委托如何管理应用程序的高级行为. UIApplication  在iOS中运行的应用程序的集中控制点和协调点. UIApplicationDelegate  一组被单例调用的方法 UIApplication  object in res">
-<meta name="keywords" content="UIKit">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Core App">
-<meta property="og:url" content="http://www.wu83qing.com/2017/06/06/Core App/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="wu83qing的技术博客">
+<meta property="og:url" content="http://www.wu83qing.com/page/2/index.html">
 <meta property="og:site_name" content="wu83qing的技术博客">
-<meta property="og:description" content="官方文档链接 管理您的应用的数据模型及其与系统的交互.  Application 应用 Managing Your App’s Life Cycle  了解应用程序委托如何管理应用程序的高级行为. UIApplication  在iOS中运行的应用程序的集中控制点和协调点. UIApplicationDelegate  一组被单例调用的方法 UIApplication  object in res">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-31T07:56:44.611Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Core App">
-<meta name="twitter:description" content="官方文档链接 管理您的应用的数据模型及其与系统的交互.  Application 应用 Managing Your App’s Life Cycle  了解应用程序委托如何管理应用程序的高级行为. UIApplication  在iOS中运行的应用程序的集中控制点和协调点. UIApplicationDelegate  一组被单例调用的方法 UIApplication  object in res">
+<meta name="twitter:title" content="wu83qing的技术博客">
 
 
 
@@ -120,13 +115,13 @@
 
 
 
-  <link rel="canonical" href="http://www.wu83qing.com/2017/06/06/Core App/"/>
+  <link rel="canonical" href="http://www.wu83qing.com/page/2/"/>
 
 
 
 
 
-  <title>Core App | wu83qing的技术博客</title>
+  <title>wu83qing的技术博客</title>
   
 
 
@@ -145,7 +140,8 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -238,9 +234,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -253,7 +249,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wu83qing.com/2017/06/06/Core App/">
+    <link itemprop="mainEntityOfPage" href="http://www.wu83qing.com/2017/05/06/Apple 编程核心思想/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wu83qing">
@@ -270,7 +266,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Core App</h1>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/06/Apple 编程核心思想/" itemprop="url">Apple 编程核心思想</a></h1>
         
 
         <div class="post-meta">
@@ -282,8 +280,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-06T22:00:00+08:00">
-                2017-06-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-06T22:00:00+08:00">
+                2017-05-06
               </time>
             
 
@@ -318,16 +316,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/06/Core App/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/06/06/Core App/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -352,74 +340,37 @@
       
 
       
-        <p><a href="https://developer.apple.com/documentation/uikit/core_app?language=objc" target="_blank" rel="noopener">官方文档链接</a></p>
-<p><strong>管理您的应用的数据模型及其与系统的交互.</strong></p>
+        
+          
+            <h3 id="面向对象与面向过程"><a href="#面向对象与面向过程" class="headerlink" title="面向对象与面向过程"></a>面向对象与面向过程</h3><ul>
+<li>OC语言是面向对象,C语言是面相过程.它们是解决问题的两种思想.</li>
+<li>两者的不同点是:面向过程管住的是解决问题需要那些步骤,面向对象关注的是解决问题需要那些对象.</li>
+<li>面向对象的核心是对象,面向对象有两个特别重要的概念:类和对象.</li>
+<li>编程语言的对象建立,是通过类来创建.就相当于盖房子用的设计图纸,类就是创建对象的描述.对象是类的具体存在,一般在解决问题中都会先设计类,再通过类创建相应的对象.</li>
+<li>类的创建有三个属性:类名、属性、行为(功能),一般名词就是类名,切首字母必须大写,不能使用下划线.</li>
+</ul>
+<p><strong>面向协议编程</strong>(Protocol Oriented Programming,以下简称 POP)是 Apple 在2015年WWDC上提出的Swift的一种编程范式.<br>相比与传统的面向对象编程(OOP),POP 显得更加灵活.<br>结合 Swift 的值语义特性和 Swift 标准库的实现,这一年来大家发现了很多 POP 的应用场景.</p>
+<p><strong>Protocol</strong><br>Swift 标准库中有 50 多个复杂不一的协议,几乎所有的实际类型都是满足若干协议的.protocol 是 Swift 语言的底座,语言的其他部分正是在这个底座上组织和建立起来的.这和我们熟知的面向对象的构建方式很不一样.<br>一个最简单但是有实际用处的 Swift 协议定义如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Greetable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> name: <span class="type">String</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">greet</span><span class="params">()</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这几行代码定义了一个协议 <code>Greetable</code> ,其中包含一个属性 <code>name</code> 和一个方法<code>greet</code> .<br><strong>所谓协议 就是一组属性和方法的定义,而如果某个具体的类型想要遵守这个协议,那它是需要实现这个协议内所包含的所以定义.协议所做的事情就是关于实现的约定</strong><br><strong>面向对象编程</strong>(Object Oriented Programming,简称OOP) .先看一段Swift 面向对象的代码:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">   <span class="keyword">var</span> leg:<span class="type">Int</span> &#123;<span class="keyword">return</span> <span class="number">2</span>&#125;</span><br><span class="line">   fun eat()&#123;</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">"eat food."</span>)</span><br><span class="line">   &#125;</span><br><span class="line">  fun run()&#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"run with <span class="subst">\(leg)</span> legs."</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Tiger</span>:<span class="title">Animal</span></span>&#123;</span><br><span class="line">  <span class="keyword">override</span> <span class="keyword">var</span> leg:<span class="type">Int</span> &#123;<span class="keyword">return</span> <span class="number">4</span>&#125;<span class="comment">//4条腿</span></span><br><span class="line">  <span class="keyword">override</span> fun eat()&#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"eat meat."</span>)<span class="comment">//吃肉</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> tiger = <span class="type">Tiger</span>()</span><br><span class="line">	tiger.eat() <span class="comment">//eat meat.</span></span><br><span class="line">	tiger.run() <span class="comment">//run with 4 legs.</span></span><br></pre></td></tr></table></figure>
+<p>父类<code>Animal</code>定义了一个动物某些特性,属性 <code>leg</code>腿的数量,行为 <code>eat</code> 吃和<code>run</code> 跑;<br>子类<code>Tiger</code>根据实际情况重写了属性<code>leg</code>与<code>eat</code>,对于<code>run</code> 都是跑不需要重写;<br>可以看到<code>Tiger</code>和<code>Animal</code>共享了一部分代码,这部分代码被封装到父类中,而且除了<code>Tiger</code>其它一些子类比如<code>Cat</code> <code>Dog</code> 等等都能够使用<code>Animal</code>这个父类;<font color="blue" size="5"><strong>这就是OOP的核心思想-使用继承和封装,将一些相同的内容放在一起.</strong></font></p>
+<p>但是不是能通过OOP对真实世界进行全部的模拟建模呢?答案是否定的,虽然我们努力使用继承与封装的思想来进行建模,但实际事物往往是一些列<strong>特质的组合</strong>,而不是单单的一脉继承,并逐渐扩展的方式开展的.</p>
+<p>面向对象编程所遇到的困境</p>
 <ul>
-<li><h3 id="Application-应用"><a href="#Application-应用" class="headerlink" title="Application 应用"></a>Application 应用</h3><ul>
-<li><strong>Managing Your App’s Life Cycle</strong><br>  了解应用程序委托如何管理应用程序的高级行为.</li>
-<li><strong>UIApplication</strong><br>  在iOS中运行的应用程序的集中控制点和协调点.</li>
-<li><strong>UIApplicationDelegate</strong><br>  一组被单例调用的方法</li>
-<li><strong>UIApplication</strong><br>  object in response to important events in the lifetime of your app.</li>
-<li><strong>UIApplicationMain</strong><br>  创建应用程序对象和应用程序委托并设置事件循环.</li>
+<li>横切关注点</li>
+<li>菱形缺陷</li>
+<li>动态派发安全性问题</li>
 </ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li><h3 id="Device-Environment-设备环境"><a href="#Device-Environment-设备环境" class="headerlink" title="Device Environment 设备环境"></a>Device Environment 设备环境</h3><ul>
-<li><strong>在Apple TV上响应更改显示模式</strong><br>  设备上的屏幕色域发生变化时,会动态更改图像和资源.</li>
-<li><strong>UIDevice</strong><br>  当前设备的表示.</li>
-<li><strong>UITraitCollection</strong><br> 您的应用的iOS界面环境,由横向和纵向大小类,显示比例和用户界面惯用语等特征定义.</li>
-<li><strong>UITraitEnvironment</strong><br>  使您的应用程序可以使用iOS界面环境的一组方法.</li>
-<li><strong>UIAdaptivePresentationControllerDelegate</strong><br>  A set of methods that, in conjunction with a presentation controller, determine how to respond to trait changes in your app.</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li><h3 id="Documents"><a href="#Documents" class="headerlink" title="Documents"></a>Documents</h3><ul>
-<li><strong>UIDocument</strong><br>  用于管理应用程序数据的离散部分的抽象基类.</li>
-<li><strong>UIManagedDocument</strong><br> 与Core Data集成的托管文档对象.</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li><h3 id="Pasteboard"><a href="#Pasteboard" class="headerlink" title="Pasteboard"></a>Pasteboard</h3><ul>
-<li><strong>UIPasteboard</strong><br>  一个对象,帮助用户在应用程序中将数据从一个地方分享到另一个地方,并从您的应用程序分享到其他应用程序.</li>
-<li><strong>UIPasteConfiguration</strong><br>  对象实现的接口,用于声明其接受特定数据类型的粘贴和拖放活动的能力.</li>
-<li><strong>UIPasteConfigurationSupporting</strong><br>  确定响应者对象是否支持粘贴配置的界面.</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li><h3 id="Data-Management-数据管理"><a href="#Data-Management-数据管理" class="headerlink" title="Data Management 数据管理"></a>Data Management 数据管理</h3><ul>
-<li><strong>Protecting the User’s Privacy 保护用户的隐私</strong><br>  通过保护个人数据和尊重用户的意愿以及如何使用数据来保护用户的隐私.</li>
-<li><strong>使用自定义网址与其他应用程序进行通信</strong><br> 从其他应用程序使用特殊格式的网址接收数据.</li>
-<li><strong>UIDataSourceModelAssociation</strong><br>  一组定义用于在应用中为数据对象提供持久引用的接口的方法.</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li><h3 id="Activities-延伸活动"><a href="#Activities-延伸活动" class="headerlink" title="Activities 延伸活动"></a>Activities 延伸活动</h3><ul>
-<li><strong>UIActivity</strong><br>  您为了实现特定于应用程序的服务而继承的抽象类.</li>
-<li><strong>UIActivityViewController</strong><br>  为App实现多种服务的一个标准视图控制器.</li>
-<li><strong>UIActivityItemSource</strong><br>  活动视图控制器用于检索要执行的数据项的一组方法.</li>
-<li><strong>UIActivityItemProvider</strong><br>  传递给活动视图控制器的数据的代理.</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li><h3 id="Guided-Access-指导访问"><a href="#Guided-Access-指导访问" class="headerlink" title="Guided Access 指导访问"></a>Guided Access 指导访问</h3><ul>
-<li><strong>UIGuidedAccessRestrictionDelegate</strong><br>  一组用于为iOS中的引导式访问功能添加自定义限制的方法.</li>
-<li><strong>UIGuidedAccessRestrictionStateForIdentifier</strong><br>  返回指定的指导访问限制的限制状态.</li>
-</ul>
-</li>
-</ul>
+<p>先看 <strong>动态派发安全性问题</strong> 的场景</p>
+<p>Objective-C是一门典型的OOP语言,同时它还继承了Small Talk的消息发送机制.这套机制十分灵活,是OC的基础思想,但有时候也相对危险.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ViewController *v1 = [[ViewController alloc] init];</span><br><span class="line">[v1 myMethod];</span><br><span class="line">AnotherViewController *v2 = [[AnotherViewController alloc] init];</span><br><span class="line">[v2 myMethod];</span><br><span class="line">NSArray *array = @[v1,v2];</span><br><span class="line">for(id obj in array)&#123;</span><br><span class="line">  	[obj myMethod];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们如果在v1 和 v2的实例中都实现了<code>myMethod</code>,这段代码是没有问题.<code>myMethod</code>将会被动态的发送给<code>array</code>中的v1 v2.但是有一个没有实现的<code>myMethod</code>的类型,会怎样?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">NSObject *v3 = [NSObject new];</span><br><span class="line">  //v3没有实现meMethod</span><br><span class="line">NSArray *array = @[v1,v2,v3];</span><br><span class="line">for(id obj in array)&#123;</span><br><span class="line">  [obj mymethod];</span><br><span class="line">&#125;</span><br><span class="line">// Runtime error:</span><br><span class="line">// unrecognized selector sent to instance blabla</span><br></pre></td></tr></table></figure>
+<p>编译依然可以通过,但是显然,程序将在运行时崩溃.Objective-C 是不安全的,编译器默认你知道某个方法确实有实现,这是消息发送的灵活性所必须付出的代价.而在APP开发看来,用可能的崩溃换取灵活性,代价太高.虽然这不是OOP范式带来的问题,但它在Objective-C时代给我们带来了切肤之痛.</p>
 
+          
+        
       
     </div>
     
@@ -434,40 +385,14 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/UIKit/" rel="tag"># UIKit</a>
-          
-        </div>
+
+      
+
       
 
       
       
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/06/06/Managing Your App's Life Cycle/" rel="next" title="Managing Your App's Life Cycle">
-                <i class="fa fa-chevron-left"></i> Managing Your App's Life Cycle
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/07/Foundation框架/" rel="prev" title="Foundation框架">
-                Foundation框架 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -477,11 +402,14 @@
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
@@ -489,17 +417,6 @@
 
 
           
-
-  
-    <div class="comments" id="comments">
-      
-        <div id="gitment-container"></div>
-      
-    </div>
-
-  
-
-
 
         </div>
         
@@ -520,17 +437,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -606,22 +514,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Application-应用"><span class="nav-number">1.</span> <span class="nav-text">Application 应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Device-Environment-设备环境"><span class="nav-number">2.</span> <span class="nav-text">Device Environment 设备环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Documents"><span class="nav-number">3.</span> <span class="nav-text">Documents</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pasteboard"><span class="nav-number">4.</span> <span class="nav-text">Pasteboard</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-Management-数据管理"><span class="nav-number">5.</span> <span class="nav-text">Data Management 数据管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Activities-延伸活动"><span class="nav-number">6.</span> <span class="nav-text">Activities 延伸活动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Guided-Access-指导访问"><span class="nav-number">7.</span> <span class="nav-text">Guided Access 指导访问</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -755,10 +647,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
-
-
 
   
 
@@ -805,30 +693,6 @@
 
     
 
-    
-      <script type="text/javascript">
-      function renderGitment(){
-        var gitment = new Gitmint({
-            id: window.location.pathname, 
-            owner: 'wu83qing',
-            repo: 'https://github.com/wu83qing/wu83qing.github.io',
-            
-            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-            
-            oauth: {
-            
-            
-                client_secret: '8d12e74845591e111ca9ba936e2e9c95f29a253a',
-            
-                client_id: '5bedacd406902c5e2550'
-            }});
-        gitment.render('gitment-container');
-      }
-
-      
-      renderGitment();
-      
-      </script>
     
 
 
