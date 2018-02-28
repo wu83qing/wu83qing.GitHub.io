@@ -249,7 +249,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wu83qing.com/2017/06/06/UIKit框架/">
+    <link itemprop="mainEntityOfPage" href="http://www.wu83qing.com/2017/06/06/Core App/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wu83qing">
@@ -268,7 +268,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/06/UIKit框架/" itemprop="url">UIKit框架</a></h1>
+                <a class="post-title-link" href="/2017/06/06/Core App/" itemprop="url">Core App</a></h1>
         
 
         <div class="post-meta">
@@ -342,64 +342,245 @@
       
         
           
-            <p><a href="https://developer.apple.com/documentation/uikit?language=objc" target="_blank" rel="noopener">官方文档链接</a></p>
-<p><strong>UIKit</strong> 框架为您的iOS或tvOS应用程序提供了所需的基础架构. 它提供了用于实现界面的窗口和视图体系结构,用于向应用程序提供多点触控和其他类型输入的事件处理基础结构,以及管理用户,系统和应用程序之间的交互所需的主运行循环. 该框架提供的其他功能包括动画支持,文档支持,绘图和打印支持,关于当前设备的信息,文本管理和显示,搜索支持,可访问性支持,应用程序扩展支持和资源管理.</p>
+            <p><a href="https://developer.apple.com/documentation/uikit/core_app?language=objc" target="_blank" rel="noopener">官方文档链接</a></p>
+<p><strong>管理您的应用的数据模型及其与系统的交互.</strong></p>
 <ul>
-<li><strong>First Steps</strong><ul>
-<li><strong>About App Development with UIKit</strong><br>   了解UIKit和Xcode为您的iOS和tvOS应用程序提供的基本支持.</li>
+<li><h3 id="Application-应用"><a href="#Application-应用" class="headerlink" title="Application 应用"></a>Application 应用</h3><ul>
+<li><strong>Managing Your App’s Life Cycle</strong><br>  了解应用程序委托如何管理应用程序的高级行为.</li>
+<li><strong>UIApplication</strong><br>  在iOS中运行的应用程序的集中控制点和协调点.</li>
+<li><strong>UIApplicationDelegate</strong><br>  一组被单例调用的方法</li>
+<li><strong>UIApplication</strong><br>  object in response to important events in the lifetime of your app.</li>
+<li><strong>UIApplicationMain</strong><br>  创建应用程序对象和应用程序委托并设置事件循环.</li>
 </ul>
 </li>
 </ul>
 <hr>
 <ul>
-<li><strong>App Structure</strong><ul>
-<li><strong>Core App</strong><br> 管理您的应用的数据模型及其与系统的交互.</li>
-<li><strong>Resource Management</strong><br>  管理您存储在主要可执行文件之外的 images, strings, storyboards, and nib files</li>
-<li><strong>App Extensions</strong><br>  将应用程序的基本功能扩展到系统的其他部分.</li>
+<li><h3 id="Device-Environment-设备环境"><a href="#Device-Environment-设备环境" class="headerlink" title="Device Environment 设备环境"></a>Device Environment 设备环境</h3><ul>
+<li><strong>在Apple TV上响应更改显示模式</strong><br>  设备上的屏幕色域发生变化时,会动态更改图像和资源.</li>
+<li><strong>UIDevice</strong><br>  当前设备的表示.</li>
+<li><strong>UITraitCollection</strong><br> 您的应用的iOS界面环境,由横向和纵向大小类,显示比例和用户界面惯用语等特征定义.</li>
+<li><strong>UITraitEnvironment</strong><br>  使您的应用程序可以使用iOS界面环境的一组方法.</li>
+<li><strong>UIAdaptivePresentationControllerDelegate</strong><br>  A set of methods that, in conjunction with a presentation controller, determine how to respond to trait changes in your app.</li>
 </ul>
 </li>
 </ul>
 <hr>
 <ul>
-<li><strong>User Interface 用户界面</strong><ul>
-<li><strong>Views and Controls</strong><br>  在屏幕上显示您的内容,并定义与该内容相关的交互.           </li>
-<li><strong>View Controllers</strong><br>  使用视图控制器管理你的界面,并促进周围的应用程序的内容导航.</li>
-<li><strong>View Layout</strong><br>  使用堆栈视图自动布置界面的视图. 当您需要精确放置视图时,请使用自动布局.</li>
-<li><strong>Animation and Haptics 触觉</strong><br>  使用基于视图的动画和触觉向用户提供反馈.</li>
-<li><strong>Windows and Screens</strong><br>  为您的视图层次结构和其他内容提供一个容器. </li>
+<li><h3 id="Documents"><a href="#Documents" class="headerlink" title="Documents"></a>Documents</h3><ul>
+<li><strong>UIDocument</strong><br>  用于管理应用程序数据的离散部分的抽象基类.</li>
+<li><strong>UIManagedDocument</strong><br> 与Core Data集成的托管文档对象.</li>
 </ul>
 </li>
 </ul>
 <hr>
 <ul>
-<li><strong>User Interactions 用户交互</strong><ul>
-<li><strong>Touches, Presses, and Gestures 触摸,按压和手势</strong><br>  在手势识别器中封装您的应用程序的事件处理逻辑,以便您可以在整个应用程序中重复使用该代码.</li>
-<li><strong>Drag and Drop 拖放</strong><br>  通过使用交互API和视图,拖放到您的应用程序.</li>
-<li><strong>Focus Interactions 焦点互动</strong><br> 使用远程或游戏控制器导航UIKit应用程序的界面.</li>
-<li><strong>Peek and Pop</strong><br>  使用3D触摸输入来显示您的内容的自定义预览和操作.</li>
-<li><strong>Keyboard and Menus 键盘和菜单</strong><br>  处理键盘输入,并显示自定义操作菜单.</li>
-<li><strong>Accessibility 无障碍</strong><br>  让残障用户更容易使用您的应用.</li>
+<li><h3 id="Pasteboard"><a href="#Pasteboard" class="headerlink" title="Pasteboard"></a>Pasteboard</h3><ul>
+<li><strong>UIPasteboard</strong><br>  一个对象,帮助用户在应用程序中将数据从一个地方分享到另一个地方,并从您的应用程序分享到其他应用程序.</li>
+<li><strong>UIPasteConfiguration</strong><br>  对象实现的接口,用于声明其接受特定数据类型的粘贴和拖放活动的能力.</li>
+<li><strong>UIPasteConfigurationSupporting</strong><br>  确定响应者对象是否支持粘贴配置的界面.</li>
 </ul>
 </li>
 </ul>
 <hr>
 <ul>
-<li><strong>Graphics, Drawing, and Printing</strong><ul>
-<li><strong>Images and PDF</strong><br>  创建和管理图像,包括使用位图和PDF格式的图像.</li>
-<li><strong>Drawing</strong><br>  使用渲染器配置应用程序的绘图环境,并绘制路径,字符串和阴影.</li>
-<li><strong>Printing</strong><br>  显示系统打印面板并管理打印过程.</li>
+<li><h3 id="Data-Management-数据管理"><a href="#Data-Management-数据管理" class="headerlink" title="Data Management 数据管理"></a>Data Management 数据管理</h3><ul>
+<li><strong>Protecting the User’s Privacy 保护用户的隐私</strong><br>  通过保护个人数据和尊重用户的意愿以及如何使用数据来保护用户的隐私.</li>
+<li><strong>使用自定义网址与其他应用程序进行通信</strong><br> 从其他应用程序使用特殊格式的网址接收数据.</li>
+<li><strong>UIDataSourceModelAssociation</strong><br>  一组定义用于在应用中为数据对象提供持久引用的接口的方法.</li>
 </ul>
 </li>
 </ul>
 <hr>
 <ul>
-<li><strong>Text</strong><ul>
-<li><strong>Text Display and Fonts</strong><br>  使用UIKit视图来显示文本,管理字体和检查拼写.</li>
-<li><strong>Text Storage</strong><br>  管理文本存储,并协调文本的布局.</li>
-<li><strong>Keyboards and Input</strong><br>  配置系统键盘,或创建自己的键盘和自己处理输入.</li>
+<li><h3 id="Activities-延伸活动"><a href="#Activities-延伸活动" class="headerlink" title="Activities 延伸活动"></a>Activities 延伸活动</h3><ul>
+<li><strong>UIActivity</strong><br>  您为了实现特定于应用程序的服务而继承的抽象类.</li>
+<li><strong>UIActivityViewController</strong><br>  为App实现多种服务的一个标准视图控制器.</li>
+<li><strong>UIActivityItemSource</strong><br>  活动视图控制器用于检索要执行的数据项的一组方法.</li>
+<li><strong>UIActivityItemProvider</strong><br>  传递给活动视图控制器的数据的代理.</li>
 </ul>
 </li>
 </ul>
+<hr>
+<ul>
+<li><h3 id="Guided-Access-指导访问"><a href="#Guided-Access-指导访问" class="headerlink" title="Guided Access 指导访问"></a>Guided Access 指导访问</h3><ul>
+<li><strong>UIGuidedAccessRestrictionDelegate</strong><br>  一组用于为iOS中的引导式访问功能添加自定义限制的方法.</li>
+<li><strong>UIGuidedAccessRestrictionStateForIdentifier</strong><br>  返回指定的指导访问限制的限制状态.</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wu83qing.com/2017/06/06/Managing Your App's Life Cycle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wu83qing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wu83qing的技术博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/06/Managing Your App's Life Cycle/" itemprop="url">Managing Your App's Life Cycle</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-06T22:00:00+08:00">
+                2017-06-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://developer.apple.com/documentation/uikit/core_app/managing_your_app_s_life_cycle?language=objc" target="_blank" rel="noopener">官方文档链接</a></p>
+<h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>UIKit应用程序总是处于五种状态之一.如图1所示.</p>
+<ul>
+<li>应用程序开始不运行(not runing). </li>
+<li>当用户显式启动应用程序时,应用程序在进入活动状态(Active)之前会短暂地移至非活动状态(inActive).(一个活跃的应用程序出现在屏幕上,被称为前台应用程序.)</li>
+<li>退出一个活动的应用程序会将其移出屏幕,并进入后台状态(Background),直到系统暂时停止(Suspend).</li>
+<li>系统可以自行决定终止一个被暂停的应用程序,并将其返回到非运行状态(not runing).</li>
+</ul>
+<p>Figure 1<br>The execution states of a UIKit app<br><img src="http://p1ll0zcz7.bkt.clouddn.com/284200b0-5797-4f5f-9353-da25dd873fed.png" alt=""></p>
+<p>您的应用程序的当前状态定义了可用的系统资源.由于活动应用程序在屏幕上可见并且必须响应用户交互,因此在使用系统资源时它们具有优先权. 后台应用程序在屏幕上不可见,因此对系统资源的访问更加有限,并且执行时间有限.</p>
+<h3 id="Manage-Life-Cycle-Events-管理生命周期事件"><a href="#Manage-Life-Cycle-Events-管理生命周期事件" class="headerlink" title="Manage Life Cycle Events 管理生命周期事件"></a>Manage Life Cycle Events 管理生命周期事件</h3><p>当您的应用程序从一种状态转换到另一种状态时,UIKit会通知您的应用程序委托对象-符合UIApplicationDelegate协议的对象.<br>使用您的应用程序委托来修改您的应用程序的行为以匹配其新的状态.例如,从非运行状态(not run)转移到非活动状态(inActive)时,处理准备运行应用程序所需的启动时任务.</p>
+<p>系统通知您的应用程序delegate有关以下转换：</p>
+<ul>
+<li><strong>Launch. </strong>您的应用程序从未运行状态转换为非活动状态或后台状态.使用此转换来准备您的应用程序运行;see <a href="https://developer.apple.com/documentation/uikit/core_app/managing_your_app_s_life_cycle/responding_to_the_launch_of_your_app?language=objc" target="_blank" rel="noopener">Responding to the Launch of Your App</a>.</li>
+<li><strong>Activation.</strong> 您的应用程序从非活动状态转换为活动状态.准备您的应用程序在前台运行,并在屏幕上可见; see <a href="https://developer.apple.com/documentation/uikit/core_app/managing_your_app_s_life_cycle/preparing_your_app_to_run_in_the_foreground?language=objc" target="_blank" rel="noopener">Preparing Your App to Run in the Foreground</a>.</li>
+<li><strong>Deactivation.</strong> 您的应用程序从活动状态转换到非活动状态.安静你的应用程序,也许只是暂时的;see <a href="https://developer.apple.com/documentation/uikit/core_app/managing_your_app_s_life_cycle/preparing_your_app_to_run_in_the_background?language=objc" target="_blank" rel="noopener">Preparing Your App to Run in the Background</a>.</li>
+<li><strong>Background execution.</strong> 您的应用程序将从非活动状态转换到后台状态. 准备在屏幕外运行时只处理必要的任务;see <a href="https://developer.apple.com/documentation/uikit/core_app/managing_your_app_s_life_cycle/preparing_your_app_to_run_in_the_background?language=objc" target="_blank" rel="noopener">Preparing Your App to Run in the Background</a>.</li>
+<li><strong>Termination.</strong> 您的应用从任何运行状态转换到未运行状态.(暂停的应用程序在终止时不会收到通知.)取消所有任务并准备退出; see <a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623111-applicationwillterminate?language=objc" target="_blank" rel="noopener"><code>applicationWillTerminate:</code></a>.</li>
+</ul>
+<h3 id="Manage-Behavioral-Events-管理行为事件"><a href="#Manage-Behavioral-Events-管理行为事件" class="headerlink" title="Manage Behavioral Events 管理行为事件"></a>Manage Behavioral Events 管理行为事件</h3><p>您的 app delegate 也会响应其他一些重要事件:</p>
+<ul>
+<li><strong>Memory warnings.</strong> 减少您的应用程序使用的内存量;see <a href="https://developer.apple.com/documentation/uikit/core_app/managing_your_app_s_life_cycle/responding_to_memory_warnings?language=objc" target="_blank" rel="noopener">Responding to Memory Warnings</a>.</li>
+<li><strong>Time changes.</strong> Update time-sensitive features of your app. </li>
+<li><strong>Protected data becomes available/unavailable.</strong> 在用户锁定或解锁设备时管理文件.</li>
+<li><strong>State restoration.</strong> 将应用的用户界面恢复到之前的状态,使您的应用永不停止运行;see <a href="https://developer.apple.com/documentation/uikit/view_controllers/preserving_your_app_s_ui_across_launches?language=objc" target="_blank" rel="noopener">Preserving Your App’s UI Across Launches</a>.</li>
+<li><strong>Handoff tasks.</strong> 继续在另一台设备上启动任务.</li>
+<li><strong>Open URLs.</strong> 接收并打开发送到您的应用的网址.</li>
+<li><strong>Inter-app communication.</strong> 从配对的watchOS应用程序接收数据.</li>
+<li><strong>File downloads.</strong> 接收使用您的应用下载的文件 <a href="https://developer.apple.com/documentation/foundation/nsurlsession?language=objc" target="_blank" rel="noopener"><code>NSURLSession</code></a> object.</li>
+</ul>
+<p>尽管应用程序委托是处理生命周期事件的主要场所,但并不是唯一的地方. 对于大多数事件,UIKit还会生成任何对象都可以观察的通知. 有关您可以观察的与应用程序相关的通知列表,see <a href="https://developer.apple.com/documentation/uikit/uiapplication?language=objc" target="_blank" rel="noopener"><code>UIApplication</code></a>.有关用于处理事件的方法的更多信息, see <a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate?language=objc" target="_blank" rel="noopener"><code>UIApplicationDelegate</code></a>.</p>
 
           
         
@@ -652,7 +833,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -663,7 +844,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
