@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="wu83qing的技术博客">
 <meta property="og:description" content="Welcome to SwiftAbout SwiftSwift是编写软件的绝妙方式,无论是用于手机,台式机,服务器还是其他运行代码的软件. 这是一种安全,快速和交互式的编程语言,融合了现代语言思维的最佳水平和更广泛的Apple工程文化的智慧以及开源社区的多元贡献. 编译器针对性能进行了优化,并且语言针对开发进行了优化,而无需牺牲任何一种. Swift对新程序员很友好. 它是一种工业品质的编程语言">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-01T09:36:04.481Z">
+<meta property="og:updated_time" content="2018-03-01T09:39:59.076Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="The Swift Programming Language (Swift 4.1)(翻译)">
 <meta name="twitter:description" content="Welcome to SwiftAbout SwiftSwift是编写软件的绝妙方式,无论是用于手机,台式机,服务器还是其他运行代码的软件. 这是一种安全,快速和交互式的编程语言,融合了现代语言思维的最佳水平和更广泛的Apple工程文化的智慧以及开源社区的多元贡献. 编译器针对性能进行了优化,并且语言针对开发进行了优化,而无需牺牲任何一种. Swift对新程序员很友好. 它是一种工业品质的编程语言">
@@ -814,7 +814,7 @@
 <p>除了在运行时验证您的期望之外,断言和前置条件也成为代码中有用的文档形式. 与上述错误处理中讨论的<a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID515" target="_blank" rel="noopener">Error Handling</a> 不同,断言和先决条件不用于可恢复或预期的错误. 由于失败的断言或前置条件表示无效的程序状态,因此无法捕获失败的断言.</p>
 <p>使用断言和前置条件不能取代设计代码的方式,使得不可能出现无效条件. 但是,使用它们来强制执行有效的数据和状态会导致应用程序在发生无效状态时可预测终止,并且有助于使问题易于调试. 一旦检测到无效状态,立即停止执行也有助于限制由该无效状态引起的损害.</p>
 <p>断言和前置条件之间的区别在于它们被检查时:断言仅在调试版本中检查,但在调试版本和生产版本中都会检查了前置条件. 在生产构建中,断言内的条件不被评估. 这意味着您可以在开发过程中使用尽可能多的断言,而不会影响生产性能.</p>
-<h4 id="Debugging-with-Assertions-使用断言进行调试"><a href="#Debugging-with-Assertions-使用断言进行调试" class="headerlink" title="Debugging with Assertions/使用断言进行调试"></a>Debugging with Assertions/使用断言进行调试</h4><p>你可以通过调用Swift标准库中的<a href="https://developer.apple.com/documentation/swift/1541112-assert" target="_blank" rel="noopener">assert(<em>:</em>:file:line:)</a>函数来编写断言. 如果条件的结果为<code>false</code>,则将此函数传递给一个表达式,该表达式的值为<code>true</code>或<code>false</code>,并显示一条消息. 例如:</p>
+<h4 id="Debugging-with-Assertions-使用断言进行调试"><a href="#Debugging-with-Assertions-使用断言进行调试" class="headerlink" title="Debugging with Assertions/使用断言进行调试"></a>Debugging with Assertions/使用断言进行调试</h4><p>你可以通过调用Swift标准库中的<a href="https://developer.apple.com/documentation/swift/1541112-assert" target="_blank" rel="noopener"><code>assert(_:_:file:line:)</code></a>函 数来编写断言. 如果条件的结果为<code>false</code>,则将此函数传递给一个表达式,该表达式的值为<code>true</code>或<code>false</code>,并显示一条消息. 例如:</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> age = -<span class="number">3</span></span><br><span class="line"><span class="built_in">assert</span>(age &gt;= <span class="number">0</span>, <span class="string">"A person's age can't be less than zero."</span>)</span><br><span class="line"><span class="comment">// This assertion fails because -3 is not &gt;= 0.</span></span><br></pre></td></tr></table></figure>
 <p>在这个例子中,如果<code>age&gt; = 0</code>的计算结果为<code>true</code>,那么代码将继续执行,即如果<code>age</code>的值非负. 如果<code>age</code>的值是负数,如上面的代码所示,那么<code>age&gt; = 0</code>的计算结果为<code>false</code>,并且断言失败,终止应用程序.</p>
 <p>也可以省略断言信息 - 例如,当它只是将条件用于断言时.</p>
