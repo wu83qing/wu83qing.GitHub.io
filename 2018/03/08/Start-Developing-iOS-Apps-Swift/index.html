@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Swift," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Getting StartedJump Right In开始开发iOS应用程序(Swift)是学习创建在iPhone和iPad上运行的应用程序的完美起点. 下面的每课包含一个教程和完成它所需的概念信息. 这些课程相互构建,引导逐步创建简单真实世界的iOS应用程序.在完成课程并构建应用程序的过程中,将了解iOS应用程序开发中的概念,深入了解Swift编程语言,并熟悉Apple集成开发环境Xcode的">
+<meta name="keywords" content="Swift">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Start Developing iOS Apps (Swift) 精简版">
+<meta property="og:url" content="http://www.wu83qing.com/2018/03/08/Start-Developing-iOS-Apps-Swift/index.html">
+<meta property="og:site_name" content="wu83qing的技术博客">
+<meta property="og:description" content="Getting StartedJump Right In开始开发iOS应用程序(Swift)是学习创建在iPhone和iPad上运行的应用程序的完美起点. 下面的每课包含一个教程和完成它所需的概念信息. 这些课程相互构建,引导逐步创建简单真实世界的iOS应用程序.在完成课程并构建应用程序的过程中,将了解iOS应用程序开发中的概念,深入了解Swift编程语言,并熟悉Apple集成开发环境Xcode的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/IN_sim_navbar_2x.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/BBUI_sim_finalUI_2x.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/BBUI_welcomewindow_2x.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/BBUI_singleviewapp_template_2x.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/BBUI_newproject_2x.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/BBUI_workspacewindow_2x.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/BBUI_workspacewindow_callouts_2x.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/BBUI_schememenu_2x.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/BBUI_toolbar_2x.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/BBUI_developermode_2x.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/BBUI_sim_blank_2x.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/BBUI_projectnavigator_2x.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/BBUI_appdelegate_file_2x.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/BBUI_viewcontroller_file_2x.png">
+<meta property="og:updated_time" content="2018-03-08T09:24:47.483Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Start Developing iOS Apps (Swift) 精简版">
+<meta name="twitter:description" content="Getting StartedJump Right In开始开发iOS应用程序(Swift)是学习创建在iPhone和iPad上运行的应用程序的完美起点. 下面的每课包含一个教程和完成它所需的概念信息. 这些课程相互构建,引导逐步创建简单真实世界的iOS应用程序.在完成课程并构建应用程序的过程中,将了解iOS应用程序开发中的概念,深入了解Swift编程语言,并熟悉Apple集成开发环境Xcode的">
+<meta name="twitter:image" content="http://p4stspod7.bkt.clouddn.com/IN_sim_navbar_2x.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.wu83qing.com/2018/03/08/Start-Developing-iOS-Apps-Swift/"/>
+
+
+
+
+
+  <title>Start Developing iOS Apps (Swift) 精简版 | wu83qing的技术博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">wu83qing的技术博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">编程 技术 生活 人生</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wu83qing.com/2018/03/08/Start-Developing-iOS-Apps-Swift/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wu83qing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wu83qing的技术博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Start Developing iOS Apps (Swift) 精简版</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T11:34:07+08:00">
+                2018-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/08/Start-Developing-iOS-Apps-Swift/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/03/08/Start-Developing-iOS-Apps-Swift/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h2><h3 id="Jump-Right-In"><a href="#Jump-Right-In" class="headerlink" title="Jump Right In"></a>Jump Right In</h3><p>开始开发iOS应用程序(Swift)是学习创建在iPhone和iPad上运行的应用程序的完美起点. 下面的每课包含一个教程和完成它所需的概念信息. 这些课程相互构建,引导逐步创建简单真实世界的iOS应用程序.在完成课程并构建应用程序的过程中,将了解iOS应用程序开发中的概念,深入了解Swift编程语言,并熟悉Apple集成开发环境Xcode的许多有价值的功能(IDE).</p>
+<h4 id="Prerequisites-先决条件"><a href="#Prerequisites-先决条件" class="headerlink" title="Prerequisites/先决条件"></a>Prerequisites/先决条件</h4><p>在这些课程中,假定熟悉Swift programming language. 不需要成为 Swift master来完成课程,但如果能够舒适地阅读和理解Swift代码,你将会得到更多的收获.如果对Swift不太熟悉,在<a href="https://itunes.apple.com/us/app/swift-playgrounds/id908519492?mt=8" target="_blank" rel="noopener">Swift Playgrounds</a>应用程序中完成Learn to Code练习. 或者,可以通过<a href="http://wu83qing.com/2018/02/28/The-Swift-Programming-Language-Swift-4-1-翻译/" target="_blank" rel="noopener">The Swift Programming Language (Swift 4.1)</a>.的<a href="http://wu83qing.com/2018/02/28/The-Swift-Programming-Language-Swift-4-1-翻译/" target="_blank" rel="noopener">A Swift Tour</a>. 两者都提供了Swift编程语言的坚实基础.</p>
+<h4 id="About-the-Lessons-关于课程"><a href="#About-the-Lessons-关于课程" class="headerlink" title="About the Lessons/关于课程"></a>About the Lessons/关于课程</h4><p>在课程中,将构建一个名为<strong>FoodTracker</strong>的简单膳食跟踪应用程序.这个应用程序显示了一份膳食列表,包括膳食名称,评分和照片.用户可以添加,删除或编辑膳食. 要添加新餐或编辑现有餐,用户可以导航到不同的屏幕,在这里他们可以指定特定餐点的名称,评分和照片.</p>
+<p><img src="http://p4stspod7.bkt.clouddn.com/IN_sim_navbar_2x.png" alt=""></p>
+<p>这些课程每个都附带一个Xcode项目文件,该文件显示代码和界面应该如何看待课程结束的示例. 在完成课程后,可以下载项目并检查工作.如果需要参考整个课程中学到的概念,使用<strong>glossary</strong>来刷新记忆. <strong>Glossary</strong>术语贯穿整个课程.</p>
+<h4 id="Get-the-Tools-获取工具"><a href="#Get-the-Tools-获取工具" class="headerlink" title="Get the Tools/获取工具"></a>Get the Tools/获取工具</h4><p>要使用这些课程中描述的最新技术开发iOS应用程序,需要运行最新版本Xcode的Mac计算机(macOS 10.11.5或更高版本). Xcode包含设计,开发和调试应用程序所需的所有功能. Xcode还包含iOS SDK,它扩展了Xcode以包含专门用于iOS开发的工具,编译器和框架.</p>
+<hr>
+<h2 id="Building-the-UI"><a href="#Building-the-UI" class="headerlink" title="Building the UI"></a>Building the UI</h2><h3 id="Build-a-Basic-UI"><a href="#Build-a-Basic-UI" class="headerlink" title="Build a Basic UI"></a>Build a Basic UI</h3><p>本课可以熟悉Xcode,用于编写应用程序的工具.熟悉Xcode中项目的结构,并学习如何在基本项目组件之间进行导航和使用. 在本课中,将开始为FoodTracker应用程序制作一个简单的<a href="https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/GlossaryDefinitions.html#//apple_ref/doc/uid/TP40015214-CH12-SW18" target="_blank" rel="noopener">user interface (UI)</a>并在模拟器中查看它. 完成后,应用将会有一个餐名的标签,一个用于更改餐名的文本字段以及一个用于重置名称的按钮.</p>
+<p><img src="http://p4stspod7.bkt.clouddn.com/BBUI_sim_finalUI_2x.png" alt=""></p>
+<h4 id="Learning-Objectives-学习目标"><a href="#Learning-Objectives-学习目标" class="headerlink" title="Learning Objectives/学习目标"></a>Learning Objectives/学习目标</h4><p>在本课结束时,将掌握:</p>
+<ol>
+<li>在Xcode中创建一个project</li>
+<li>Identify the purpose of key files that are created with an Xcode project template</li>
+<li>在项目中打开并切换文件</li>
+<li>在iOS模拟器中运行应用程序</li>
+<li>在storyboard中添加,移动和调整UI elements 的大小</li>
+<li>使用属性检查器(The Attributes inspector)编辑storyboard中UI elements的属性</li>
+<li>使用大纲视图(The Outline view)查看和重新排列UI elements</li>
+<li>使用助手编辑器(The Assistant editor’s)的预览模式预览storyboard UI</li>
+<li>使用自动布局(Auto Layout)自动适应用户设备的尺寸大小</li>
+</ol>
+<h3 id="Create-a-New-Project"><a href="#Create-a-New-Project" class="headerlink" title="Create a New Project"></a>Create a New Project</h3><p>Xcode包括几个内置的应用程序模板,用于开发常见类型的iOS应用程序,例如游戏,基于标签导航的应用程序和基于表格视图的应用程序. 大多数这些模板都具有预配置的界面和源代码文件. 先从最基本的模板开始:Single View Application.</p>
+<p><strong>To create a new project</strong></p>
+<ol>
+<li><p>Open Xcode from the <code>/Applications</code> directory.</p>
+<p>如果第一次启动Xcode,它可能会要求同意用户协议并下载其他组件. 按照提示通过这些屏幕,直到Xcode完全设置并准备启动.<br><img src="http://p4stspod7.bkt.clouddn.com/BBUI_welcomewindow_2x.png" alt=""></p>
+</li>
+<li><p>在欢迎窗口中,点击“创建一个新的Xcode项目”(或者选择File&gt; New&gt; Project).Xcode打开一个新窗口并显示一个对话框,可以在其中选择一个模板.</p>
+</li>
+<li><p>在对话框顶部选择iOS.</p>
+</li>
+<li><p>在应用程序部分中,选择单一视图应用程序,然后单击下一步.</p>
+<p><img src="http://p4stspod7.bkt.clouddn.com/BBUI_singleviewapp_template_2x.png" alt=""></p>
+</li>
+<li><p>在出现的对话框中,使用以下值命名应用程序并为项目选择其他选项:</p>
+<ul>
+<li>Product Name: <code>FoodTracker</code>.Xcode使用输入的产品名称命名项目和应用程序.</li>
+<li>Team: 如果未自动填充,将团队设置为无.</li>
+<li>Organization Name:组织的名称或自己的名字.可以留下这个空白.</li>
+<li>Organization Identifier: 组织标识符,如果有的话. 如果不这样做,使用 <code>com.example</code>.</li>
+<li>Bundle Identifier: 该值根据产品名称和组织标识符自动生成.</li>
+<li>Language: Swift</li>
+<li>Devices: Universal.用应用程序可以在iPhone和iPad上运行.</li>
+<li>Use Core Data: Unselected.</li>
+<li>Include Unit Tests: Selected.</li>
+<li>Include UI Tests: Unselected.</li>
+</ul>
+</li>
+</ol>
+<p><img src="http://p4stspod7.bkt.clouddn.com/BBUI_newproject_2x.png" alt=""></p>
+<ol>
+<li>点击下一步.</li>
+<li>在出现的对话框中,选择一个位置来保存项目并点击创建.</li>
+</ol>
+<p><img src="http://p4stspod7.bkt.clouddn.com/BBUI_workspacewindow_2x.png" alt=""></p>
+<p>工作区窗口可能会显示一个错误图标,其中显示“签署FoodTracker需要一个开发团队”.此警告意味着尚未为iOS开发设置Xcode,不用担心,这个课程不需要开发团队在模拟器中运行应用程序.</p>
+<h4 id="Get-Familiar-with-Xcode"><a href="#Get-Familiar-with-Xcode" class="headerlink" title="Get Familiar with Xcode"></a>Get Familiar with Xcode</h4><p>Xcode包含创建应用程序所需的一切. 它组织所有创建应用程序的文件和资源. 它为代码和用户界面提供编辑器. 此外,Xcode允许构建,运行和调试应用程序 - 为iOS设备提供模拟器和强大的集成调试器.</p>
+<p>熟悉一下Xcode工作区的主要部分:</p>
+<ul>
+<li><strong>Navigator area.</strong> 提供对项目各个部分的快速访问.</li>
+<li><strong>Editor area.</strong> 允许编辑源代码,用户界面和其他资源.</li>
+<li><strong>Utility area.</strong> 提供有关选定项目的信息和对现成资源的访问. 实用区域分为两部分. 顶部是检查器窗格,可以在其中查看和编辑有关在导航器或编辑区域中选择的项目的信息. 底部是库窗格,可以在其中访问用户界面元素,代码片段和其他资源.</li>
+<li><strong>Toolbar.</strong> 用于构建和运行应用程序,查看正在运行的任务的进度以及配置工作环境.</li>
+</ul>
+<p><img src="http://p4stspod7.bkt.clouddn.com/BBUI_workspacewindow_callouts_2x.png" alt=""></p>
+<h4 id="Run-iOS-Simulator"><a href="#Run-iOS-Simulator" class="headerlink" title="Run iOS Simulator"></a>Run iOS Simulator</h4><p>由于是基于Xcode模板构建项目的,因此基本应用程序环境会自动设置. 即使没有编写任何代码,也可以构建并运行单一视图应用程序模板,而无需任何其他配置.</p>
+<p>要构建和运行应用程序,使用Xcode中包含的iOS模拟器应用程序.通过模拟器可以了解应用程序在设备上运行时的外观和行为.</p>
+<p>模拟器可以模拟许多不同类型的硬件 - 所有的屏幕尺寸和分辨率适用于iPad和iPhone - 这样可以在每个正在开发的设备上模拟您的应用程序. 在本课中,使用iPhone 7选项.</p>
+<p><strong>To run your app in the simulator</strong></p>
+<ol>
+<li>在Xcode工具栏的Scheme弹出菜单中,选择iPhone 7.</li>
+</ol>
+<p>“Scheme”弹出式菜单可选择要运行应用程序的模拟器或设备. 确保选择了iPhone 7模拟器,而不是iOS设备.</p>
+<p><img src="http://p4stspod7.bkt.clouddn.com/BBUI_schememenu_2x.png" alt=""></p>
+<ol>
+<li><p>点击位于Xcode工具栏左上角的运行按钮.</p>
+<p><img src="http://p4stspod7.bkt.clouddn.com/BBUI_toolbar_2x.png" alt=""></p>
+<p>或者,选择Product&gt; Run(或按Command-R).如果第一次运行应用程序,Xcode会询问是否希望在Mac上启用开发人员模式. 开发者模式允许Xcode访问某些调试功能,而无需您每次输入密码. 决定是否要启用开发人员模式并按照提示进行操作.</p>
+<p><img src="http://p4stspod7.bkt.clouddn.com/BBUI_developermode_2x.png" alt=""></p>
+<p>如果选择不启用开发人员模式,则稍后可能会要求输入密码. 这些课程假设开发者模式已启用.</p>
+</li>
+<li><p>在构建过程完成时观看的Xcode工具栏.</p>
+<p>Xcode在活动查看器中显示有关构建过程的消息,该消息位于工具栏的中间.</p>
+<p>Xcode完成构建项目后,模拟器会自动启动. 第一次启动可能需要一些时间.</p>
+<p>模拟器以指定的iPhone模式打开,然后启动应用程序. 最初,模拟器显示应用程序的启动屏幕,然后转换到应用程序的主界面. 在未修改的Single View Application模板中,启动屏幕和主界面完全相同.</p>
+<p><img src="http://p4stspod7.bkt.clouddn.com/BBUI_sim_blank_2x.png" alt=""></p>
+</li>
+</ol>
+<p>目前,单一视图应用程序模板并没有太多 - 它只是显示一个白色屏幕. 其他模板具有更复杂的行为. 在扩展它来制作自己的应用程序之前,了解模板的用途很重要. 在没有修改的情况下在模拟器中运行应用程序是开始理解的好方法.通过选择模拟器&gt;退出模拟器(或按Command-Q)退出模拟器.</p>
+<h4 id="Review-the-Source-Code"><a href="#Review-the-Source-Code" class="headerlink" title="Review the Source Code"></a>Review the Source Code</h4><p>Single View Application模板附带一些设置应用程序环境的源代码文件. 首先,看看<code>AppDelegate.swift</code>文件.</p>
+<p><strong>查看AppDelegate.swift源文件</strong></p>
+<ol>
+<li><p>确保项目导航器已在导航区域中打开.</p>
+<p><img src="http://p4stspod7.bkt.clouddn.com/BBUI_projectnavigator_2x.png" alt=""></p>
+</li>
+<li><p>如有必要,点击项目导航器中FoodTracker文件夹旁边的显示三角形.</p>
+</li>
+<li><p>选择AppDelegate.swift.</p>
+<p><img src="http://p4stspod7.bkt.clouddn.com/BBUI_appdelegate_file_2x.png" alt=""></p>
+</li>
+</ol>
+<h4 id="The-App-Delegate-Source-File"><a href="#The-App-Delegate-Source-File" class="headerlink" title="The App Delegate Source File"></a>The App Delegate Source File</h4><p>AppDelegate.swift源文件有两个主要功能:</p>
+<ul>
+<li>它定义<code>AppDelegate</code>类. 应用程序委托创建应用程序内容的绘制窗口,并提供一个位置来响应应用程序中的状态转换.</li>
+<li><p>它为应用程序创建入口点,并为应用程序提供输入事件的运行循环. 该工作由UIApplicationMain属性(@UIApplicationMain)完成,该属性出现在文件顶部.</p>
+<p>使用UIApplicationMain属性相当于调用UIApplicationMain函数并将AppDelegate类的名称作为委托类的名称传递. 作为响应,系统创建一个应用程序对象. 应用程序对象负责管理应用程序的生命周期. 系统还会创建AppDelegate类的实例,并将其分配给应用程序对象. 最后,系统启动应用程序.</p>
+</li>
+</ul>
+<p>每当创建一个新项目时,AppDelegate类都会自动创建. 除非正在做非常不寻常的事情,否则使用Xcode提供的此类来初始化应用程序并对应用程序级别的事件做出响应. AppDelegate类采用UIApplicationDelegate协议. 该协议定义了许多用于设置应用程序,响应应用程序状态更改以及处理其他应用程序级事件的方法.</p>
+<p>AppDelegate类包含一个属性:窗口.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> window: <span class="type">UIWindow</span>?</span><br></pre></td></tr></table></figure>
+<p>该属性存储对应用程序窗口的引用. 此窗口代表您的应用视图层次结构的根. 这是您所有应用内容的绘制位置. 注意,window属性是可选的,这意味着在某个点它可能没有值(nil).</p>
+<p><code>AppDelegate</code>类还包含以下委托方法的stub实现:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">application</span><span class="params">(<span class="number">_</span> application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?)</span></span> -&gt; <span class="type">Bool</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">applicationWillResignActive</span><span class="params">(<span class="number">_</span> application: UIApplication)</span></span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">applicationDidEnterBackground</span><span class="params">(<span class="number">_</span> application: UIApplication)</span></span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">applicationWillEnterForeground</span><span class="params">(<span class="number">_</span> application: UIApplication)</span></span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">applicationDidBecomeActive</span><span class="params">(<span class="number">_</span> application: UIApplication)</span></span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">applicationWillTerminate</span><span class="params">(<span class="number">_</span> application: UIApplication)</span></span></span><br></pre></td></tr></table></figure>
+<p>这些方法让应用程序对象与应用程序委托进行通信. 在应用程序状态转换过程中(例如,应用程序启动,转换到后台和应用程序终止),应用程序对象会调用相应的委托方法,为应用程序提供一个响应的机会.</p>
+<p>每个委托方法都有一个默认行为. 如果将模板实现留空或从AppDelegate类中将其删除,则无论何时调用该方法,都会获得默认行为. 或者,可以将自己的代码添加到stub方法,以定义在调用方法时执行的自定义行为.</p>
+<p>该模板还为每个stub方法提供注释. 这些注释描述了这些方法如何被应用使用. 可以使用stub方法和注释作为设计许多常见应用程序级行为的引导.</p>
+<h4 id="The-View-Controller-Source-File"><a href="#The-View-Controller-Source-File" class="headerlink" title="The View Controller Source File"></a>The View Controller Source File</h4><p><img src="http://p4stspod7.bkt.clouddn.com/BBUI_viewcontroller_file_2x.png" alt=""></p>
+<p>该文件定义了名为<code>ViewController</code>的<code>UIViewController</code>的自定义<a href="https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/GlossaryDefinitions.html#//apple_ref/doc/uid/TP40015214-CH12-SW14" target="_blank" rel="noopener">subclass</a>. 现在,这个类只是继承<code>UIViewController</code>定义的所有行为. 要覆盖或扩展该行为,可以重写在<code>UIViewController</code>上定义的方法.正如在<code>ViewController.swift</code>文件中看到的那样,模板的实现会覆盖<code>viewDidLoad()</code>和<code>didReceiveMemoryWarning()</code>方法; 然而,除了调用这些方法的<code>UIViewController</code>版本外,模板的存根实现还没有做任何事情.可以添加自己的代码来自定义视图控制器对这些事件的响应.尽管模板附带了<code>didReceiveMemoryWarning()</code>方法,但不需要在这些课程中使用,因此删除它.<code>ViewController.swift</code>代码看起来像这样:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">        <span class="comment">// Do any additional setup after loading the view, typically from a nib.</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Open-Your-Storyboard"><a href="#Open-Your-Storyboard" class="headerlink" title="Open Your Storyboard"></a>Open Your Storyboard</h4><p>准备好开始为应用制作storyboard.storyboard是应用程序用户界面的可视化表示,显示内容的屏幕以及它们之间的转换.可以使用storyboard来展示驱动应用程序的流程或故事.可以准确了解构建时正在构建的内容,立即获得有关正在运行和未运行的反馈,并立即对用户界面进行可视化更改.</p>
+<p><strong>To open your storyboard</strong></p>
+<p>未完待续。。。</p>
+<h3 id="Connect-the-UI-to-Code"><a href="#Connect-the-UI-to-Code" class="headerlink" title="Connect the UI to Code"></a>Connect the UI to Code</h3><h3 id="Work-With-View-Controllers"><a href="#Work-With-View-Controllers" class="headerlink" title="Work With View Controllers"></a>Work With View Controllers</h3><h3 id="Implement-a-Custom-Control"><a href="#Implement-a-Custom-Control" class="headerlink" title="Implement a Custom Control"></a>Implement a Custom Control</h3><h3 id="Define-Your-Data-Model"><a href="#Define-Your-Data-Model" class="headerlink" title="Define Your Data Model"></a>Define Your Data Model</h3><hr>
+<h2 id="Working-with-Table-Views"><a href="#Working-with-Table-Views" class="headerlink" title="Working with Table Views"></a>Working with Table Views</h2><h3 id="Create-a-Table-View"><a href="#Create-a-Table-View" class="headerlink" title="Create a Table View"></a>Create a Table View</h3><h3 id="Implement-Navigation"><a href="#Implement-Navigation" class="headerlink" title="Implement Navigation"></a>Implement Navigation</h3><h3 id="Implement-Edit-and-Delete-Behavior"><a href="#Implement-Edit-and-Delete-Behavior" class="headerlink" title="Implement Edit and Delete Behavior"></a>Implement Edit and Delete Behavior</h3><h3 id="Persist-Data"><a href="#Persist-Data" class="headerlink" title="Persist Data"></a>Persist Data</h3><hr>
+<h2 id="What’s-Next"><a href="#What’s-Next" class="headerlink" title="What’s Next"></a>What’s Next</h2><h3 id="Where-to-Go-from-Here"><a href="#Where-to-Go-from-Here" class="headerlink" title="Where to Go from Here"></a>Where to Go from Here</h3><hr>
+<h2 id="iOS-and-Swift-Terminology"><a href="#iOS-and-Swift-Terminology" class="headerlink" title="iOS and Swift Terminology"></a>iOS and Swift Terminology</h2><h3 id="Glossary"><a href="#Glossary" class="headerlink" title="Glossary"></a>Glossary</h3><hr>
+<h2 id="Revision-History"><a href="#Revision-History" class="headerlink" title="Revision History"></a>Revision History</h2><h3 id="Document-Revision-History"><a href="#Document-Revision-History" class="headerlink" title="Document Revision History"></a>Document Revision History</h3>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Swift/" rel="tag"># Swift</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/06/MVVM-in-Swift/" rel="next" title="MVVM in Swift">
+                <i class="fa fa-chevron-left"></i> MVVM in Swift
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">wu83qing</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/wu83qing" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:ww19840906@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Getting-Started"><span class="nav-number">1.</span> <span class="nav-text">Getting Started</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Jump-Right-In"><span class="nav-number">1.1.</span> <span class="nav-text">Jump Right In</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Prerequisites-先决条件"><span class="nav-number">1.1.1.</span> <span class="nav-text">Prerequisites/先决条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#About-the-Lessons-关于课程"><span class="nav-number">1.1.2.</span> <span class="nav-text">About the Lessons/关于课程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Get-the-Tools-获取工具"><span class="nav-number">1.1.3.</span> <span class="nav-text">Get the Tools/获取工具</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Building-the-UI"><span class="nav-number">2.</span> <span class="nav-text">Building the UI</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Build-a-Basic-UI"><span class="nav-number">2.1.</span> <span class="nav-text">Build a Basic UI</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Learning-Objectives-学习目标"><span class="nav-number">2.1.1.</span> <span class="nav-text">Learning Objectives/学习目标</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-New-Project"><span class="nav-number">2.2.</span> <span class="nav-text">Create a New Project</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Get-Familiar-with-Xcode"><span class="nav-number">2.2.1.</span> <span class="nav-text">Get Familiar with Xcode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Run-iOS-Simulator"><span class="nav-number">2.2.2.</span> <span class="nav-text">Run iOS Simulator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Review-the-Source-Code"><span class="nav-number">2.2.3.</span> <span class="nav-text">Review the Source Code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#The-App-Delegate-Source-File"><span class="nav-number">2.2.4.</span> <span class="nav-text">The App Delegate Source File</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#The-View-Controller-Source-File"><span class="nav-number">2.2.5.</span> <span class="nav-text">The View Controller Source File</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Open-Your-Storyboard"><span class="nav-number">2.2.6.</span> <span class="nav-text">Open Your Storyboard</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Connect-the-UI-to-Code"><span class="nav-number">2.3.</span> <span class="nav-text">Connect the UI to Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Work-With-View-Controllers"><span class="nav-number">2.4.</span> <span class="nav-text">Work With View Controllers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implement-a-Custom-Control"><span class="nav-number">2.5.</span> <span class="nav-text">Implement a Custom Control</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Define-Your-Data-Model"><span class="nav-number">2.6.</span> <span class="nav-text">Define Your Data Model</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Working-with-Table-Views"><span class="nav-number">3.</span> <span class="nav-text">Working with Table Views</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-Table-View"><span class="nav-number">3.1.</span> <span class="nav-text">Create a Table View</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implement-Navigation"><span class="nav-number">3.2.</span> <span class="nav-text">Implement Navigation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implement-Edit-and-Delete-Behavior"><span class="nav-number">3.3.</span> <span class="nav-text">Implement Edit and Delete Behavior</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Persist-Data"><span class="nav-number">3.4.</span> <span class="nav-text">Persist Data</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What’s-Next"><span class="nav-number">4.</span> <span class="nav-text">What’s Next</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Where-to-Go-from-Here"><span class="nav-number">4.1.</span> <span class="nav-text">Where to Go from Here</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS-and-Swift-Terminology"><span class="nav-number">5.</span> <span class="nav-text">iOS and Swift Terminology</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Glossary"><span class="nav-number">5.1.</span> <span class="nav-text">Glossary</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Revision-History"><span class="nav-number">6.</span> <span class="nav-text">Revision History</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Document-Revision-History"><span class="nav-number">6.1.</span> <span class="nav-text">Document Revision History</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wu83qing</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'wu83qing',
+            repo: 'https://github.com/wu83qing/wu83qing.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '8d12e74845591e111ca9ba936e2e9c95f29a253a',
+            
+                client_id: '5bedacd406902c5e2550'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
