@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.wu83qing.com/2018/03/06/MVVM-in-Swift/</loc>
+    
+    <lastmod>2018-03-28T03:43:44.093Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.wu83qing.com/2018/02/28/The-Swift-Programming-Language-Swift-4-1-%E7%BF%BB%E8%AF%91/</loc>
     
-    <lastmod>2018-03-14T08:05:06.090Z</lastmod>
+    <lastmod>2018-03-17T09:12:06.898Z</lastmod>
     
   </url>
   
@@ -12,13 +19,6 @@
     <loc>http://www.wu83qing.com/2018/03/08/Start-Developing-iOS-Apps-Swift/</loc>
     
     <lastmod>2018-03-08T09:34:11.204Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wu83qing.com/2018/03/06/MVVM-in-Swift/</loc>
-    
-    <lastmod>2018-03-06T07:16:41.670Z</lastmod>
     
   </url>
   
