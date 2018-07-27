@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="PWAs," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="伴随着iOS 11.3,Apple悄悄的增加了对”Progressive Web Apps(渐进式网络应用程序)”(PWA)idea 新技术d的基本支持.现在是时候看看它们是如何工作的,它们的能力和挑战是什么,以及如果您已经有已发布的PWA,您需要知道什么.  &amp;gt;  这个应用程序是一个PWA,它看起来全屏-具有离线能力,显示在iPad上.它也可以作为App Store中的任何其他原生应用程序">
+<meta name="keywords" content="PWAs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Progressive Web Apps on iOS">
+<meta property="og:url" content="http://www.wu83qing.com/2018/07/26/Progressive Web Apps on iOS/index.html">
+<meta property="og:site_name" content="wu83qing的技术博客">
+<meta property="og:description" content="伴随着iOS 11.3,Apple悄悄的增加了对”Progressive Web Apps(渐进式网络应用程序)”(PWA)idea 新技术d的基本支持.现在是时候看看它们是如何工作的,它们的能力和挑战是什么,以及如果您已经有已发布的PWA,您需要知道什么.  &amp;gt;  这个应用程序是一个PWA,它看起来全屏-具有离线能力,显示在iPad上.它也可以作为App Store中的任何其他原生应用程序">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/1%2A3Lym8IvTuv0LbghC6wtp8w.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/1%2AgkFdtpvhCNpyMpyJMt2m1w.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/1%2AS1Pq8fatoZePAI1Mj0Hbnw.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/1%2AcTRvyVCe5TDVcBd7Pcpv8A.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/1%2AH-lKB3P61zF7JbvR9U27IA.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/1%2ASFaJKnpVKMtzfpc7JB3ffw.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/1%2AWIMnEGBboGMRDQqGgjmhdg.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/1%2Acnt8L_9krSA9Ho5sPqAJyQ.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/1%2AwX58NoKXFcM--KvyZtf50w.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/1%2A6y726F_XaN9D4d4pWtMZLg.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/1%2AeRV7cef0bvQAdyD4GrP2UA.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/1%2AEjFWQXOx_4VPDgUi_6ON-g.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/1%2AavmFjEakdHZkHQ9W93cX2w.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/1%2AeQkE6a7NvJkUUSKIdE3ipA.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/1%2A7vTgDgXr09comby-gservg.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/1%2ArSAj2_nDz7pfeOXgv9RbtQ.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/1%2Ay5MNr5Zt3c5c7P1cUMcSMQ.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/1%2AG2oGB-1ff9Am8zZv9SW1xQ.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/1%2AZQrOwdOTgE8v2tQ-is_ptw.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/1%2AZu7peQZHITFRzGs8ud0Vbg.png">
+<meta property="og:updated_time" content="2018-07-27T09:59:37.693Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Progressive Web Apps on iOS">
+<meta name="twitter:description" content="伴随着iOS 11.3,Apple悄悄的增加了对”Progressive Web Apps(渐进式网络应用程序)”(PWA)idea 新技术d的基本支持.现在是时候看看它们是如何工作的,它们的能力和挑战是什么,以及如果您已经有已发布的PWA,您需要知道什么.  &amp;gt;  这个应用程序是一个PWA,它看起来全屏-具有离线能力,显示在iPad上.它也可以作为App Store中的任何其他原生应用程序">
+<meta name="twitter:image" content="http://p4stspod7.bkt.clouddn.com/1%2A3Lym8IvTuv0LbghC6wtp8w.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.wu83qing.com/2018/07/26/Progressive Web Apps on iOS/"/>
+
+
+
+
+
+  <title>Progressive Web Apps on iOS | wu83qing的技术博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">wu83qing的技术博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">编程 技术 生活 人生</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wu83qing.com/2018/07/26/Progressive Web Apps on iOS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wu83qing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wu83qing的技术博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Progressive Web Apps on iOS</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-26T16:24:54+08:00">
+                2018-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/26/Progressive Web Apps on iOS/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/07/26/Progressive Web Apps on iOS/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>伴随着iOS 11.3,Apple悄悄的增加了对”Progressive Web Apps(渐进式网络应用程序)”(PWA)idea 新技术d的基本支持.现在是时候看看它们是如何工作的,它们的能力和挑战是什么,以及如果您已经有已发布的PWA,您需要知道什么.</strong></p>
+<p><img src="http://p4stspod7.bkt.clouddn.com/1%2A3Lym8IvTuv0LbghC6wtp8w.png" alt=""></p>
+<p>&gt;</p>
+<blockquote>
+<p><em>这个应用程序是一个PWA,它看起来全屏-具有离线能力,显示在iPad上.它也可以作为App Store中的任何其他原生应用程序出现在iPad Dock中.</em></p>
+</blockquote>
+<p>如果你不知道什么是PWA,它没有明确的定义.但它是一个使用Web技术创建的应用程序 - 无需打包或签名 - 可以离线工作,并且可以选择安装在操作系统中,它的外观和行为与任何其他应用程序一样.</p>
+<p>大多数平台都没有涉及App Store流程 - 只有Edge / Windows 10正在强制PWA进入商店.</p>
+<p>所以你是对的,<strong>你现在可以在没有App Store审核下的iOS上安装应用程序.</strong>这可能是Apple根本没有提及这种新能力的原因之一; 他们可能不想混淆用户.Safari上的发行说明甚至没有提到这些技术.</p>
+<p><img src="http://p4stspod7.bkt.clouddn.com/1%2AgkFdtpvhCNpyMpyJMt2m1w.png" alt=""></p>
+<blockquote>
+<p><em>上图中您能说出原生谷歌地图应用与PWA版本之间的区别吗？</em></p>
+</blockquote>
+<p>###不管怎样,Apple不是PWA的创造者吗？<br>我们在这里说实话; 虽然Google与Chrome团队一起创造了PWA这个词,但这个想法最初是通过在original iPhone OS上的Safari上提供的.在2007年,Steve Jobs在WWDC中宣布了“另外一件事”:如何为原生 iPhone开发apps,有一个惊喜,这就是web apps! 那时App Store并不在原生应用开发的路线图中,并且这一年的设备下无法在本机中使用native SDK.从Apple的角度来看,即使在今天,PWA只是“来自主屏幕下的web apps”,而这个icon也被称为WebClip.</p>
+<p>11年前这个想法并没有得到太多的关注,苹果视乎也忘了在平台上更新,所以虽然它有10多年的历史,但这些技术仍然存在错误和不一致的问题.几年后,其他平台克隆了这个想法,包括诺基亚N9上的MeeGo浏览器和Android上的Chrome.</p>
+<p>Chrome帮助改进了技术以提供更好的体验,主要是使用Service Workers和Web App Manifest规范.从今天的iOS 11.3开始(2018年3月30日),Apple正在支持Chrome,Firefox, Samsung Internet,UC浏览器和Opera(主要仅限Android).其他桌面浏览器支持Service Workers,但Web App Manifest支持正在进行中.</p>
+<p><img src="http://p4stspod7.bkt.clouddn.com/1%2AS1Pq8fatoZePAI1Mj0Hbnw.png" alt=""></p>
+<blockquote>
+<p><em>Steve Jobs在WWDC 07中使用第一部iPhone呈现了PWA(具有不同的名称)</em></p>
+</blockquote>
+<h3 id="等一下-所以apps是没有通过任何App-Store质量测试-对吧？🤔"><a href="#等一下-所以apps是没有通过任何App-Store质量测试-对吧？🤔" class="headerlink" title="等一下,所以apps是没有通过任何App Store质量测试,对吧？🤔"></a>等一下,所以apps是没有通过任何App Store质量测试,对吧？🤔</h3><p>对,这是正确的.但是,app仅在Browser或者具有安全性和具有执行模型的Web Platform下运行.这意味着您可以“publish”未在商店中批准的apps,例如公司员工的internal app(内部app) (是的,也包括成人内容),但您无法访问本机原始功能,例如iPhone X上的Face ID 或ARKit用于增强现实.或者至少,您需要等待Web Platform支持这些新功能.</p>
+<p>PWA能在Safari内运行任意website,也可以在独立模式下运行,就像系统中的任何其他apps一样.如果您想知道PWAs是否正在使用Web视图,通过Safari或已安装的图标就可以确定是不是这种情况,但在其他浏览器中浏览时会出现这种情况或使用其应用程序内的浏览器,比如在Facebook中。</p>
+<h3 id="iOS上的PWAs能力"><a href="#iOS上的PWAs能力" class="headerlink" title="iOS上的PWAs能力"></a>iOS上的PWAs能力</h3><p>使用iOS上的Web Platform,您可以访问:</p>
+<ul>
+<li>地理位置</li>
+<li>传感器(磁强计,加速度计,陀螺仪)</li>
+<li>相机</li>
+<li>音频输出</li>
+<li>语音合成(仅连接耳机)</li>
+<li>Apple Pay</li>
+<li>WebAssembly,WebRTC,WebGL以及许多其他实验性功能.<br><img src="http://p4stspod7.bkt.clouddn.com/1%2AcTRvyVCe5TDVcBd7Pcpv8A.png" alt=""></li>
+</ul>
+<blockquote>
+<p><em>你能在iPhone上检测出这些图标都是PWAs吗？</em></p>
+</blockquote>
+<h3 id="PWAs与原生iOS应用程序相比的局限性"><a href="#PWAs与原生iOS应用程序相比的局限性" class="headerlink" title="PWAs与原生iOS应用程序相比的局限性"></a>PWAs与原生iOS应用程序相比的局限性</h3><ul>
+<li>应用程序(app)可以存储最多50 Mb的离线数据和文件</li>
+<li>如果用户几周没有使用该应用程序(app),iOS将释放应用程序的文件.主屏幕上的图标仍然存在,访问时,应用程序将再次下载</li>
+<li>无法访问某些功能,例如Bluetooth,serial, Beacons,Touch ID,Face ID,ARKit,高度计传感器,电池信息</li>
+<li>无法在后台访问执行代码</li>
+<li>无法访问私人信息(联系人,location),也无法访问native social apps</li>
+<li>无法访问In App Payments和许多其他基于Apple的服务</li>
+<li>在iPad上,无法使用Side或Split Views与其他apps共享屏幕,PWAs将始终占据整个屏幕</li>
+<li>没有Push Notifications,没有 Icon Badge或Siri集成<br><img src="http://p4stspod7.bkt.clouddn.com/1%2AH-lKB3P61zF7JbvR9U27IA.png" alt=""></li>
+</ul>
+<blockquote>
+<p><em>即使您安装了带有图标且名称为Tinder的PWA,Siri也找不到它</em></p>
+</blockquote>
+<h3 id="哪些PWAs可以在Android上执行而不能在iOS上执行"><a href="#哪些PWAs可以在Android上执行而不能在iOS上执行" class="headerlink" title="哪些PWAs可以在Android上执行而不能在iOS上执行"></a>哪些PWAs可以在Android上执行而不能在iOS上执行</h3><ul>
+<li>在Android上,您可以存储超过50 Mb</li>
+<li>如果您不使用该应用程序,Android不会删除文件,但它可以在有存储压力下删除文件.此外,如果用户安装或使用很多,PWA可以请求持久存储</li>
+<li>BLE设备的蓝牙访问</li>
+<li>用于访问本机共享对话框的Web共享</li>
+<li>语音识别</li>
+<li>后台同步和Web Push Notifications</li>
+<li>Web App Banner 邀请用户安装应用程序</li>
+<li>您可以自定义启动画面和所需的方向</li>
+<li>使用WebAPK和Chrome,用户无法安装多个PWA实例</li>
+<li>使用WebAPK和Chrome,PWAs会显示在“设置”下,您可以看到数据使用情况; 但在iOS上这一切都出现在Safari下</li>
+<li>使用WebAPK和Chrome,PWA管理其URL的地址,因此如果您获得PWA的链接,它将以独立模式打开,而不是在浏览器窗口中打开.</li>
+</ul>
+<h3 id="哪些PWAs可以在iOS上执行而不能在Android上执行"><a href="#哪些PWAs可以在iOS上执行而不能在Android上执行" class="headerlink" title="哪些PWAs可以在iOS上执行而不能在Android上执行"></a>哪些PWAs可以在iOS上执行而不能在Android上执行</h3><ul>
+<li>用户可以在安装之前更改图标的名称</li>
+<li>它们可以在配置文件中配置,因此企业用户可以从公司接收PWA快捷方式.Safari使用术语WebClip来实现此功能;但它似乎没有阅读Web App Manifest(规范文档)</li>
+</ul>
+<p><img src="http://p4stspod7.bkt.clouddn.com/1%2ASFaJKnpVKMtzfpc7JB3ffw.png" alt=""></p>
+<blockquote>
+<p><em>Configuration Profiles可以 include WebClip 或 PWA icons</em></p>
+</blockquote>
+<p>###但如果没有App Store,如何安装PWA？⚠️<br>这是iOS上最重大的挑战之一,因为没有来自Safari的提示或邀请(在Android上称为Web App Banners).因此,用户必须以某种方式在Safari中转到您的PWA URL,然后手动按“Share”图标,然后“Add to Home Screen”.没有征兆的表明您正在访问的网站来自PWA.<br><img src="http://p4stspod7.bkt.clouddn.com/1%2AWIMnEGBboGMRDQqGgjmhdg.png" alt=""></p>
+<blockquote>
+<p><em>当您访问Tinder.com时,您可以忽略顶部的native app横幅安装提示,然后单击“Share”,“Add to Home Screen”.如果您要提供用户安装说明,请记住该按钮是根据系统语言进行本地化的</em></p>
+</blockquote>
+<p>此外,App Store中提供的其他浏览器(如Chrome,Firefox,Brave或Edge)将无法安装PWA或使用Service Workers.</p>
+<p>一旦安装,它将看起来像主屏幕上的任何其他图标.但它没有3D Touch菜单.如果再次安装相同的PWA,则会有另一个图标指向同一个PWA(幸运的是,已安装的文件将被共享).</p>
+<p>此外,许多web apps都有一个链接,可以从App Store安装native app,甚至在PWA内部仍然显示,例如Tinder示例:<br><img src="http://p4stspod7.bkt.clouddn.com/1%2Acnt8L_9krSA9Ho5sPqAJyQ.png" alt=""></p>
+<blockquote>
+<p><em>我已经有了app,对吗？</em></p>
+</blockquote>
+<p>###我已经有了PWA,它会立即在iOS上运行吗？<br><strong>用户更新到iOS 11.3后,您的PWA即可立即安装.</strong>您无需为iOS选择加入.每个PWA都可以安装<strong>.但这并不意味着一切都会按预期运作.</strong><br><img src="http://p4stspod7.bkt.clouddn.com/1%2AwX58NoKXFcM--KvyZtf50w.png" alt=""></p>
+<blockquote>
+<p><em>优步PWA看起来非常nice.但是,如果您单击“Login”或“</em>Continue<em>”,授权将进入Safari,因此您不在独立的PWA中…因此,它没用.</em></p>
+</blockquote>
+<p>如果您正在阅读本文,您可能已经在测试版中看过我之前的文章:<a href="https://medium.com/@firt/pwas-are-coming-to-ios-11-3-cupertino-we-have-a-problem-2ff49fd7d6ea" target="_blank" rel="noopener">Cupertino we have a problem</a>..不幸的是,我在Betas期间遇到的大多数错误和挑战仍然在 final version中一直存在😒<br><img src="http://p4stspod7.bkt.clouddn.com/1%2A6y726F_XaN9D4d4pWtMZLg.png" alt=""></p>
+<blockquote>
+<p><em>如果您不做任何事情,您的PWA可能会出现黑色黑色状态栏,因此用户将看不到时间,电池状态或任何通知😣</em></p>
+</blockquote>
+<p>###什么行不通</p>
+<ul>
+<li>fullscreen(最大化)和minimal-ui (最小化)不会在iOS上工作,fullscreen需要独立触发,minimal-ui只是Safari的快捷方式.你可以使用 cover-fit viewport 扩展或已弃用的meta tag来获得相似的全屏(状态栏将存在,但在您的app上).</li>
+<li>如果您依赖后台同步,则应该有一个备份实现</li>
+<li>无法锁定PWA的方向</li>
+<li>状态栏上的主题颜色( theme-color)样式将不起作用; 您可以使用已弃用的meta tag用于黑色或白色状态栏,也可以使用CSS / HTML技巧来模拟主题颜色(theme-color).</li>
+</ul>
+<p><img src="http://p4stspod7.bkt.clouddn.com/1%2AeRV7cef0bvQAdyD4GrP2UA.png" alt=""></p>
+<blockquote>
+<p><em>星巴克PWA在“Sign up”部分没有后退按钮,因此无法取消当前操作,你只能重新加载PWA</em></p>
+</blockquote>
+<ul>
+<li>如果您的PWA在apps的UI中没有后退手势或按钮,则用户将无法在屏幕之间导航</li>
+<li>您的Android图标在iOS上可能看起来很糟糕,因为Apple不支持透明图标.</li>
+</ul>
+<p><img src="http://p4stspod7.bkt.clouddn.com/1%2AEjFWQXOx_4VPDgUi_6ON-g.png" alt=""></p>
+<blockquote>
+<p><em>Google Keep PWA依赖于Web App Manifest的icons,因此在iOS上它只是一个屏幕截图.您必须通过Apple非标准链接标记提供iOS icons</em></p>
+</blockquote>
+<ul>
+<li>此外,iOS不是从Web App Manifest中获取icons,而是从apple-touch-icon链接中获取图标.如果您未提供链接标记,则会将屏幕截图用于icons(参阅Google Keep PWA示例)</li>
+<li>没有启动画面,因此Manifest中的大多数颜色属性都会被忽略</li>
+<li>不会触发任何Manifest事件,因此如果您通过这些渠道跟踪安装,它将无法在iOS上运行(但您可以检查navigator.standalone).</li>
+</ul>
+<p>###要记住什么</p>
+<ul>
+<li><p>您的PWA不会在会话之间保持状态,如果用户退出PWA,它将在返回时重新启动,因此如果您需要用户验证电子邮件,SMS或执行two-factor身份验证,考虑到这一点,需要提供适当的解决方案.<br><img src="http://p4stspod7.bkt.clouddn.com/1%2AavmFjEakdHZkHQ9W93cX2w.png" alt=""></p>
+<blockquote>
+<p><em>所有无效的PWAs都将显示为白色屏幕,无论如何.记住它们没有运行,如果你返回,它们将从头开始</em></p>
+</blockquote>
+<p><img src="http://p4stspod7.bkt.clouddn.com/1%2AeQkE6a7NvJkUUSKIdE3ipA.png" alt=""></p>
+<blockquote>
+<p><em>iPad上出现相同的白屏问题</em></p>
+</blockquote>
+<p>​</p>
+</li>
+<li><p>历史上的PWAs没有任何截图,所以不幸的是它们看起来都像白色屏幕</p>
+</li>
+<li><p>当您的app以独立模式运行时会出现错误.不要依赖Safari进行测试.</p>
+<p><img src="http://p4stspod7.bkt.clouddn.com/1%2A7vTgDgXr09comby-gservg.png" alt=""></p>
+<p>​</p>
+<blockquote>
+<p><em>Nasa’s尝试为PWA使用notch区域,但发现了一些UX问题</em></p>
+</blockquote>
+<p>​</p>
+</li>
+<li><p>如果想为你的app在iPhone X上使用notch区域,则需要对HTML和CSS进行一些更改.如果你做得不对,可能会发生奇怪的事情</p>
+</li>
+<li><p>有时,您添加到主屏幕并未使用manifest,因此只安装了一个快捷方式☹️.<br><img src="http://p4stspod7.bkt.clouddn.com/1%2ArSAj2_nDz7pfeOXgv9RbtQ.png" alt=""></p>
+<p>​</p>
+<blockquote>
+<p><em>星巴克品牌的谷歌地图？不,只是打开了PWAs后在那一行; 出现这些奇怪的东西在history中,是因为一个app加载了错误的URL</em></p>
+</blockquote>
+</li>
+<li><p>Safari和主屏幕快捷方式共享相同的Service Worker注册(但不是实例)和缓存的文件.Safari 的View Controller(例如Twitter中的 In-App Browser)支持Service Worker和cache,但它似乎在session关闭后删除所有数据.</p>
+</li>
+<li><p>每个虚拟浏览器(如Chrome或Firefox)以及使用WebView的每个app(如Facebook In-App Browser)都不支持Service Workers(它在测试期间工作),因此不会安装任何文件.我的猜测是WKWebView可能需要一个API来让app所有者决定如何处理Service Worker,但……谁知道.<br><img src="http://p4stspod7.bkt.clouddn.com/1%2Ay5MNr5Zt3c5c7P1cUMcSMQ.png" alt=""></p>
+<blockquote>
+<p><em>使用Safari TP,您可以在Safari和“Web”(主屏幕上的PWA)上调试客户端和service worker.此外,通过网络连接是很方便的！</em></p>
+</blockquote>
+</li>
+<li><p>要在iOS上调试Service Workers,您需要安装Safari技术预览版或Safari 11.1,以及macOS 10.11.5,10.12.6和10.13.4更新.<br><img src="http://p4stspod7.bkt.clouddn.com/1%2AG2oGB-1ff9Am8zZv9SW1xQ.png" alt=""></p>
+<blockquote>
+<p><em>Service Worker’s inspector仍在试验中; 例如,不支持查看缓存存储内容</em></p>
+</blockquote>
+<p><img src="http://p4stspod7.bkt.clouddn.com/1%2AZQrOwdOTgE8v2tQ-is_ptw.png" alt=""></p>
+</li>
+<li><p>可以从Experimental下的设置中禁用Service Workers(默认情况下已启用)<br><img src="http://p4stspod7.bkt.clouddn.com/1%2AZu7peQZHITFRzGs8ud0Vbg.png" alt=""></p>
+<blockquote>
+<p><em>为什么是空的应用程序？</em></p>
+</blockquote>
+</li>
+<li><p>有时,当您同时打开多个PWAs时,iOS任务栏会变得疯狂,在历史记录中显示没有图标或标题的“ghosts” apps</p>
+</li>
+</ul>
+<blockquote>
+<p><em>作者:<a href="https://twitter.com/firt" target="_blank" rel="noopener">@firt</a></em><br><em>原文链接: <a href="https://medium.com/@firt/progressive-web-apps-on-ios-are-here-d00430dee3a7" target="_blank" rel="noopener">https://medium.com/@firt/progressive-web-apps-on-ios-are-here-d00430dee3a7</a></em><br><em>翻译:@wu83qing</em><br><em>校准:@wu83qing</em></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PWAs/" rel="tag"># PWAs</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/08/Start-Developing-iOS-Apps-Swift/" rel="next" title="Start Developing iOS Apps (Swift) 精简版">
+                <i class="fa fa-chevron-left"></i> Start Developing iOS Apps (Swift) 精简版
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">wu83qing</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/wu83qing" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:ww19840906@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#等一下-所以apps是没有通过任何App-Store质量测试-对吧？🤔"><span class="nav-number">1.</span> <span class="nav-text">等一下,所以apps是没有通过任何App Store质量测试,对吧？🤔</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iOS上的PWAs能力"><span class="nav-number">2.</span> <span class="nav-text">iOS上的PWAs能力</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PWAs与原生iOS应用程序相比的局限性"><span class="nav-number">3.</span> <span class="nav-text">PWAs与原生iOS应用程序相比的局限性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#哪些PWAs可以在Android上执行而不能在iOS上执行"><span class="nav-number">4.</span> <span class="nav-text">哪些PWAs可以在Android上执行而不能在iOS上执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#哪些PWAs可以在iOS上执行而不能在Android上执行"><span class="nav-number">5.</span> <span class="nav-text">哪些PWAs可以在iOS上执行而不能在Android上执行</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wu83qing</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'wu83qing',
+            repo: 'https://github.com/wu83qing/wu83qing.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '8d12e74845591e111ca9ba936e2e9c95f29a253a',
+            
+                client_id: '5bedacd406902c5e2550'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
