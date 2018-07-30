@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="SiriKit," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Siri是Apple的智能个人助理,它允许你使用语音与iOS,watchOS,tvOS和macOS设备进行交互.已经被数百万人使用,这项技术将继续增长;事实上,MarketsAndMarkets预测到2023年语音和语音识别市场的价值将达到 达到183亿美元.为了继续在这个市场中茁壮成长,Apple使开发人员可以更轻松的使用SiriKit与他们的apps集成. 本系列将探讨SiriKit,为什么它">
+<meta name="keywords" content="SiriKit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SiriKit Part 1: Hey Siri, How Do I Get Started?">
+<meta property="og:url" content="http://www.wu83qing.com/2018/07/30/SiriKit-Part-1-Hey-Siri-How-Do-I-Get-Started/index.html">
+<meta property="og:site_name" content="wu83qing的技术博客">
+<meta property="og:description" content="Siri是Apple的智能个人助理,它允许你使用语音与iOS,watchOS,tvOS和macOS设备进行交互.已经被数百万人使用,这项技术将继续增长;事实上,MarketsAndMarkets预测到2023年语音和语音识别市场的价值将达到 达到183亿美元.为了继续在这个市场中茁壮成长,Apple使开发人员可以更轻松的使用SiriKit与他们的apps集成. 本系列将探讨SiriKit,为什么它">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/xcode-siri-capability.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/xcode-add-intents-extension.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/xcode-extension-infoplist.png">
+<meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/xcode-scheme-trick.png">
+<meta property="og:updated_time" content="2018-07-30T09:19:08.377Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SiriKit Part 1: Hey Siri, How Do I Get Started?">
+<meta name="twitter:description" content="Siri是Apple的智能个人助理,它允许你使用语音与iOS,watchOS,tvOS和macOS设备进行交互.已经被数百万人使用,这项技术将继续增长;事实上,MarketsAndMarkets预测到2023年语音和语音识别市场的价值将达到 达到183亿美元.为了继续在这个市场中茁壮成长,Apple使开发人员可以更轻松的使用SiriKit与他们的apps集成. 本系列将探讨SiriKit,为什么它">
+<meta name="twitter:image" content="http://p4stspod7.bkt.clouddn.com/xcode-siri-capability.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.wu83qing.com/2018/07/30/SiriKit-Part-1-Hey-Siri-How-Do-I-Get-Started/"/>
+
+
+
+
+
+  <title>SiriKit Part 1: Hey Siri, How Do I Get Started? | wu83qing的技术博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">wu83qing的技术博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">编程 技术 生活 人生</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wu83qing.com/2018/07/30/SiriKit-Part-1-Hey-Siri-How-Do-I-Get-Started/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wu83qing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wu83qing的技术博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SiriKit Part 1: Hey Siri, How Do I Get Started?</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-30T11:32:39+08:00">
+                2018-07-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/30/SiriKit-Part-1-Hey-Siri-How-Do-I-Get-Started/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/07/30/SiriKit-Part-1-Hey-Siri-How-Do-I-Get-Started/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Siri是Apple的智能个人助理,它允许你使用语音与iOS,watchOS,tvOS和macOS设备进行交互.已经被数百万人使用,这项技术将继续增长;事实上,MarketsAndMarkets预测到2023年语音和语音识别市场的价值将达到 <a href="http://www.marketsandmarkets.com/PressReleases/speech-voice-recognition.asp" target="_blank" rel="noopener">达到183亿美元</a>.为了继续在这个市场中茁壮成长,Apple使开发人员可以更轻松的使用<a href="https://developer.apple.com/sirikit/" target="_blank" rel="noopener">SiriKit</a>与他们的apps<a href="https://developer.apple.com/sirikit/" target="_blank" rel="noopener">集成</a>.</p>
+<p>本系列将探讨SiriKit,为什么它很重要以及如何使用它来通过Siri公开你的app’s功能.我们将介绍SiriKit的基础知识以及如何为iOS app添加支持,深入了解Intent,然后解决最终的问题,以获得良好的Siri用户体验.</p>
+<h2 id="什么是SiriKit？"><a href="#什么是SiriKit？" class="headerlink" title="什么是SiriKit？"></a>什么是SiriKit？</h2><p>Siri通过提供会话界面而不是与Siri交谈生硬的命令,努力让用户感到自然;虽然这使得用户易于使用Siri,但对于开发人员来说这可能非常复杂.幸运的是,Apple通过处理会话方面来缓解这种复杂性 - 你只需提供功能.为了提供这些功能,开发人员使用SiriKit.</p>
+<p>SiriKit是Apple的工具包,用于通过Siri公开你app’s的功能.它是在iOS 10中引入的,尽管Siri在所有Apple平台上无处不在,但在撰写本文时,SiriKit仅适用于iOS和watchOS.当有人对Siri说话时,Siri将语音转换为文本,将文本转换为用户想要做的事情(发掘他们的<em>Intent’意图、意向’</em>),从而导致行动并产生回应.使用用户的Intent是SiriKit的核心.</p>
+<h3 id="理解Intent-意图、意向"><a href="#理解Intent-意图、意向" class="headerlink" title="理解Intent(意图、意向)"></a>理解Intent(意图、意向)</h3><p>Siri的功能有限,仅在已知的<strong>Domains</strong>内工作.一个<strong>Domain</strong>是Siri知道的事物类别,比如拨打VoIP电话,发送短信,付款,工作列表和笔记,帮助你锻炼.每个<strong>Domain</strong>都有一系列<strong>Intents</strong>,这是Siri可以执行的操作.例如,在Payments Domain内,有发送付款,转账和支付账单这些Intent.在Ride booking Domain中,有请求乘车并获得乘车状态的Intent.在考虑采用SiriKit时,请查看Domain及其Intent,了解哪些内容对你的app有意义.</p>
+<p>Intent需要有参数:发送消息时,向谁发送消息;什么时候预订,什么餐厅和多少人.因此,实现Intent可以执行三个步骤:</p>
+<ol>
+<li><strong>解析参数</strong>:帮助Siri理解用户提供的内容,包括向用户询问澄清,确认或其他信息的能力.</li>
+<li><strong>确认所有事情</strong>:最后确保所有Intent参数都是应有的,并且你的app可以处理用户的请求(e.g. 服务是在线状态且可用).</li>
+<li><strong>处理它</strong></li>
+</ol>
+<p>在这三个阶段中,你做什么和如何做取决于具体的Intent;一定要阅读Headers和Apple的文档.本系列的第2部分将深入研究这三个阶段.但首先要做的是:让我们为我们的app添加一个Intents Extension(意图扩展).</p>
+<h2 id="添加意图扩展"><a href="#添加意图扩展" class="headerlink" title="添加意图扩展"></a>添加意图扩展</h2><p>由于与Siri的交互发生在你的应用程序之外,因此你的应用程序的SiriKit功能实现为应用程序扩展 - 特别是Intents App Extension.让我们创造一个!</p>
+<h3 id="在Xcode中启用Siri-App功能"><a href="#在Xcode中启用Siri-App功能" class="headerlink" title="在Xcode中启用Siri App功能"></a>在Xcode中启用Siri App功能</h3><p><img src="http://p4stspod7.bkt.clouddn.com/xcode-siri-capability.png" alt=""></p>
+<ol>
+<li>在Xcode中打开你的项目.</li>
+<li>选择你的app target(应用目标)和Capabilities tab(功能选项卡).</li>
+<li>启用Siri capabilities(功能).</li>
+</ol>
+<p>这会将Siri Service添加到你的App ID中,以及Siri entitlement添加到你项目中.</p>
+<h3 id="向你的Xcode项目添加Intents-Extension-Target"><a href="#向你的Xcode项目添加Intents-Extension-Target" class="headerlink" title="向你的Xcode项目添加Intents Extension Target"></a>向你的Xcode项目添加Intents Extension Target</h3><p>接下来,在项目中创建一个Intents Extension Target.</p>
+<p><img src="http://p4stspod7.bkt.clouddn.com/xcode-add-intents-extension.png" alt=""></p>
+<ol>
+<li>在Xcode中打开你的项目.</li>
+<li>从菜单栏中选择:“File”&gt;“New”&gt;“Target”</li>
+<li>选择“Intents Extension”.请注意,它不是“Siri Extension”,并且你不需要“Intents UI Extension”,因为它是相关但不同的东西,然后单击Next.</li>
+<li>选择新目标的选项,然后单击“完成”.</li>
+</ol>
+<h3 id="编辑Intents-Extension的Info-plist"><a href="#编辑Intents-Extension的Info-plist" class="headerlink" title="编辑Intents Extension的Info.plist"></a>编辑Intents Extension的Info.plist</h3><p>为了让系统知道应用程序可以处理的Intent,请编辑扩展的Info.plist.</p>
+<p><img src="http://p4stspod7.bkt.clouddn.com/xcode-extension-infoplist.png" alt=""></p>
+<ol>
+<li>打开Intents Extension的Info.plist</li>
+<li>公开 <code>NSExtension</code> item.如果Info.plist中不包含它,请添加一个同名的字典类型.</li>
+<li>公开 <code>NSExtensionAttributes</code> item.如果没有,请添加一个同名的字典类型.</li>
+<li>编辑 <code>IntentsSupported</code> 扩展属性,如果需要,添加一个类型数组.每个条目都应该是你支持的Intent的类名字符串 - 每个支持的Intent都有一个条目.例如,如果你支持<code>INSendMessageIntent</code>,则应该有一个“INSendMessageIntent”条目.</li>
+<li>如果你有任何需要解锁设备的Intent,可以在 <code>IntentsRestrictedWhileLocked</code> 扩展属性下的Intent列出 .</li>
+<li><code>NSExtensionPointIdentifier</code> 扩展属性值应该为“com.apple.intents-service”.</li>
+<li><code>NSExtensionPrincipalClass</code> 扩展属性应该通过项目信息给予正确的值.关于此的更多信息将在稍后讨论.</li>
+</ol>
+<h2 id="Build-amp-Run"><a href="#Build-amp-Run" class="headerlink" title="Build&amp;Run"></a>Build&amp;Run</h2><p>你的app现在具有与Siri一起使用的基本要素.我们来试试吧!是的,你可以在iOS模拟器中使用Siri.</p>
+<ol>
+<li>确保Intents Extension target/scheme 选中.</li>
+<li>Run.</li>
+<li>当Xcode提示运行app时,选择Siri.</li>
+</ol>
+<p>运行Intents Extension,选择Siri作为要运行的应用程序.</p>
+<p>当Siri波形界面出现时,你可以开始与Siri进行对话.说:“使用My Great App发送消息”,并调用你的Intents扩展.如果在<code>IntentHandler.swift</code>文件中设置断点,则可以通过解析,确认和处理阶段来查看扩展.请注意,根据你对Siri所说的内容,某些参数可能会被多次解析.</p>
+<p> 当然,作为开发人员,我们在开发过程中会一次又一次地做同样的事情.如果每次运行Intents Extension,你必须选择要运行的Siri app并说出你的短语,它可能会变得无聊.值得庆幸的是,Xcode提供了Siri Intent Query功能,:</p>
+<ol>
+<li>编辑你的Intents Extension的scheme.</li>
+<li>选择“Run” Panel.</li>
+<li>选择“Info” tab.</li>
+</ol>
+<p><img src="http://p4stspod7.bkt.clouddn.com/xcode-scheme-trick.png" alt=""></p>
+<p>如果你输入“Siri Intent Query”的阶段,Xcode将自动运行Siri并使用你的文本作为调用短语.如果将此字段留空,Xcode将在运行时提示你.</p>
+<p>恭喜!你已成功将Intent扩展添加到你的app中,并开始使用Siri扩展你的app功能.</p>
+<p>可在<a href="https://github.com/bignerdranch/BNRun-SiriKit-Sample/tree/master/Part-01/MyGreatApp" target="_blank" rel="noopener">此处</a>找到此完整源代码(以及整个SiriKit系列).</p>
+<h2 id="接下来"><a href="#接下来" class="headerlink" title="接下来"></a>接下来</h2><p>当然,这对你的应用程序没有任何实用性或吸引力.在<a href="http://www.bignerdranch.com/blog/sirikit-part-2-resolve-confirm-handle" target="_blank" rel="noopener">第2部分中</a>,我们将做一些有用的事情并探索与Siri合作的三个关键概念:解决,确认和处理.</p>
+<p>如果你在使用SiriKit或其他功能进入iOS或watchOS应用程序时遇到困难,Big Nerd Ranch很乐意为你提供帮助.<a href="mailto:sales@bignerdranch.com?Subject=SiriApp" target="_blank" rel="noopener">联系</a>我们,了解我们的团队如何为你构建支持Siri的应用,或者将此功能和其他新功能应用到现有应用中.</p>
+<blockquote>
+<p><em>作者:<a href="https://www.bignerdranch.com/about/the-team/john-daub/" target="_blank" rel="noopener">@john-daub</a></em><br><em>原文链接: [<a href="https://www.bignerdranch.com/blog/sirikit-part-1-hey-siri-how-do-i-get-started/" target="_blank" rel="noopener">https://www.bignerdranch.com/blog/sirikit-part-1-hey-siri-how-do-i-get-started/</a>)</em><br><em>翻译:@wu83qing</em><br><em>校准:@wu83qing</em></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SiriKit/" rel="tag"># SiriKit</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/26/Progressive Web Apps on iOS/" rel="next" title="Progressive Web Apps on iOS">
+                <i class="fa fa-chevron-left"></i> Progressive Web Apps on iOS
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">wu83qing</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/wu83qing" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:ww19840906@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是SiriKit？"><span class="nav-number">1.</span> <span class="nav-text">什么是SiriKit？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#理解Intent-意图、意向"><span class="nav-number">1.1.</span> <span class="nav-text">理解Intent(意图、意向)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加意图扩展"><span class="nav-number">2.</span> <span class="nav-text">添加意图扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在Xcode中启用Siri-App功能"><span class="nav-number">2.1.</span> <span class="nav-text">在Xcode中启用Siri App功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向你的Xcode项目添加Intents-Extension-Target"><span class="nav-number">2.2.</span> <span class="nav-text">向你的Xcode项目添加Intents Extension Target</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑Intents-Extension的Info-plist"><span class="nav-number">2.3.</span> <span class="nav-text">编辑Intents Extension的Info.plist</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Build-amp-Run"><span class="nav-number">3.</span> <span class="nav-text">Build&amp;Run</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接下来"><span class="nav-number">4.</span> <span class="nav-text">接下来</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wu83qing</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'wu83qing',
+            repo: 'https://github.com/wu83qing/wu83qing.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '8d12e74845591e111ca9ba936e2e9c95f29a253a',
+            
+                client_id: '5bedacd406902c5e2550'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
