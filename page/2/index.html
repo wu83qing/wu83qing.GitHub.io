@@ -1049,6 +1049,205 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wu83qing.com/2017/06/06/UIKit框架/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wu83qing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wu83qing的技术博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/06/UIKit框架/" itemprop="url">UIKit框架</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-06T22:00:00+08:00">
+                2017-06-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://developer.apple.com/documentation/uikit?language=objc" target="_blank" rel="noopener">官方文档链接</a></p>
+<p><strong>UIKit</strong> 框架为您的iOS或tvOS应用程序提供了所需的基础架构. 它提供了用于实现界面的窗口和视图体系结构,用于向应用程序提供多点触控和其他类型输入的事件处理基础结构,以及管理用户,系统和应用程序之间的交互所需的主运行循环. 该框架提供的其他功能包括动画支持,文档支持,绘图和打印支持,关于当前设备的信息,文本管理和显示,搜索支持,可访问性支持,应用程序扩展支持和资源管理.</p>
+<ul>
+<li><strong>First Steps</strong><ul>
+<li><strong>About App Development with UIKit</strong><br>   了解UIKit和Xcode为您的iOS和tvOS应用程序提供的基本支持.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><strong>App Structure</strong><ul>
+<li><strong>Core App</strong><br> 管理您的应用的数据模型及其与系统的交互.</li>
+<li><strong>Resource Management</strong><br>  管理您存储在主要可执行文件之外的 images, strings, storyboards, and nib files</li>
+<li><strong>App Extensions</strong><br>  将应用程序的基本功能扩展到系统的其他部分.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><strong>User Interface 用户界面</strong><ul>
+<li><strong>Views and Controls</strong><br>  在屏幕上显示您的内容,并定义与该内容相关的交互.           </li>
+<li><strong>View Controllers</strong><br>  使用视图控制器管理你的界面,并促进周围的应用程序的内容导航.</li>
+<li><strong>View Layout</strong><br>  使用堆栈视图自动布置界面的视图. 当您需要精确放置视图时,请使用自动布局.</li>
+<li><strong>Animation and Haptics 触觉</strong><br>  使用基于视图的动画和触觉向用户提供反馈.</li>
+<li><strong>Windows and Screens</strong><br>  为您的视图层次结构和其他内容提供一个容器. </li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><strong>User Interactions 用户交互</strong><ul>
+<li><strong>Touches, Presses, and Gestures 触摸,按压和手势</strong><br>  在手势识别器中封装您的应用程序的事件处理逻辑,以便您可以在整个应用程序中重复使用该代码.</li>
+<li><strong>Drag and Drop 拖放</strong><br>  通过使用交互API和视图,拖放到您的应用程序.</li>
+<li><strong>Focus Interactions 焦点互动</strong><br> 使用远程或游戏控制器导航UIKit应用程序的界面.</li>
+<li><strong>Peek and Pop</strong><br>  使用3D触摸输入来显示您的内容的自定义预览和操作.</li>
+<li><strong>Keyboard and Menus 键盘和菜单</strong><br>  处理键盘输入,并显示自定义操作菜单.</li>
+<li><strong>Accessibility 无障碍</strong><br>  让残障用户更容易使用您的应用.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Graphics, Drawing, and Printing</strong><ul>
+<li><strong>Images and PDF</strong><br>  创建和管理图像,包括使用位图和PDF格式的图像.</li>
+<li><strong>Drawing</strong><br>  使用渲染器配置应用程序的绘图环境,并绘制路径,字符串和阴影.</li>
+<li><strong>Printing</strong><br>  显示系统打印面板并管理打印过程.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Text</strong><ul>
+<li><strong>Text Display and Fonts</strong><br>  使用UIKit视图来显示文本,管理字体和检查拼写.</li>
+<li><strong>Text Storage</strong><br>  管理文本存储,并协调文本的布局.</li>
+<li><strong>Keyboards and Input</strong><br>  配置系统键盘,或创建自己的键盘和自己处理输入.</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.wu83qing.com/2017/06/06/Core App/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1381,205 +1580,6 @@
 <li><strong>File downloads.</strong> 接收使用您的应用下载的文件 <a href="https://developer.apple.com/documentation/foundation/nsurlsession?language=objc" target="_blank" rel="noopener"><code>NSURLSession</code></a> object.</li>
 </ul>
 <p>尽管应用程序委托是处理生命周期事件的主要场所,但并不是唯一的地方. 对于大多数事件,UIKit还会生成任何对象都可以观察的通知. 有关您可以观察的与应用程序相关的通知列表,see <a href="https://developer.apple.com/documentation/uikit/uiapplication?language=objc" target="_blank" rel="noopener"><code>UIApplication</code></a>.有关用于处理事件的方法的更多信息, see <a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate?language=objc" target="_blank" rel="noopener"><code>UIApplicationDelegate</code></a>.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wu83qing.com/2017/06/06/UIKit框架/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wu83qing">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wu83qing的技术博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/06/UIKit框架/" itemprop="url">UIKit框架</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-06T22:00:00+08:00">
-                2017-06-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://developer.apple.com/documentation/uikit?language=objc" target="_blank" rel="noopener">官方文档链接</a></p>
-<p><strong>UIKit</strong> 框架为您的iOS或tvOS应用程序提供了所需的基础架构. 它提供了用于实现界面的窗口和视图体系结构,用于向应用程序提供多点触控和其他类型输入的事件处理基础结构,以及管理用户,系统和应用程序之间的交互所需的主运行循环. 该框架提供的其他功能包括动画支持,文档支持,绘图和打印支持,关于当前设备的信息,文本管理和显示,搜索支持,可访问性支持,应用程序扩展支持和资源管理.</p>
-<ul>
-<li><strong>First Steps</strong><ul>
-<li><strong>About App Development with UIKit</strong><br>   了解UIKit和Xcode为您的iOS和tvOS应用程序提供的基本支持.</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li><strong>App Structure</strong><ul>
-<li><strong>Core App</strong><br> 管理您的应用的数据模型及其与系统的交互.</li>
-<li><strong>Resource Management</strong><br>  管理您存储在主要可执行文件之外的 images, strings, storyboards, and nib files</li>
-<li><strong>App Extensions</strong><br>  将应用程序的基本功能扩展到系统的其他部分.</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li><strong>User Interface 用户界面</strong><ul>
-<li><strong>Views and Controls</strong><br>  在屏幕上显示您的内容,并定义与该内容相关的交互.           </li>
-<li><strong>View Controllers</strong><br>  使用视图控制器管理你的界面,并促进周围的应用程序的内容导航.</li>
-<li><strong>View Layout</strong><br>  使用堆栈视图自动布置界面的视图. 当您需要精确放置视图时,请使用自动布局.</li>
-<li><strong>Animation and Haptics 触觉</strong><br>  使用基于视图的动画和触觉向用户提供反馈.</li>
-<li><strong>Windows and Screens</strong><br>  为您的视图层次结构和其他内容提供一个容器. </li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li><strong>User Interactions 用户交互</strong><ul>
-<li><strong>Touches, Presses, and Gestures 触摸,按压和手势</strong><br>  在手势识别器中封装您的应用程序的事件处理逻辑,以便您可以在整个应用程序中重复使用该代码.</li>
-<li><strong>Drag and Drop 拖放</strong><br>  通过使用交互API和视图,拖放到您的应用程序.</li>
-<li><strong>Focus Interactions 焦点互动</strong><br> 使用远程或游戏控制器导航UIKit应用程序的界面.</li>
-<li><strong>Peek and Pop</strong><br>  使用3D触摸输入来显示您的内容的自定义预览和操作.</li>
-<li><strong>Keyboard and Menus 键盘和菜单</strong><br>  处理键盘输入,并显示自定义操作菜单.</li>
-<li><strong>Accessibility 无障碍</strong><br>  让残障用户更容易使用您的应用.</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li><strong>Graphics, Drawing, and Printing</strong><ul>
-<li><strong>Images and PDF</strong><br>  创建和管理图像,包括使用位图和PDF格式的图像.</li>
-<li><strong>Drawing</strong><br>  使用渲染器配置应用程序的绘图环境,并绘制路径,字符串和阴影.</li>
-<li><strong>Printing</strong><br>  显示系统打印面板并管理打印过程.</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li><strong>Text</strong><ul>
-<li><strong>Text Display and Fonts</strong><br>  使用UIKit视图来显示文本,管理字体和检查拼写.</li>
-<li><strong>Text Storage</strong><br>  管理文本存储,并协调文本的布局.</li>
-<li><strong>Keyboards and Input</strong><br>  配置系统键盘,或创建自己的键盘和自己处理输入.</li>
-</ul>
-</li>
-</ul>
 
           
         

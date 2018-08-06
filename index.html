@@ -342,32 +342,32 @@
       
         
           
-            <p>Siri是Apple的智能个人助理,它允许你使用语音与iOS,watchOS,tvOS和macOS设备进行交互.已经被数百万人使用,这项技术将继续增长;事实上,MarketsAndMarkets预测到2023年语音和语音识别市场的价值将达到 <a href="http://www.marketsandmarkets.com/PressReleases/speech-voice-recognition.asp" target="_blank" rel="noopener">达到183亿美元</a>.为了继续在这个市场中茁壮成长,Apple使开发人员可以更轻松的使用<a href="https://developer.apple.com/sirikit/" target="_blank" rel="noopener">SiriKit</a>与他们的apps<a href="https://developer.apple.com/sirikit/" target="_blank" rel="noopener">集成</a>.</p>
+            <p>Siri是Apple的智能个人助理,它允许使用语音与iOS,watchOS,tvOS和macOS设备进行交互.已经被数百万人使用,这项技术将继续增长;事实上,MarketsAndMarkets预测到2023年语音和语音识别市场的价值将达到 <a href="http://www.marketsandmarkets.com/PressReleases/speech-voice-recognition.asp" target="_blank" rel="noopener">达到183亿美元</a>.为了继续在这个市场中茁壮成长,Apple提供了<a href="https://developer.apple.com/sirikit/" target="_blank" rel="noopener">SiriKit</a>,使开发人员可以更轻松的与他们的apps<a href="https://developer.apple.com/sirikit/" target="_blank" rel="noopener">集成</a>.</p>
 <p>本系列将探讨SiriKit,为什么它很重要以及如何使用它来通过Siri公开你的app’s功能.我们将介绍SiriKit的基础知识以及如何为iOS app添加支持,深入了解Intent,然后解决最终的问题,以获得良好的Siri用户体验.</p>
-<h2 id="什么是SiriKit？"><a href="#什么是SiriKit？" class="headerlink" title="什么是SiriKit？"></a>什么是SiriKit？</h2><p>Siri通过提供会话界面而不是与Siri交谈生硬的命令,努力让用户感到自然;虽然这使得用户易于使用Siri,但对于开发人员来说这可能非常复杂.幸运的是,Apple通过处理会话方面来缓解这种复杂性 - 你只需提供功能.为了提供这些功能,开发人员使用SiriKit.</p>
-<p>SiriKit是Apple的工具包,用于通过Siri公开你app’s的功能.它是在iOS 10中引入的,尽管Siri在所有Apple平台上无处不在,但在撰写本文时,SiriKit仅适用于iOS和watchOS.当有人对Siri说话时,Siri将语音转换为文本,将文本转换为用户想要做的事情(发掘他们的<em>Intent’意图、意向’</em>),从而导致行动并产生回应.使用用户的Intent是SiriKit的核心.</p>
-<h3 id="理解Intent-意图、意向"><a href="#理解Intent-意图、意向" class="headerlink" title="理解Intent(意图、意向)"></a>理解Intent(意图、意向)</h3><p>Siri的功能有限,仅在已知的<strong>Domains</strong>内工作.一个<strong>Domain</strong>是Siri知道的事物类别,比如拨打VoIP电话,发送短信,付款,工作列表和笔记,帮助你锻炼.每个<strong>Domain</strong>都有一系列<strong>Intents</strong>,这是Siri可以执行的操作.例如,在Payments Domain内,有发送付款,转账和支付账单这些Intent.在Ride booking Domain中,有请求乘车并获得乘车状态的Intent.在考虑采用SiriKit时,请查看Domain及其Intent,了解哪些内容对你的app有意义.</p>
+<h2 id="什么是SiriKit？"><a href="#什么是SiriKit？" class="headerlink" title="什么是SiriKit？"></a>什么是SiriKit？</h2><p>Siri通过提供对话界面而不是生硬的命令来与Siri交谈,最终目的是努力让用户感到自然;虽然这使得用户方便使用Siri,但对于开发人员来说这可能非常复杂.幸运的是,Apple通过处理对话方面来缓解这种复杂性.</p>
+<p>SiriKit是Apple的工具包,用于通过Siri公开你app’s的功能.它是在iOS 10中引入的,尽管Siri在所有Apple平台上无处不在,但在撰写本文时,SiriKit仅适用于iOS和watchOS.当有人对Siri说话时,Siri将语音转换为文本,将文本转换为用户想要做的事情(发掘他们的<em>Intent’意图’</em>),从而导致行动并产生回应.发掘用户的Intent是SiriKit的核心.</p>
+<h3 id="理解Intent-意图"><a href="#理解Intent-意图" class="headerlink" title="理解Intent(意图)"></a>理解Intent(意图)</h3><p>Siri的功能有限,仅在已知的<strong>Domains</strong>内工作.一个<strong>Domain</strong>是Siri知道的事物类别,比如拨打VoIP电话,发送短信,付款,工作列表和笔记,帮助你锻炼.每个<strong>Domain</strong>都有一系列<strong>Intents</strong>,这是Siri可以执行的操作.例如,在Payments Domain内,有发送付款,转账和支付账单这些Intent.在Ride booking Domain中,有请求乘车并获得乘车状态的Intent.在考虑采用SiriKit时,请查看Domain及其Intent,了解哪些内容对你的app有意义.</p>
 <p>Intent需要有参数:发送消息时,向谁发送消息;什么时候预订,什么餐厅和多少人.因此,实现Intent可以执行三个步骤:</p>
 <ol>
 <li><strong>解析参数</strong>:帮助Siri理解用户提供的内容,包括向用户询问澄清,确认或其他信息的能力.</li>
 <li><strong>确认所有事情</strong>:最后确保所有Intent参数都是应有的,并且你的app可以处理用户的请求(e.g. 服务是在线状态且可用).</li>
 <li><strong>处理它</strong></li>
 </ol>
-<p>在这三个阶段中,你做什么和如何做取决于具体的Intent;一定要阅读Headers和Apple的文档.本系列的第2部分将深入研究这三个阶段.但首先要做的是:让我们为我们的app添加一个Intents Extension(意图扩展).</p>
-<h2 id="添加意图扩展"><a href="#添加意图扩展" class="headerlink" title="添加意图扩展"></a>添加意图扩展</h2><p>由于与Siri的交互发生在你的应用程序之外,因此你的应用程序的SiriKit功能实现为应用程序扩展 - 特别是Intents App Extension.让我们创造一个!</p>
+<p>在这三个阶段中,你做什么和如何做取决于具体的Intent;一定要阅读Headers和Apple的文档.本系列的第2部分将深入研究这三个阶段.但首先要做的是:让我们为app添加一个Intents Extension(意图扩展).</p>
+<h2 id="添加Intent扩展"><a href="#添加Intent扩展" class="headerlink" title="添加Intent扩展"></a>添加Intent扩展</h2><p>由于与Siri的交互发生在你的App之外,因此App的SiriKit功能的实现为App扩展 - Intents App Extension.让我们创造一个!</p>
 <h3 id="在Xcode中启用Siri-App功能"><a href="#在Xcode中启用Siri-App功能" class="headerlink" title="在Xcode中启用Siri App功能"></a>在Xcode中启用Siri App功能</h3><p><img src="http://p4stspod7.bkt.clouddn.com/xcode-siri-capability.png" alt=""></p>
 <ol>
-<li>在Xcode中打开你的项目.</li>
-<li>选择你的app target(应用目标)和Capabilities tab(功能选项卡).</li>
+<li>在Xcode中打开项目.</li>
+<li>选择app target(应用目标)和Capabilities tab(功能选项卡).</li>
 <li>启用Siri capabilities(功能).</li>
 </ol>
-<p>这会将Siri Service添加到你的App ID中,以及Siri entitlement添加到你项目中.</p>
-<h3 id="向你的Xcode项目添加Intents-Extension-Target"><a href="#向你的Xcode项目添加Intents-Extension-Target" class="headerlink" title="向你的Xcode项目添加Intents Extension Target"></a>向你的Xcode项目添加Intents Extension Target</h3><p>接下来,在项目中创建一个Intents Extension Target.</p>
+<p>这会将Siri Service添加到你的App ID中,以及Siri entitlement添加到项目中.</p>
+<h3 id="向Xcode项目添加Intents-Extension-Target"><a href="#向Xcode项目添加Intents-Extension-Target" class="headerlink" title="向Xcode项目添加Intents Extension Target"></a>向Xcode项目添加Intents Extension Target</h3><p>接下来,在项目中创建一个Intents Extension Target.</p>
 <p><img src="http://p4stspod7.bkt.clouddn.com/xcode-add-intents-extension.png" alt=""></p>
 <ol>
-<li>在Xcode中打开你的项目.</li>
+<li>在Xcode中打开项目.</li>
 <li>从菜单栏中选择:“File”&gt;“New”&gt;“Target”</li>
-<li>选择“Intents Extension”.请注意,它不是“Siri Extension”,并且你不需要“Intents UI Extension”,因为它是相关但不同的东西,然后单击Next.</li>
+<li>选择“Intents Extension”.请注意,它不是“Siri Extension”,并且不需要“Intents UI Extension”,因为它是相关但不同的东西,然后单击Next.</li>
 <li>选择新目标的选项,然后单击“完成”.</li>
 </ol>
 <h3 id="编辑Intents-Extension的Info-plist"><a href="#编辑Intents-Extension的Info-plist" class="headerlink" title="编辑Intents Extension的Info.plist"></a>编辑Intents Extension的Info.plist</h3><p>为了让系统知道应用程序可以处理的Intent,请编辑扩展的Info.plist.</p>
@@ -381,15 +381,15 @@
 <li><code>NSExtensionPointIdentifier</code> 扩展属性值应该为“com.apple.intents-service”.</li>
 <li><code>NSExtensionPrincipalClass</code> 扩展属性应该通过项目信息给予正确的值.关于此的更多信息将在稍后讨论.</li>
 </ol>
-<h2 id="Build-amp-Run"><a href="#Build-amp-Run" class="headerlink" title="Build&amp;Run"></a>Build&amp;Run</h2><p>你的app现在具有与Siri一起使用的基本要素.我们来试试吧!是的,你可以在iOS模拟器中使用Siri.</p>
+<h2 id="Build-amp-Run"><a href="#Build-amp-Run" class="headerlink" title="Build&amp;Run"></a>Build&amp;Run</h2><p>你的App现在具有与Siri一起使用的基本要素.我们来试试吧!是的,你可以在iOS模拟器中使用Siri.</p>
 <ol>
 <li>确保Intents Extension target/scheme 选中.</li>
 <li>Run.</li>
 <li>当Xcode提示运行app时,选择Siri.</li>
 </ol>
 <p>运行Intents Extension,选择Siri作为要运行的应用程序.</p>
-<p>当Siri波形界面出现时,你可以开始与Siri进行对话.说:“使用My Great App发送消息”,并调用你的Intents扩展.如果在<code>IntentHandler.swift</code>文件中设置断点,则可以通过解析,确认和处理阶段来查看扩展.请注意,根据你对Siri所说的内容,某些参数可能会被多次解析.</p>
-<p> 当然,作为开发人员,我们在开发过程中会一次又一次地做同样的事情.如果每次运行Intents Extension,你必须选择要运行的Siri app并说出你的短语,它可能会变得无聊.值得庆幸的是,Xcode提供了Siri Intent Query功能,:</p>
+<p>当Siri波形界面出现时,你可以开始与Siri进行对话.说:“使用My Great App发送消息”,它就会调用你的Intents扩展.如果在<code>IntentHandler.swift</code>文件中设置断点,则可以通过解析,确认和处理阶段来查看扩展.请注意,根据你对Siri所说的内容,某些参数可能会被多次解析.</p>
+<p>当然,作为开发人员,我们在开发过程中会一次又一次地做同样的事情.如果每次运行Intents Extension,你必须选择要运行的Siri app并说出你的短语,它可能会变得无聊.值得庆幸的是,Xcode提供了Siri Intent Query功能,:</p>
 <ol>
 <li>编辑你的Intents Extension的scheme.</li>
 <li>选择“Run” Panel.</li>
@@ -397,12 +397,11 @@
 </ol>
 <p><img src="http://p4stspod7.bkt.clouddn.com/xcode-scheme-trick.png" alt=""></p>
 <p>如果你输入“Siri Intent Query”的阶段,Xcode将自动运行Siri并使用你的文本作为调用短语.如果将此字段留空,Xcode将在运行时提示你.</p>
-<p>恭喜!你已成功将Intent扩展添加到你的app中,并开始使用Siri扩展你的app功能.</p>
+<p>恭喜!你已成功将Intent扩展添加到app中,并开始使用Siri扩展你的app功能.</p>
 <p>可在<a href="https://github.com/bignerdranch/BNRun-SiriKit-Sample/tree/master/Part-01/MyGreatApp" target="_blank" rel="noopener">此处</a>找到此完整源代码(以及整个SiriKit系列).</p>
-<h2 id="接下来"><a href="#接下来" class="headerlink" title="接下来"></a>接下来</h2><p>当然,这对你的应用程序没有任何实用性或吸引力.在<a href="http://www.bignerdranch.com/blog/sirikit-part-2-resolve-confirm-handle" target="_blank" rel="noopener">第2部分中</a>,我们将做一些有用的事情并探索与Siri合作的三个关键概念:解决,确认和处理.</p>
-<p>如果你在使用SiriKit或其他功能进入iOS或watchOS应用程序时遇到困难,Big Nerd Ranch很乐意为你提供帮助.<a href="mailto:sales@bignerdranch.com?Subject=SiriApp" target="_blank" rel="noopener">联系</a>我们,了解我们的团队如何为你构建支持Siri的应用,或者将此功能和其他新功能应用到现有应用中.</p>
+<h2 id="接下来"><a href="#接下来" class="headerlink" title="接下来"></a>接下来</h2><p>当然,以上对你的应用程序没有任何实用性或吸引力.在<a href="http://www.bignerdranch.com/blog/sirikit-part-2-resolve-confirm-handle" target="_blank" rel="noopener">第2部分中</a>,我们将做一些有用的事情并探索与Siri合作的三个关键概念:解析,确认和处理.</p>
 <blockquote>
-<p><em>作者:<a href="https://www.bignerdranch.com/about/the-team/john-daub/" target="_blank" rel="noopener">@john-daub</a></em><br><em>原文链接: [<a href="https://www.bignerdranch.com/blog/sirikit-part-1-hey-siri-how-do-i-get-started/" target="_blank" rel="noopener">https://www.bignerdranch.com/blog/sirikit-part-1-hey-siri-how-do-i-get-started/</a>)</em><br><em>翻译:@wu83qing</em><br><em>校准:@wu83qing</em></p>
+<p><em>作者:<a href="https://www.bignerdranch.com/about/the-team/john-daub/" target="_blank" rel="noopener">@john-daub</a></em><br><em>原文链接:[<a href="https://www.bignerdranch.com/blog/sirikit-part-1-hey-siri-how-do-i-get-started" target="_blank" rel="noopener">https://www.bignerdranch.com/blog/sirikit-part-1-hey-siri-how-do-i-get-started</a>]</em><br><em>翻译:@wu83qing</em><br><em>校准:@wu83qing</em></p>
 </blockquote>
 
           
