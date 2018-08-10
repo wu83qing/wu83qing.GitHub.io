@@ -87,15 +87,16 @@
 <meta property="og:site_name" content="wu83qing的技术博客">
 <meta property="og:description" content="Siri是Apple的智能个人助理,它允许使用语音与iOS,watchOS,tvOS和macOS设备进行交互.已经被数百万人使用,这项技术将继续增长;事实上,MarketsAndMarkets预测到2023年语音和语音识别市场的价值将达到 达到183亿美元.为了继续在这个市场中茁壮成长,Apple提供了SiriKit,使开发人员可以更轻松的与他们的apps集成. 本系列将探讨SiriKit,为什么">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p1ll0zcz7.bkt.clouddn.com/%E7%94%A8%E6%88%B7%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87Siri%E8%8E%B7App%E6%9C%8D%E5%8A%A1.png">
 <meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/xcode-siri-capability.png">
 <meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/xcode-add-intents-extension.png">
 <meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/xcode-extension-infoplist.png">
 <meta property="og:image" content="http://p4stspod7.bkt.clouddn.com/xcode-scheme-trick.png">
-<meta property="og:updated_time" content="2018-08-06T02:43:47.803Z">
+<meta property="og:updated_time" content="2018-08-10T06:05:25.019Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SiriKit Part 1: Hey Siri, How Do I Get Started?">
 <meta name="twitter:description" content="Siri是Apple的智能个人助理,它允许使用语音与iOS,watchOS,tvOS和macOS设备进行交互.已经被数百万人使用,这项技术将继续增长;事实上,MarketsAndMarkets预测到2023年语音和语音识别市场的价值将达到 达到183亿美元.为了继续在这个市场中茁壮成长,Apple提供了SiriKit,使开发人员可以更轻松的与他们的apps集成. 本系列将探讨SiriKit,为什么">
-<meta name="twitter:image" content="http://p4stspod7.bkt.clouddn.com/xcode-siri-capability.png">
+<meta name="twitter:image" content="http://p1ll0zcz7.bkt.clouddn.com/%E7%94%A8%E6%88%B7%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87Siri%E8%8E%B7App%E6%9C%8D%E5%8A%A1.png">
 
 
 
@@ -361,6 +362,7 @@
 <p>本系列将探讨SiriKit,为什么它很重要以及如何使用它来通过Siri公开你的app’s功能.我们将介绍SiriKit的基础知识以及如何为iOS app添加支持,深入了解Intent,然后解决最终的问题,以获得良好的Siri用户体验.</p>
 <h2 id="什么是SiriKit？"><a href="#什么是SiriKit？" class="headerlink" title="什么是SiriKit？"></a>什么是SiriKit？</h2><p>Siri通过提供对话界面而不是生硬的命令来与Siri交谈,最终目的是努力让用户感到自然;虽然这使得用户方便使用Siri,但对于开发人员来说这可能非常复杂.幸运的是,Apple通过处理对话方面来缓解这种复杂性.</p>
 <p>SiriKit是Apple的工具包,用于通过Siri公开你app’s的功能.它是在iOS 10中引入的,尽管Siri在所有Apple平台上无处不在,但在撰写本文时,SiriKit仅适用于iOS和watchOS.当有人对Siri说话时,Siri将语音转换为文本,将文本转换为用户想要做的事情(发掘他们的<em>Intent’意图’</em>),从而导致行动并产生回应.发掘用户的Intent是SiriKit的核心.</p>
+<h2 id="用户如何通过Siri获App服务"><a href="#用户如何通过Siri获App服务" class="headerlink" title="用户如何通过Siri获App服务"></a>用户如何通过Siri获App服务</h2><p><img src="http://p1ll0zcz7.bkt.clouddn.com/%E7%94%A8%E6%88%B7%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87Siri%E8%8E%B7App%E6%9C%8D%E5%8A%A1.png" alt=""><br>SiriKit定义了用户可以进行的称为意图(Intent)的请求类型.相关意图被分组到域(Domain)中,以明确你可能在应用中支持哪些意图.例如 消息域具有发送消息,搜索消息以及将消息标记为已读或未读的意图.<br>你的应用扩展程序很少直接与用户通信.Siri通常会处理与用户的所有通信,并仅在需要你提供信息时才会呼叫你的App.你可以提供Intents UI应用程序扩展以自定义Siri和Maps显示的信息,这是可选的.</p>
 <h3 id="理解Intent-意图"><a href="#理解Intent-意图" class="headerlink" title="理解Intent(意图)"></a>理解Intent(意图)</h3><p>Siri的功能有限,仅在已知的<strong>Domains</strong>内工作.一个<strong>Domain</strong>是Siri知道的事物类别,比如拨打VoIP电话,发送短信,付款,工作列表和笔记,帮助你锻炼.每个<strong>Domain</strong>都有一系列<strong>Intents</strong>,这是Siri可以执行的操作.例如,在Payments Domain内,有发送付款,转账和支付账单这些Intent.在Ride booking Domain中,有请求乘车并获得乘车状态的Intent.在考虑采用SiriKit时,请查看Domain及其Intent,了解哪些内容对你的app有意义.</p>
 <p>Intent需要有参数:发送消息时,向谁发送消息;什么时候预订,什么餐厅和多少人.因此,实现Intent可以执行三个步骤:</p>
 <ol>
@@ -368,7 +370,7 @@
 <li><strong>确认所有事情</strong>:最后确保所有Intent参数都是应有的,并且你的app可以处理用户的请求(e.g. 服务是在线状态且可用).</li>
 <li><strong>处理它</strong></li>
 </ol>
-<p>在这三个阶段中,你做什么和如何做取决于具体的Intent;一定要阅读Headers和Apple的文档.本系列的第2部分将深入研究这三个阶段.但首先要做的是:让我们为app添加一个Intents Extension(意图扩展).</p>
+<p>在这三个阶段中,你做什么和如何做取决于具体的Intent;本系列的第2部分将深入研究这三个阶段.但首先要做的是:让我们为app添加一个Intents Extension(意图扩展).</p>
 <h2 id="添加Intent扩展"><a href="#添加Intent扩展" class="headerlink" title="添加Intent扩展"></a>添加Intent扩展</h2><p>由于与Siri的交互发生在你的App之外,因此App的SiriKit功能的实现为App扩展 - Intents App Extension.让我们创造一个!</p>
 <h3 id="在Xcode中启用Siri-App功能"><a href="#在Xcode中启用Siri-App功能" class="headerlink" title="在Xcode中启用Siri App功能"></a>在Xcode中启用Siri App功能</h3><p><img src="http://p4stspod7.bkt.clouddn.com/xcode-siri-capability.png" alt=""></p>
 <ol>
@@ -611,7 +613,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是SiriKit？"><span class="nav-number">1.</span> <span class="nav-text">什么是SiriKit？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#理解Intent-意图"><span class="nav-number">1.1.</span> <span class="nav-text">理解Intent(意图)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加Intent扩展"><span class="nav-number">2.</span> <span class="nav-text">添加Intent扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在Xcode中启用Siri-App功能"><span class="nav-number">2.1.</span> <span class="nav-text">在Xcode中启用Siri App功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向Xcode项目添加Intents-Extension-Target"><span class="nav-number">2.2.</span> <span class="nav-text">向Xcode项目添加Intents Extension Target</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑Intents-Extension的Info-plist"><span class="nav-number">2.3.</span> <span class="nav-text">编辑Intents Extension的Info.plist</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Build-amp-Run"><span class="nav-number">3.</span> <span class="nav-text">Build&amp;Run</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接下来"><span class="nav-number">4.</span> <span class="nav-text">接下来</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是SiriKit？"><span class="nav-number">1.</span> <span class="nav-text">什么是SiriKit？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户如何通过Siri获App服务"><span class="nav-number">2.</span> <span class="nav-text">用户如何通过Siri获App服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#理解Intent-意图"><span class="nav-number">2.1.</span> <span class="nav-text">理解Intent(意图)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加Intent扩展"><span class="nav-number">3.</span> <span class="nav-text">添加Intent扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在Xcode中启用Siri-App功能"><span class="nav-number">3.1.</span> <span class="nav-text">在Xcode中启用Siri App功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向Xcode项目添加Intents-Extension-Target"><span class="nav-number">3.2.</span> <span class="nav-text">向Xcode项目添加Intents Extension Target</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑Intents-Extension的Info-plist"><span class="nav-number">3.3.</span> <span class="nav-text">编辑Intents Extension的Info.plist</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Build-amp-Run"><span class="nav-number">4.</span> <span class="nav-text">Build&amp;Run</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接下来"><span class="nav-number">5.</span> <span class="nav-text">接下来</span></a></li></ol></div>
             
 
           </div>
