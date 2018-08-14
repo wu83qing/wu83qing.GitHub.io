@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="SiriKit," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Siri是Apple的智能个人助理.Siri允许你使用语音与iOS,watchOS,tvOS和macOS设备进行交互.与许多Apple技术一样,Apple使开发人员通过SiriKit更容易将他们的App与Siri集成.本系列探讨了SiriKit,以及如何使用它,来通过Siri公开应用程序的功能.在第1部分中,我们研究了SiriKit的基础知识.在第2部分中,我们将看看SiriKit的核心:Reso">
+<meta name="keywords" content="SiriKit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SiriKit Part 2: Resolve, Confirm, Handle">
+<meta property="og:url" content="http://www.wu83qing.com/2018/08/10/SiriKit-Part-2-Resolve-Confirm-Handle/index.html">
+<meta property="og:site_name" content="wu83qing的技术博客">
+<meta property="og:description" content="Siri是Apple的智能个人助理.Siri允许你使用语音与iOS,watchOS,tvOS和macOS设备进行交互.与许多Apple技术一样,Apple使开发人员通过SiriKit更容易将他们的App与Siri集成.本系列探讨了SiriKit,以及如何使用它,来通过Siri公开应用程序的功能.在第1部分中,我们研究了SiriKit的基础知识.在第2部分中,我们将看看SiriKit的核心:Reso">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p1ll0zcz7.bkt.clouddn.com/workout-app.png">
+<meta property="og:updated_time" content="2018-08-14T03:43:33.795Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SiriKit Part 2: Resolve, Confirm, Handle">
+<meta name="twitter:description" content="Siri是Apple的智能个人助理.Siri允许你使用语音与iOS,watchOS,tvOS和macOS设备进行交互.与许多Apple技术一样,Apple使开发人员通过SiriKit更容易将他们的App与Siri集成.本系列探讨了SiriKit,以及如何使用它,来通过Siri公开应用程序的功能.在第1部分中,我们研究了SiriKit的基础知识.在第2部分中,我们将看看SiriKit的核心:Reso">
+<meta name="twitter:image" content="http://p1ll0zcz7.bkt.clouddn.com/workout-app.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.wu83qing.com/2018/08/10/SiriKit-Part-2-Resolve-Confirm-Handle/"/>
+
+
+
+
+
+  <title>SiriKit Part 2: Resolve, Confirm, Handle | wu83qing的技术博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">wu83qing的技术博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">编程 技术 生活 人生</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wu83qing.com/2018/08/10/SiriKit-Part-2-Resolve-Confirm-Handle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wu83qing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wu83qing的技术博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SiriKit Part 2: Resolve, Confirm, Handle</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-10T14:24:34+08:00">
+                2018-08-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/10/SiriKit-Part-2-Resolve-Confirm-Handle/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/08/10/SiriKit-Part-2-Resolve-Confirm-Handle/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Siri是Apple的智能个人助理.Siri允许你使用语音与iOS,watchOS,tvOS和macOS设备进行交互.与许多Apple技术一样,Apple使开发人员通过SiriKit更容易将他们的App与Siri集成.本系列探讨了SiriKit,以及如何使用它,来通过Siri公开应用程序的功能.在第1部分中,我们研究了SiriKit的基础知识.在第2部分中,我们将看看SiriKit的核心:Resolve(解析),(Confirm)确认,(Handle)处理.</p>
+<h2 id="Running-with-Siri"><a href="#Running-with-Siri" class="headerlink" title="Running with Siri"></a>Running with Siri</h2><p>Big Nerd Ranch的人喜欢锻炼身体,特别是举重和跑步.如果有一个App来跟踪我们的锻炼将是有意义的.我们使用BNRun App(如下图),它及其简单.<a href="https://github.com/bignerdranch/BNRun-SiriKit-Sample/tree/master/Part-02/Phase-01" target="_blank" rel="noopener">BNRun App 示例代码</a>:</p>
+<p><img src="http://p1ll0zcz7.bkt.clouddn.com/workout-app.png" alt=""></p>
+<p>在<a href="http://wu83qing.com/2018/07/30/SiriKit-Part-1-Hey-Siri-How-Do-I-Get-Started/" target="_blank" rel="noopener">第1部分</a>中,提到Siri仅限于它能做什么.</p>
+<p>在决定为App添加Siri支持时,必须将App功能与SiriKit在其Domain和Intents中提供的功能进行协调.BNRun是一个锻炼App,SiriKit提供<a href="https://developer.apple.com/documentation/sirikit/workouts" target="_blank" rel="noopener">Workouts Domain</a>,所以这是一个好的开端.看看<em>Workouts Domain</em>内的Intent,没有任何接口可以用于为App做设置/次数/体重功能,但有一些Intent可以用于有氧训练,比如跑步或游泳.所以Siri将无法支持想做的一切,但还是可以使用Siri来做它能做的事情.为了简单起见,先添加开始和停止功能.</p>
+<p>在深入了解Intents框架之前,我们必须退一步看看Intent Domains的文档.每个Intent都有不同的要求:有些是简单和自包含的,有些需要App的支持,有些必须让App做繁重的工作.<a href="https://developer.apple.com/sirikit/" target="_blank" rel="noopener">阅读Apple关于Intent的文档</a>以了解它是如何实现的必不可少的,因为这会影响如何处理Intent,以及如何处理App.</p>
+<p>在BNRun及其选择的Intents中,App本身必须处理繁重的工作.但是,Intents必须具备使用App数据模型的一些知识和能力. 因此,App的数据模型必须重构为Embedded Framework,以便可以在App和扩展程序之间共享.在<a href="https://github.com/bignerdranch/BNRun-SiriKit-Sample/tree/master/Part-02/Phase-02" target="_blank" rel="noopener">示例代码的第2阶段</a>中看到此重构.讨论Embedded Framework超出了本文的范围. 只要知道Intents Extension是一个App扩展,因此规定了App扩展的功能,限制和要求;这可以包括使用Embedded Framework,App Groups等,以便在你的App和扩展程序之间共享代码和数据.</p>
+<h2 id="解析-Resolve-确认-Confirm-处理-Handle"><a href="#解析-Resolve-确认-Confirm-处理-Handle" class="headerlink" title="解析(Resolve),确认(Confirm),处理(Handle)"></a>解析(Resolve),确认(Confirm),处理(Handle)</h2><p>Intent处理程序涉及三个步骤:</p>
+<ol>
+<li>解析参数:帮助Siri了解用户提供的内容,包括向用户询问澄清,确认或其它信息的能力.</li>
+<li>确认所有事情:最后确保所有Intent参数都是应有的,并且App可以处理用户的请求.</li>
+<li>处理它:do the thing!</li>
+</ol>
+<p>开始锻炼时,用户可以说很多东西:</p>
+<ul>
+<li>“慢跑10英里”</li>
+<li>“在BNRun开始跑步”</li>
+<li>“开始游泳”</li>
+<li>“慢跑吧”</li>
+</ul>
+<p>Siri接受用户的自然语言输入,将其转换为文本,并完成工作以确定用户想要做什么.当Siri确定用户想要执行涉及App的操作时,会加载Intents扩展. 操作系统检查扩展的Info.plist,查找<code>NSExtensionPrincipalClass</code>作为扩展的入口点. 这个类必须是<code>INExtension</code>的子类,并且必须实现<code>INIntentHandlerProviding function:handler(for intent:INIntent) - &gt; Any?</code> ,它返回将要处理的实例,这个实例是用户命令的处理过程.在主类的实现中,完整处理程序可能看起来像这样:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import Intents</span><br><span class="line">class IntentHandler: INExtension /* list of `Handling` protocols conformed to */ &#123;</span><br><span class="line">    override func handler(for intent: INIntent) -&gt; Any? &#123;</span><br><span class="line">        return self</span><br><span class="line">    &#125;</span><br><span class="line">    // implement resolution functions</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>虽然可以在主类中实现整个扩展,通过将处理程序分解为它们自己的类和文件,将更好地扩展功能(如下所示).因此,对于Start Workout Intent,将实现这样的主类:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import Intents</span><br><span class="line">class IntentHandler: INExtension &#123;</span><br><span class="line">    override func handler(for intent: INIntent) -&gt; Any? &#123;</span><br><span class="line">        if intent is INStartWorkoutIntent &#123;</span><br><span class="line">            return StartWorkoutIntentHandler()</span><br><span class="line">        &#125;</span><br><span class="line">        return nil</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>StartWorkoutIntentHandler</code>是一个基于<code>NSObject</code>的子类,它实现<code>INStartWorkoutIntentHandling</code>协议,允许它处理<code>Start Workout Intent</code>. 如果看一下<code>INStartWorkoutIntentHandling</code>的声明,会看到只需要处理Intent(required by the protocol):一个不需要解析也不需要确认(optional protocol可选协议).但是,由于用户可以通过多种方式开始锻炼,但App仅支持几种方式,所以不得不解析(resolve)并确认(confirm)参数.</p>
+<h3 id="Resolve-解析"><a href="#Resolve-解析" class="headerlink" title="Resolve (解析)"></a>Resolve (解析)</h3><p>BNRun支持三种类型的锻炼:步行,跑步和游泳. Start Workout Intent不支持锻炼类型的概念,但它确实支持锻炼名称的概念. 因此可以使用锻炼名称作为限制用户步行,跑步和游泳的方法. 通过实现<code>resolveWorkoutName(for intent:, with completion:)</code> 函数来完成:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">func resolveWorkoutName(for intent: INStartWorkoutIntent, </span><br><span class="line">    with completion: @escaping (INSpeakableStringResolutionResult) -&gt; Void) &#123;</span><br><span class="line">    let result: INSpeakableStringResolutionResult</span><br><span class="line">    if let workoutName = intent.workoutName &#123;</span><br><span class="line">        if let workoutType = Workout.WorkoutType(intentWorkoutName: workoutName) &#123;</span><br><span class="line">            result = INSpeakableStringResolutionResult.success(with: workoutType.speakableString)</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            let possibleNames = [</span><br><span class="line">                Workout.WorkoutType.walk.speakableString,</span><br><span class="line">                Workout.WorkoutType.run.speakableString,</span><br><span class="line">                Workout.WorkoutType.swim.speakableString</span><br><span class="line">            ]</span><br><span class="line">            result = INSpeakableStringResolutionResult.disambiguation(with: possibleNames)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        result = INSpeakableStringResolutionResult.needsValue()</span><br><span class="line">    &#125;</span><br><span class="line">    completion(result)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>解析函数的目的是解析参数.参数是否是必填?是否可选的?如果不清楚,需要与用户进一步澄清?Resolve函数的实现应检查给定Intent提供的数据,包括未提供参数的可能性.根据Intent数据,创建一个<code>INIntentResolutionResult</code>让Siri知道参数是如何解析的.实际上,你创建了一个适合解析的特定<code>INIntentResolutionResult</code>类型的实例-在这种情况下,一个<code>INSpeakableStringResolutionResult</code>(结果类型将在resolve函数的签名中给出).</p>
+<p>所有结果都可以响应为需要值,可选的,或者此参数不受支持. 特定结果类型可能会添加更多上下文相应的结果. 例如,使用<code>INSpeakableStringResolutionResult</code>,结果可能是名称成功; 或者如果提供了名称,但不是应用程序理解的名称,则会向用户提供一个列表. 每种结果类型都不同,因此检查文档列表以了解可以返回的内容以及返回该类型的含义. 不要害怕尝试不同的结果,看看Siri如何向用户说出结果.</p>
+<p><strong>Important Note!</strong> 在退出三种类型的Intent-handler函数之前,必须调用传递结果的完成闭包. 在调用完成之前,Siri无法继续. 确保所有代码过程以<code>completion(result)</code>作为结束标识(考虑利用Swift的defer特性).</p>
+<h3 id="Confirm-确认"><a href="#Confirm-确认" class="headerlink" title="Confirm (确认)"></a>Confirm (确认)</h3><p>一旦参数得到解析,就可以确认用户的意图以便可以继续进行.在这个简单的示例中,确保可以从<code>INStartWorkoutIntent</code>构造<code>Workout</code>非常重要.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">func confirm(intent: INStartWorkoutIntent, </span><br><span class="line">    completion: @escaping (INStartWorkoutIntentResponse) -&gt; Void) &#123;</span><br><span class="line">    let response: INStartWorkoutIntentResponse</span><br><span class="line">    if let workout = Workout(startWorkoutIntent: intent) &#123;</span><br><span class="line">        if #available(iOS 11, *) &#123;</span><br><span class="line">            response = INStartWorkoutIntentResponse(code: .ready, userActivity: nil)</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            let userActivity = NSUserActivity(bnrActivity: .startWorkout(workout))</span><br><span class="line">            response = INStartWorkoutIntentResponse(code: .ready, userActivity: userActivity)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        response = INStartWorkoutIntentResponse(code: .failure, userActivity: nil)</span><br><span class="line">    &#125;</span><br><span class="line">    completion(response)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意使用<code>#available?</code> iOS 11改变了Workout Domain与App交互的方式,提供了在后台启动App的更好方法. 有关更多信息,请查看<a href="https://developer.apple.com/videos/play/wwdc2017/214/" target="_blank" rel="noopener">WWDC 2017 Session 214 “What’s New In SiriKit”</a> .</p>
+<h3 id="Handle-处理"><a href="#Handle-处理" class="headerlink" title="Handle (处理)"></a>Handle (处理)</h3><p>处理用户的意图也是Intent处理程序唯一必须的过程.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">func handle(intent: INStartWorkoutIntent, </span><br><span class="line">    completion: @escaping (INStartWorkoutIntentResponse) -&gt; Void) &#123;</span><br><span class="line">    let response: INStartWorkoutIntentResponse</span><br><span class="line">    if #available(iOS 11, *) &#123;</span><br><span class="line">        response = INStartWorkoutIntentResponse(code: .handleInApp, userActivity: nil)</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        if let workout = Workout(startWorkoutIntent: intent) &#123;</span><br><span class="line">            let userActivity = NSUserActivity(bnrActivity: .startWorkout(workout))</span><br><span class="line">            response = INStartWorkoutIntentResponse(code: .continueInApp, userActivity: userActivity)</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            response = INStartWorkoutIntentResponse(code: .failure, userActivity: nil)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    completion(response)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>虽然一些Intent可以处理扩展中的内容,但必须在App本身内启动锻炼.iOS 10方式需要创建<code>NSUserActivity</code>,实现<code>UIApplicationDelegate</code>中的 <code>function application(_:, continue userActivity:, restorationHandler:)</code>就像支持Handoff一样.<br>虽然这有效,但iOS 11将 <code>application(_:, handle intent:, completionHandler:)</code> 引入UIApplicationDelegate,它更干净地处理Intent.再次,请参阅<a href="https://developer.apple.com/videos/play/wwdc2017/214/" target="_blank" rel="noopener">WWDC 2017 Session 214 “What’s New In SiriKit”</a>以获取更多信息.</p>
+<h3 id="IntentsSupported"><a href="#IntentsSupported" class="headerlink" title="IntentsSupported"></a>IntentsSupported</h3><p>现在,扩展实现了Resolve,Confirm和Handle三个步骤,Intent处理程序已完成. 现在操作系统需要知道Intent存在. 编辑扩展的Info.plist并将<code>INStartWorkoutIntent</code>添加到<code>NSExtension</code>字典的<code>NSExtensionAttributes的IntentsSupported</code>字典中.</p>
+<p>要了解这一切是如何结合在一起的,请查看<a href="https://github.com/bignerdranch/BNRun-SiriKit-Sample/tree/master/Part-02/Phase-03" target="_blank" rel="noopener">示例代码的第3阶段</a>.</p>
+<h2 id="Stop-Workout"><a href="#Stop-Workout" class="headerlink" title="Stop Workout"></a>Stop Workout</h2><p>由于该应用程序支持启动锻炼,它还应支持停止锻炼.<br>如<a href="https://github.com/bignerdranch/BNRun-SiriKit-Sample/tree/master/Part-02/Phase-04" target="_blank" rel="noopener">示例代码的第4阶段</a>中,在IntentHandler中再添加了一个case,<code>StopWorkoutIntentHandler</code>为实现类.其提供了<code>Confirm</code>和<code>Handle</code>步骤(BNRun中没有要解析的参数). 最后在Info.plist中添加这个Intent.</p>
+<p>你应该能够Build和Run第4阶段代码,在app中启动和停止锻炼,或者通过Siri,或者通过这两者的组合.试一试!</p>
+<h2 id="One-More-Thing…"><a href="#One-More-Thing…" class="headerlink" title="One More Thing…"></a>One More Thing…</h2><p>实现Resolve,Confirm和Handle功能可以解决App与Siri一起工作所需的繁琐工作.<br>但在向市场发布支持Siri的App之前,还有一些事情需要做. <a href="https://www.bignerdranch.com/blog/sirikit-part-3-finishing-touches/" target="_blank" rel="noopener">第3部分</a>将详细介绍这些内容.</p>
+<blockquote>
+<p><em>作者:<a href="https://www.bignerdranch.com/about/the-team/john-daub/" target="_blank" rel="noopener">@john-daub</a></em><br><em>原文链接:[<a href="https://www.bignerdranch.com/blog/sirikit-part-2-resolve-confirm-handle/" target="_blank" rel="noopener">https://www.bignerdranch.com/blog/sirikit-part-2-resolve-confirm-handle/</a>]</em><br><em>翻译:@wu83qing</em><br><em>校准:@wu83qing</em></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SiriKit/" rel="tag"># SiriKit</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/30/SiriKit-Part-1-Hey-Siri-How-Do-I-Get-Started/" rel="next" title="SiriKit Part 1: Hey Siri, How Do I Get Started?">
+                <i class="fa fa-chevron-left"></i> SiriKit Part 1: Hey Siri, How Do I Get Started?
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">wu83qing</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/wu83qing" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:ww19840906@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Running-with-Siri"><span class="nav-number">1.</span> <span class="nav-text">Running with Siri</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解析-Resolve-确认-Confirm-处理-Handle"><span class="nav-number">2.</span> <span class="nav-text">解析(Resolve),确认(Confirm),处理(Handle)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Resolve-解析"><span class="nav-number">2.1.</span> <span class="nav-text">Resolve (解析)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Confirm-确认"><span class="nav-number">2.2.</span> <span class="nav-text">Confirm (确认)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Handle-处理"><span class="nav-number">2.3.</span> <span class="nav-text">Handle (处理)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IntentsSupported"><span class="nav-number">2.4.</span> <span class="nav-text">IntentsSupported</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stop-Workout"><span class="nav-number">3.</span> <span class="nav-text">Stop Workout</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#One-More-Thing…"><span class="nav-number">4.</span> <span class="nav-text">One More Thing…</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wu83qing</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'wu83qing',
+            repo: 'https://github.com/wu83qing/wu83qing.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '8d12e74845591e111ca9ba936e2e9c95f29a253a',
+            
+                client_id: '5bedacd406902c5e2550'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
